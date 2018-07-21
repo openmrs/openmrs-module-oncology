@@ -37,5 +37,11 @@ Assumptions
 - Datamodel could be extended or modified, if needed.
 
 
-    
-    
+Functional Requirements
+=======================
+
+The updated system with oncology treatment ordering capability will leverage existing datamodel objects and api semantics as much as possible. There is already a substantial coverage of required modeling for supporting oncology regimens. Data concepts such as `OrderSet`, `OrderGroup`, and `Order` provide base for most of the above data interactions.
+
+
+
+
