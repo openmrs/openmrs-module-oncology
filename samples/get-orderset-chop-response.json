@@ -1,0 +1,41 @@
+{
+    "uuid": "c1c121bf-c660-4435-bdcf-04ac6e99c870",
+    "display": "CHOP",
+    "name": "CHOP",
+    "description": "CHOP: Protocol for Non Hodgkin Lymphoma Every 3 weeks x 4 cycles",
+    "retired": false,
+    "operator": "ALL",
+    "orderSetMembers": [
+        {
+            "uuid": "2ab90f6b-83c3-4278-8dcb-aa9480f07d01",
+            "display": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "uri": "https://humci.pih-emr.org:443/mirebalais/ws/rest/v1/orderset/c1c121bf-c660-4435-bdcf-04ac6e99c870/ordersetmember/2ab90f6b-83c3-4278-8dcb-aa9480f07d01"
+                }
+            ]
+        },
+        {
+            "uuid": "4e76f3cc-cb38-4fbb-9b1a-3f534494844c",
+            "display": null,
+            "links": [
+                {
+                    "rel": "self",
+                    "uri": "https://humci.pih-emr.org:443/mirebalais/ws/rest/v1/orderset/c1c121bf-c660-4435-bdcf-04ac6e99c870/ordersetmember/4e76f3cc-cb38-4fbb-9b1a-3f534494844c"
+                }
+            ]
+        }
+    ],
+    "links": [
+        {
+            "rel": "self",
+            "uri": "https://humci.pih-emr.org:443/mirebalais/ws/rest/v1/orderset/c1c121bf-c660-4435-bdcf-04ac6e99c870"
+        },
+        {
+            "rel": "full",
+            "uri": "https://humci.pih-emr.org:443/mirebalais/ws/rest/v1/orderset/c1c121bf-c660-4435-bdcf-04ac6e99c870?v=full"
+        }
+    ],
+    "resourceVersion": "1.8"
+}
