@@ -94,17 +94,20 @@ Technical Flows
 DR_UC1 - Select chemotherapy regimen from list 
 ------
 
-- Implementation: (a) query all `OrderSet` templates available, (b) support filtering by indication, (c) display `OrderSet` and `OrderSetMember` details for selected regimen.
+- Summary flow:
+1. query all `OrderSet` templates available
+2. support filtering by indication
+3. display `OrderSet` and `OrderSetMember` details for selected regimen.
+
+- Implementation notes: Data encoded in `OrderSetMember.orderTemplate` is a seralized escaped JSON string that must be decoded in presentation later to understand data. When creating `Order` objects in the next use case, the final JSON string must be serialized similarly containing the updated (if applicable) chemotherapy drugs being ordered by doctor in final initial order.
+
+- Sequence Diagram:  
+![](https://www.websequencediagrams.com/files/render?link=ULdAQkpjS3tFmqk8LmqX)
 
 - Data Model References:  
  [Class Diagram](#data-model)  
  [OrderSet object](https://docs.openmrs.org/doc/org/openmrs/OrderSet.html)  
  [OrderSet serialization](https://docs.openmrs.org/doc/serialized-form.html#org.openmrs.OrderSet)  
-
-- Notes: Data encoded in `OrderSetMember.orderTemplate` is a seralized escaped JSON string that must be decoded in presentation later to understand data. When creating `Order` objects in the next use case, the final JSON string must be serialized similarly containing the updated (if applicable) chemotherapy drugs being ordered by doctor in final initial order.
-
-- Sequence Diagram:  
-![](https://www.websequencediagrams.com/files/render?link=ULdAQkpjS3tFmqk8LmqX)
 
 
 
