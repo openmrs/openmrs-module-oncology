@@ -94,7 +94,9 @@ DR_UC1
 
 
 - Sequence Diagram:
- ![](https://www.websequencediagrams.com/files/render?link=ULdAQkpjS3tFmqk8LmqX)
+  
+  
+ ![](https://www.websequencediagrams.com/files/render?link=ULdAQkpjS3tFmqk8LmqX?style=centerme)
 
 
 
