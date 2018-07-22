@@ -82,6 +82,7 @@ Use Cases
 - AD_UC1: As a nurse, I want to capture chemotherapy delivery observations for treatment cycle received on a specific visit.
 - AD_UC2: As a nurse, I want to ...
 
+---
 
 
 Technical Flows
@@ -99,6 +100,8 @@ DR_UC1 - Select chemotherapy regimen from list
  [Class Diagram](#data-model)  
  [OrderSet object](https://docs.openmrs.org/doc/org/openmrs/OrderSet.html)  
  [OrderSet serialization](https://docs.openmrs.org/doc/serialized-form.html#org.openmrs.OrderSet)  
+
+- Notes: Data encoded in `OrderSetMember.orderTemplate` is a seralized escaped JSON string that must be decoded in presentation later to understand data. When creating `Order` objects in the next use case, the final JSON string must be serialized similarly containing the updated (if applicable) chemotherapy drugs being ordered by doctor in final initial order.
 
 - Sequence Diagram:  
 ![](https://www.websequencediagrams.com/files/render?link=ULdAQkpjS3tFmqk8LmqX)
