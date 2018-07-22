@@ -11,8 +11,8 @@ OpenMRS 2.1.3 Mirebalais: Oncology Regimen Ordering & Dashboard Support
   * [UC1 API Flow](#uc1-api-flow)
   * [Sequence Diagram](#sequence-diagram)
   * [UC2 API Flow](#uc2-api-flow)
-- [Proposals](#proposals)
-- [Recommendations](#recommendations)
+- [Proposal](#proposal)
+- [Extended Content](#extended-content)
 - [Technical TODOs/Open Issues](#technical-todos-open-issues)
 
 
@@ -84,16 +84,18 @@ Use Cases
 
 
 
-API Flows
-=========
+Technical Flows
+===============
 
-UC1 API Flow
-------------
+DR_UC1
+------
+
+- Data Diagram
+
 
 - Sequence Diagram
     - 
 
-- Data Diagram
 
 
 UC2 API Flow
@@ -104,13 +106,14 @@ UC2 API Flow
 - Data Diagram
 
 
-Proposals
-=========
+Proposal
+========
 
 
 
-Recommendations
-===============
+Extended Content
+================
+
 
 
 Technical TODOs/Open Issues
