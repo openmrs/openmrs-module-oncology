@@ -46,15 +46,23 @@ The updated system with oncology treatment ordering capability will leverage exi
 Use Cases
 =========
 
-*Order Templates (OT)* use cases (primary datamodel classes involved are `OrderSet`, `OrderSetMember`, `OrderType`):
+**Order Templates (OT)** use cases (primary datamodel classes involved are `OrderSet`, `OrderSetMember`, `OrderType`):
 - OT_UC1: As an oncology clinician, I want to author oncology regimen templates for use in EMR solution.
 - OT_UC2: As an oncology clinician, I want to update an existing oncology regimen template currently in use in EMR solution.
 
 ---
 
-*Doctor (DR)* use cases (primary datamodel classes involved are `Patient`, `OrderGroup`, `Order`, `OrderSet`, `OrderSetMember`, `OrderType`, `Encounter`):
-- DR_UC1: As a doctor, I want to select a chemo therapy regimen from a pre-configured set available during ordering.
-- DR_UC2
+**Doctor (DR)** use cases (primary datamodel classes involved are `Patient`, `OrderGroup`, `Order`, `OrderSet`, `OrderSetMember`, `OrderType`, `Encounter`):
+- DR_UC1: As a doctor, I want to select a chemotherapy regimen from a pre-configured set available during ordering.
+- DR_UC2: As a doctor, I want to modify chemotherapy regimen *initially ordered* for a patient (i.e. before final order confirmation).
+- DR_UC3: As a doctor, I want to modify chemotherapy regimen *previously ordered* for a patient (i.e. order is already in datamodel)
+
+---
+
+**Adminstrative (AD)** use cases (primary datamodel classes involved are):
+- AD_UC1: As a nurse, I want to capture chemotherapy delivery observations for treatment cycle received on a specific visit.
+- AD_UC2: As a nurse, I want to ...
+
 
 
 API Flows
