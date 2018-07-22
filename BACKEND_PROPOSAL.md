@@ -92,8 +92,8 @@ DR_UC1 - Select chemotherapy regimen from list
 
 - Implementation: (a) query all `OrderSet` templates available, (b) support filtering by indication, (c) display `OrderSet` and `OrderSetMember` details for selected regimen.
 
-- Data Diagram:  
-![](https://app.mural.co/t/ibm14/m/ibm14/1531855170646/0a62b447bf3fbd59c8a6fa577e39d823720f9878)
+- Data Model References:  
+![Class Diagram](https://app.mural.co/t/ibm14/m/ibm14/1531855170646/0a62b447bf3fbd59c8a6fa577e39d823720f9878)
 
  [OrderSet object](https://docs.openmrs.org/doc/org/openmrs/OrderSet.html)  
  [OrderSet serialization](https://docs.openmrs.org/doc/serialized-form.html#org.openmrs.OrderSet)
