@@ -43,5 +43,41 @@ Functional Requirements
 The updated system with oncology treatment ordering capability will leverage existing datamodel objects and api semantics as much as possible. There is already a substantial coverage of required modeling for supporting oncology regimens. Data concepts such as `OrderSet`, `OrderGroup`, and `Order` provide base for most of the above data interactions.
 
 
+Use Cases
+=========
 
+- UC1
+- UC2
+
+
+API Flows
+=========
+
+UC1 API Flow
+------------
+
+- Sequence Diagram
+
+- Data Diagram
+
+
+UC2 API Flow
+------------
+
+- Sequence Diagram
+
+- Data Diagram
+
+
+Proposals
+=========
+
+
+
+Recommendations
+===============
+
+
+Technical TODOs/Open Issues
+===========================
 
