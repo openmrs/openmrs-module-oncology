@@ -1,7 +1,26 @@
 OpenMRS 2.1.3 Mirebalais: Oncology Regimen Ordering & Dashboard Support
 =======================================================================
 
+- [OpenMRS 2.1.3 Mirebalais: Oncology Regimen Ordering & Dashboard Support](#openmrs-213-mirebalais--oncology-regimen-ordering---dashboard-support)
+  * [Purpose](#purpose)
+  * [Context](#context)
+  * [Assumptions](#assumptions)
+- [Functional Requirements](#functional-requirements)
+- [Use Cases](#use-cases)
+- [API Flows](#api-flows)
+  * [UC1 API Flow](#uc1-api-flow)
+  * [Sequence Diagram](#sequence-diagram)
+  * [UC2 API Flow](#uc2-api-flow)
+- [Proposal](#proposal)
+- [Extended Content](#extended-content)
+- [Technical TODOs/Open Issues](#technical-todos-open-issues)
+
+
+Purpose
+-------
+
 This document captures options gathered during first week of discussions about how to implement ordering of oncology (chemo specifcally) treatment regimens within OpenMRS Mirebalais distro and provide dashboard analytics about their treatment.
+
 
 Context
 -------
@@ -37,5 +56,72 @@ Assumptions
 - Datamodel could be extended or modified, if needed.
 
 
-    
-    
+Functional Requirements
+=======================
+
+The updated system with oncology treatment ordering capability will leverage existing datamodel objects and api semantics as much as possible. There is already a substantial coverage of required modeling for supporting oncology regimens. Data concepts such as `OrderSet`, `OrderGroup`, and `Order` provide base for most of the above data interactions.
+
+
+Use Cases
+=========
+
+**Order Templates (OT)** use cases (primary datamodel classes involved are `OrderSet`, `OrderSetMember`, `OrderType`):
+- OT_UC1: As an oncology clinician, I want to author oncology regimen templates for use in EMR solution.
+- OT_UC2: As an oncology clinician, I want to update an existing oncology regimen template currently in use in EMR solution.
+
+---
+
+**Doctor (DR)** use cases (primary datamodel classes involved are `Patient`, `OrderGroup`, `Order`, `OrderSet`, `OrderSetMember`, `OrderType`, `Encounter`):
+- DR_UC1: As a doctor, I want to select a chemotherapy regimen from a pre-configured set available during ordering.
+- DR_UC2: As a doctor, I want to modify chemotherapy regimen *initially ordered* for a patient (i.e. before final order confirmation).
+- DR_UC3: As a doctor, I want to modify chemotherapy regimen *previously ordered* for a patient (i.e. order is already in datamodel)
+
+---
+
+**Adminstrative (AD)** use cases (primary datamodel classes involved are):
+- AD_UC1: As a nurse, I want to capture chemotherapy delivery observations for treatment cycle received on a specific visit.
+- AD_UC2: As a nurse, I want to ...
+
+
+
+Technical Flows
+===============
+
+DR_UC1 - Select chemotherapy regimen from list 
+------
+
+- Implementation: (a) query all `OrderSet` templates available, (b) support filtering by indication, (c) display `OrderSet` and `OrderSetMember` details for selected regimen.
+
+- Data Diagram:  
+![](https://app.mural.co/t/ibm14/m/ibm14/1531855170646/0a62b447bf3fbd59c8a6fa577e39d823720f9878)
+
+ [OrderSet object](https://docs.openmrs.org/doc/org/openmrs/OrderSet.html)  
+ [OrderSet serialization](https://docs.openmrs.org/doc/serialized-form.html#org.openmrs.OrderSet)
+
+
+- Sequence Diagram:  
+![](https://www.websequencediagrams.com/files/render?link=ULdAQkpjS3tFmqk8LmqX)
+
+
+
+UC2 API Flow
+------------
+
+- Sequence Diagram
+
+- Data Diagram
+
+
+Proposal
+========
+
+
+
+Extended Content
+================
+
+
+
+Technical TODOs/Open Issues
+===========================
+
