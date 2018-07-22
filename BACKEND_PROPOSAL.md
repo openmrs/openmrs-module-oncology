@@ -109,8 +109,9 @@ DR_UC1 - Select chemotherapy regimen from list
  [OrderSet object](https://docs.openmrs.org/doc/org/openmrs/OrderSet.html)  
  [OrderSet serialization](https://docs.openmrs.org/doc/serialized-form.html#org.openmrs.OrderSet)  
 
-- Example request result:
-```![](samples/get-ordersets.json)```
+- Samples:  
+request: `GET http://localhost:8080/openmrs/ws/rest/v1/orderset`  
+response: HTTP 200 [body](samples/get-ordersets-response.json)  
 
 
 UC2 API Flow
