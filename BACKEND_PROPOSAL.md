@@ -82,26 +82,35 @@ Use Cases
 - AD_UC1: As a nurse, I want to capture chemotherapy delivery observations for treatment cycle received on a specific visit.
 - AD_UC2: As a nurse, I want to ...
 
+---
 
 
 Technical Flows
 ===============
 
+- Data Model: 
+![](images/muraly-data-model.png)
+
 DR_UC1 - Select chemotherapy regimen from list 
 ------
 
-- Implementation: (a) query all `OrderSet` templates available, (b) support filtering by indication, (c) display `OrderSet` and `OrderSetMember` details for selected regimen.
+- Summary flow:
+  1. query all `OrderSet` templates available
+  2. support filtering by indication
+  3. display `OrderSet` and `OrderSetMember` details for selected regimen.
 
-- Data Model References:  
-![Class Diagram](https://app.mural.co/t/ibm14/m/ibm14/1531855170646/0a62b447bf3fbd59c8a6fa577e39d823720f9878)
-
- [OrderSet object](https://docs.openmrs.org/doc/org/openmrs/OrderSet.html)  
- [OrderSet serialization](https://docs.openmrs.org/doc/serialized-form.html#org.openmrs.OrderSet)
-
+- Implementation notes: Data encoded in `OrderSetMember.orderTemplate` is a seralized escaped JSON string that must be decoded in presentation later to understand data. When creating `Order` objects in the next use case, the final JSON string must be serialized similarly containing the updated (if applicable) chemotherapy drugs being ordered by doctor in final initial order.
 
 - Sequence Diagram:  
 ![](https://www.websequencediagrams.com/files/render?link=ULdAQkpjS3tFmqk8LmqX)
 
+- Data Model References:  
+ [Class Diagram](#data-model)  
+ [OrderSet object](https://docs.openmrs.org/doc/org/openmrs/OrderSet.html)  
+ [OrderSet serialization](https://docs.openmrs.org/doc/serialized-form.html#org.openmrs.OrderSet)  
+
+- Example request result:
+```![](samples/get-ordersets.json)```
 
 
 UC2 API Flow
