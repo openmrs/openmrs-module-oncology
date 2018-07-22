@@ -87,7 +87,7 @@ Use Cases
 Technical Flows
 ===============
 
-Data Model: 
+- Data Model: 
 ![](images/muraly-data-model.png)
 
 DR_UC1 - Select chemotherapy regimen from list 
@@ -96,11 +96,9 @@ DR_UC1 - Select chemotherapy regimen from list
 - Implementation: (a) query all `OrderSet` templates available, (b) support filtering by indication, (c) display `OrderSet` and `OrderSetMember` details for selected regimen.
 
 - Data Model References:  
-![Class Diagram](#data-model)
-
+ [Class Diagram](#data-model)  
  [OrderSet object](https://docs.openmrs.org/doc/org/openmrs/OrderSet.html)  
- [OrderSet serialization](https://docs.openmrs.org/doc/serialized-form.html#org.openmrs.OrderSet)
-
+ [OrderSet serialization](https://docs.openmrs.org/doc/serialized-form.html#org.openmrs.OrderSet)  
 
 - Sequence Diagram:  
 ![](https://www.websequencediagrams.com/files/render?link=ULdAQkpjS3tFmqk8LmqX)
