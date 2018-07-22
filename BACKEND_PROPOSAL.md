@@ -46,10 +46,13 @@ The updated system with oncology treatment ordering capability will leverage exi
 Use Cases
 =========
 
-Order Templates (i.e. `OrderSet`, `OrderSetMember`, `OrderType`)
+*Order Templates (OT)* use cases (primary datamodel classes involved are `OrderSet`, `OrderSetMember`, `OrderType`):
 - OT_UC1: As an oncology clinician, I want to author oncology regimen templates for use in EMR solution.
 - OT_UC2: As an oncology clinician, I want to update an existing oncology regimen template currently in use in EMR solution.
 
+---
+
+*Doctor (DR)* use cases (primary datamodel classes involved are `Patient`, `OrderGroup`, `Order`, `OrderSet`, `OrderSetMember`, `OrderType`, `Encounter`):
 - DR_UC1: As a doctor, I want to select a chemo therapy regimen from a pre-configured set available during ordering.
 - DR_UC2
 
