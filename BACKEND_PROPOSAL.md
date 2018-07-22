@@ -1,7 +1,26 @@
 OpenMRS 2.1.3 Mirebalais: Oncology Regimen Ordering & Dashboard Support
 =======================================================================
 
+- [OpenMRS 2.1.3 Mirebalais: Oncology Regimen Ordering & Dashboard Support](#openmrs-213-mirebalais--oncology-regimen-ordering---dashboard-support)
+  * [Purpose](#purpose)
+  * [Context](#context)
+  * [Assumptions](#assumptions)
+- [Functional Requirements](#functional-requirements)
+- [Use Cases](#use-cases)
+- [API Flows](#api-flows)
+  * [UC1 API Flow](#uc1-api-flow)
+  * [Sequence Diagram](#sequence-diagram)
+  * [UC2 API Flow](#uc2-api-flow)
+- [Proposals](#proposals)
+- [Recommendations](#recommendations)
+- [Technical TODOs/Open Issues](#technical-todos-open-issues)
+
+
+Purpose
+-------
+
 This document captures options gathered during first week of discussions about how to implement ordering of oncology (chemo specifcally) treatment regimens within OpenMRS Mirebalais distro and provide dashboard analytics about their treatment.
+
 
 Context
 -------
