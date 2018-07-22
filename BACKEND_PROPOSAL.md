@@ -93,8 +93,8 @@ DR_UC1
 - Data Diagram
 
 
-- Sequence Diagram
-    - 
+- Sequence Diagram:
+ ![](https://www.websequencediagrams.com/files/render?link=ULdAQkpjS3tFmqk8LmqX)
 
 
 
