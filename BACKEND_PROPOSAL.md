@@ -110,6 +110,7 @@ DR_UC1 - Select chemotherapy regimen from list
  [OrderSet serialization](https://docs.openmrs.org/doc/serialized-form.html#org.openmrs.OrderSet)  
 
 - Samples:  
+  
 request: `GET http://humci.pih-emr.org:443/mirebalais/ws/rest/v1/orderset`  
 response: HTTP 200 [body](samples/get-ordersets-response.json)  
   
