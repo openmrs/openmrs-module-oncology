@@ -166,10 +166,12 @@ OT_UC1 - Authoring an oncology regimen templates for use in EMR solution
           [GCC 4.2.1 Compatible Apple LLVM 9.0.0 (clang-900.0.31)] on darwin
           Type "help", "copyright", "credits" or "license" for more information.
           >>>
-    2. install python yaml library  
+    2. install python yaml and requests libraries 
        ```
+          sudo easy_install pip
           brew install libyaml
           sudo python -m easy_install pyyaml
+          sudo pip install requests
        
     3. test python+yaml lib is working
        ```
