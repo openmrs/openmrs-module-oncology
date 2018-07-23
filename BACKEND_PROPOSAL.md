@@ -164,7 +164,7 @@ OT_UC1 - Authoring an oncology regimen templates for use in EMR solution
 - Implementation notes: Response from the `POST /mirebalais/ws/rest/v1/encounter` request returns the same document submitted but with more of the fields completed, e.g. the UUID for the Encounter which has just been created. encounter role is a description of the type of person who is involved in the encounter (e.g. nurse) For existing drug orders, it looks like this is retreived with a query to `https://humci.pih-emr.org/mirebalais/ws/rest/v1/encounterrole?q=Ordering%20Provider`. Provider looks like a wrapper around person - not sure how to get this.
 
 - Requisites:
-  MacOS (Mavericks or higher) instructions:
+  - MacOS (Mavericks or higher) instructions:
     1. install python 2.7 or higher, test that you can run it from command-line (type ```exit()``` to quit python prompt)
        ```
           ibmmacbookmario:utils dearmasm$ python
@@ -173,7 +173,7 @@ OT_UC1 - Authoring an oncology regimen templates for use in EMR solution
           Type "help", "copyright", "credits" or "license" for more information.
           >>>
     2. install python yaml library  
-       ```brew install libyaml  
+       ```
           brew install libyaml
           sudo python -m easy_install pyyaml
        
