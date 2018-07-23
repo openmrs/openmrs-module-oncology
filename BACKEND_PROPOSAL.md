@@ -172,6 +172,8 @@ OT_UC1 - Authoring an oncology regimen templates for use in EMR solution
           brew install libyaml
           sudo python -m easy_install pyyaml
           sudo pip install requests
+          sudo pip install objdict
+          sudo pip install enum
        
     3. test python+yaml lib is working
        ```
