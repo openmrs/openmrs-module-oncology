@@ -147,6 +147,54 @@ DR_UC2 - Submit an order for the selected chemotherapy regimen in DR_UC1 use cas
 request: 
 response: 
 
+---
+
+OT_UC1 - Authoring an oncology regimen templates for use in EMR solution
+------
+
+- Summary flow:
+  1. Create or Query OrderType
+  2. Create `OrderSet` Get the current `Provider` (based on who is logged in, get from the session)
+  2. Get the `EncounterRole` (this will be fixed for all orders, so just need a hard coded query) `https://humci.pih-emr.org/mirebalais/ws/rest/v1/encounterrole?q=Ordering%20Provider`
+  3. Get the `Encounter` type (fixed again, need a hard coded query) `https://humci.pih-emr.org/mirebalais/ws/rest/v1/encountertype?q=Test%20Order`
+  4. Get the current `Location` (get from the session)
+  5. Get the `Patient` ID (hopefully this comes from the page/url that we are given)
+  6. Construct the `OrderGroup` and `Order` objects and submit as described below
+
+- Implementation notes: Response from the `POST /mirebalais/ws/rest/v1/encounter` request returns the same document submitted but with more of the fields completed, e.g. the UUID for the Encounter which has just been created. encounter role is a description of the type of person who is involved in the encounter (e.g. nurse) For existing drug orders, it looks like this is retreived with a query to `https://humci.pih-emr.org/mirebalais/ws/rest/v1/encounterrole?q=Ordering%20Provider`. Provider looks like a wrapper around person - not sure how to get this.
+
+- Requisites:
+  MacOS (Mavericks or higher) instructions:
+    1. install python 2.7 or higher, test that you can run it from command-line (type ```exit()``` to quit python prompt)
+       ```ibmmacbookmario:utils dearmasm$ python
+          Python 2.7.10 (default, Oct  6 2017, 22:29:07) 
+          [GCC 4.2.1 Compatible Apple LLVM 9.0.0 (clang-900.0.31)] on darwin
+          Type "help", "copyright", "credits" or "license" for more information.
+          >>>
+    2. install python yaml library
+       ```brew install libyaml  
+          sudo python -m easy_install pyyaml
+    3. test python+yaml lib is working
+       ```ibmmacbookmario:utils dearmasm$ ls -l
+          total 16
+          -rw-r--r--  1 dearmasm  staff  96 Jul 23 09:52 test.py
+          -rw-r--r--  1 dearmasm  staff  45 Jul 23 09:13 test.yaml
+          ibmmacbookmario:utils dearmasm$ python test.py
+          Hello World!
+          {'hello': {'go': True, 'world': 123, 'here': 'we'}}
+
+- Sequence Diagram
+![](https://www.websequencediagrams.com/files/render?link=7g-em0gAuPSbCNUyClqT)
+
+- Data Model References:
+[Class Diagram](#data-model)  
+[OrderSet object](https://docs.openmrs.org/doc/org/openmrs/OrderSet.html)  
+[OrderSet serialization](https://docs.openmrs.org/doc/serialized-form.html#org.openmrs.OrderSet)  
+
+- Samples:  
+  
+request: 
+response: 
 
 
 
