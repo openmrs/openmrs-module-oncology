@@ -72,9 +72,10 @@ Use Cases
 ---
 
 **Doctor (DR)** use cases (primary datamodel classes involved are `Patient`, `OrderGroup`, `Order`, `OrderSet`, `OrderSetMember`, `OrderType`, `Encounter`):
-- DR_UC1: As a doctor, I want to select a chemotherapy regimen from a pre-configured set available during ordering.
-- DR_UC2: As a doctor, I want to modify chemotherapy regimen *initially ordered* for a patient (i.e. before final order confirmation).
-- DR_UC3: As a doctor, I want to modify chemotherapy regimen *previously ordered* for a patient (i.e. order is already in datamodel)
+- DR_UC1: As a doctor, I want to select and edit a chemotherapy regimen from a pre-configured set available during ordering.
+- DR_UC2: As a doctor, I want to submit an order for the selected chemotherapy regimen in DR_UC1 use case.
+- DR_UC3: As a doctor, I want to modify chemotherapy regimen *initially ordered* for a patient (i.e. before final order confirmation).
+- DR_UC4: As a doctor, I want to modify chemotherapy regimen *previously ordered* for a patient (i.e. order is already in datamodel)
 
 ---
 
@@ -121,12 +122,33 @@ request: `GET https://humci.pih-emr.org:443/mirebalais/ws/rest/v1/orderset/c1c12
 response: HTTP 200 [body](samples/get-ordersetmember-response.json)  
   
   
-UC2 API Flow
-------------
+DR_UC2 - Submit an order for the selected chemotherapy regimen in DR_UC1 use case
+------
+
+- Summary flow:
+  1. Get the current `Provider` (based on who is logged in, get from the session)
+  2. Get the `EncounterRole` (this will be fixed for all orders, so just need a hard coded query) `https://humci.pih-emr.org/mirebalais/ws/rest/v1/encounterrole?q=Ordering%20Provider`
+  3. Get the `Encounter` type (fixed again, need a hard coded query) `https://humci.pih-emr.org/mirebalais/ws/rest/v1/encountertype?q=Test%20Order`
+  4. Get the current `Location` (get from the session)
+  5. Get the `Patient` ID (hopefully this comes from the page/url that we are given)
+  6. Construct the `OrderGroup` and `Order` objects and submit as described below
+
+- Implementation notes: Response from the `POST /mirebalais/ws/rest/v1/encounter` request returns the same document submitted but with more of the fields completed, e.g. the UUID for the Encounter which has just been created. encounter role is a description of the type of person who is involved in the encounter (e.g. nurse) For existing drug orders, it looks like this is retreived with a query to `https://humci.pih-emr.org/mirebalais/ws/rest/v1/encounterrole?q=Ordering%20Provider`. Provider looks like a wrapper around person - not sure how to get this.
 
 - Sequence Diagram
+![](https://www.websequencediagrams.com/files/render?link=7g-em0gAuPSbCNUyClqT)
 
-- Data Diagram
+- Data Model References:
+[Class Diagram](#data-model)  
+[OrderSet object](https://docs.openmrs.org/doc/org/openmrs/OrderSet.html)  
+[OrderSet serialization](https://docs.openmrs.org/doc/serialized-form.html#org.openmrs.OrderSet)  
+
+- Samples:  
+  
+request: 
+response: 
+
+
 
 
 Proposal
