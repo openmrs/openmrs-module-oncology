@@ -181,7 +181,7 @@ OT_UC1 - Authoring an oncology regimen templates for use in EMR solution
           {'hello': {'go': True, 'world': 123, 'here': 'we'}}
 
 - Sequence Diagram
-![](https://www.websequencediagrams.com/files/render?link=7g-em0gAuPSbCNUyClqT)
+![]()
 
 - Data Model References:
 [Class Diagram](#data-model)  
