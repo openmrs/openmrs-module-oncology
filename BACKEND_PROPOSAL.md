@@ -166,7 +166,8 @@ OT_UC1 - Authoring an oncology regimen templates for use in EMR solution
 - Requisites:
   MacOS (Mavericks or higher) instructions:
     1. install python 2.7 or higher, test that you can run it from command-line (type ```exit()``` to quit python prompt)
-       ```ibmmacbookmario:utils dearmasm$ python
+       ```
+          ibmmacbookmario:utils dearmasm$ python
           Python 2.7.10 (default, Oct  6 2017, 22:29:07) 
           [GCC 4.2.1 Compatible Apple LLVM 9.0.0 (clang-900.0.31)] on darwin
           Type "help", "copyright", "credits" or "license" for more information.
@@ -177,8 +178,8 @@ OT_UC1 - Authoring an oncology regimen templates for use in EMR solution
           sudo python -m easy_install pyyaml
        
     3. test python+yaml lib is working
-       ```ibmmacbookmario:utils dearmasm$ ls -l
-          total 16
+       ```
+          ibmmacbookmario:utils dearmasm$ ls -l test.*
           -rw-r--r--  1 dearmasm  staff  96 Jul 23 09:52 test.py
           -rw-r--r--  1 dearmasm  staff  45 Jul 23 09:13 test.yaml
           ibmmacbookmario:utils dearmasm$ python test.py
