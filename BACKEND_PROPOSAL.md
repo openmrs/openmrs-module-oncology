@@ -153,15 +153,9 @@ OT_UC1 - Authoring an oncology regimen templates for use in EMR solution
 ------
 
 - Summary flow:
-  1. Create or Query OrderType
-  2. Create `OrderSet` Get the current `Provider` (based on who is logged in, get from the session)
-  2. Get the `EncounterRole` (this will be fixed for all orders, so just need a hard coded query) `https://humci.pih-emr.org/mirebalais/ws/rest/v1/encounterrole?q=Ordering%20Provider`
-  3. Get the `Encounter` type (fixed again, need a hard coded query) `https://humci.pih-emr.org/mirebalais/ws/rest/v1/encountertype?q=Test%20Order`
-  4. Get the current `Location` (get from the session)
-  5. Get the `Patient` ID (hopefully this comes from the page/url that we are given)
-  6. Construct the `OrderGroup` and `Order` objects and submit as described below
-
-- Implementation notes: Response from the `POST /mirebalais/ws/rest/v1/encounter` request returns the same document submitted but with more of the fields completed, e.g. the UUID for the Encounter which has just been created. encounter role is a description of the type of person who is involved in the encounter (e.g. nurse) For existing drug orders, it looks like this is retreived with a query to `https://humci.pih-emr.org/mirebalais/ws/rest/v1/encounterrole?q=Ordering%20Provider`. Provider looks like a wrapper around person - not sure how to get this.
+  1. TBD
+  
+- Implementation notes: TBD
 
 - Requisites:
   - MacOS (Mavericks or higher) instructions:
