@@ -52,35 +52,35 @@ Assumptions
     - Paclitaxel175.pptx
     - Paclitaxel175ReChallenge.pptx
 - Dictionary dataset (i.e. concepts and related metadata) might (and can) be modified using PIH dataset process.
-- Datamodel could be extended or modified, if needed.
+- Data model could be extended or modified, if needed.
 
 
 Functional Requirements
 =======================
 
-The updated system with oncology treatment ordering capability will leverage existing datamodel objects and api semantics as much as possible. There is already a substantial coverage of required modeling for supporting oncology regimens. Data concepts such as `OrderSet`, `OrderGroup`, and `Order` provide base for most of the above data interactions.
+The updated system with oncology treatment ordering capability will leverage existing data model objects and api semantics as much as possible. There is already a substantial coverage of required modeling for supporting oncology regimens. Data concepts such as `OrderSet`, `OrderGroup`, and `Order` provide base for most of the above data interactions.
 
 
 Use Cases
 =========
 
-**Order Templates (OT)** use cases (primary datamodel classes involved are `OrderSet`, `OrderSetMember`, `OrderType`):
-- OT_UC1: As an oncology clinician, I want to author oncology regimen templates for use in EMR solution.
-- OT_UC2: As an oncology clinician, I want to update an existing oncology regimen template currently in use in EMR solution.
-
----
-
-**Doctor (DR)** use cases (primary datamodel classes involved are `Patient`, `OrderGroup`, `Order`, `OrderSet`, `OrderSetMember`, `OrderType`, `Encounter`):
+**Doctor (DR)** use cases (primary data model classes involved are `Patient`, `OrderGroup`, `Order`, `OrderSet`, `OrderSetMember`, `OrderType`, `Encounter`):
 - DR_UC1: As a doctor, I want to select and edit a chemotherapy regimen from a pre-configured set available during ordering.
 - DR_UC2: As a doctor, I want to submit an order for the selected chemotherapy regimen in DR_UC1 use case.
 - DR_UC3: As a doctor, I want to modify chemotherapy regimen *initially ordered* for a patient (i.e. before final order confirmation).
-- DR_UC4: As a doctor, I want to modify chemotherapy regimen *previously ordered* for a patient (i.e. order is already in datamodel)
+- DR_UC4: As a doctor, I want to modify chemotherapy regimen *previously ordered* for a patient (i.e. order is already in data model)
 
 ---
 
-**Adminstrative (AD)** use cases (primary datamodel classes involved are):
+**Adminstrative (AD)** use cases (primary data model classes involved are):
 - AD_UC1: As a nurse, I want to capture chemotherapy delivery observations for treatment cycle received on a specific visit.
 - AD_UC2: As a nurse, I want to ...
+
+---
+
+**Order Templates (OT)** use cases (primary data model classes involved are `OrderSet`, `OrderSetMember`, `OrderType`):
+- OT_UC1: As an oncology clinician, I want to author oncology regimen templates for use in EMR solution.
+- OT_UC2: As an oncology clinician, I want to update an existing oncology regimen template currently in use in EMR solution.
 
 ---
 
