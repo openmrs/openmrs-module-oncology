@@ -201,7 +201,31 @@ response:
 
 Proposal
 ========
+Several objects in the data model are missing fields that are necessary for the chemotherapy regimen ordering workflow. These objects and the missing fields are:
+- Drug
+    - Maximum lifetime dose
+- OrderGroup
+    - Cycle number
+    - Physician notes
+    - Indication (Chemotherapy/HIV)
+    - Number of cycles in the regimen
+    - Length of the cycles in the regimen
+    - Previous Order Group
+- OrderSet
+    - Indication (Chemotherapy/HIV)
+    - Number of cycles typical in the regimen
+    - Length of cycles typical in the regimen
+- DrugOrder
+    - Dosing reduction
+    - Relative start day
+    - Chemo administration group (Indication - Premedication, Chemotherapy, Post Medication)
 
+For Drug, maximum lifetime dose is a fundamental quality of the drug, therefore the Drug class should have the necessary fields added to the core data model. The fields added would be maximumLifetimeDose and doseLimitUnits to denote the units for the various max and min fields.
+<<<Insert picture of proposed data class from mural.ly>>>
+OrderGroup and OrderSet would be extended via attribute tables. An Attribute and AttributeType table would be created for both OrderGroup and OrderSet, and the AttributeTypes in each table would be the missing fields.
+<<<Picture from mural.ly>>>
+In order to add the necessary fields to DrugOrder, we propose extending the DrugOrder class in a new class called ChemoOrder.
+<<<Picture from mural.ly>>>
 
 
 Extended Content
