@@ -95,9 +95,9 @@ DR_UC1 - Select chemotherapy regimen from list
 ------
 
 - Summary flow:
-  1. query all `OrderSet` templates available
-  2. support filtering by indication
-  3. display `OrderSet` and `OrderSetMember` details for selected regimen.
+  1. Query all `OrderSet` templates available, returns array
+  2. For each `OrderSet` in array above, query each `OrderSet`, `OrderSetMember`, `Concept`, `OrderType`, `OrderTemplate` detail attributes
+  3. Use `OrderSet` indication attribute to group regimen classifications (i.e. "Chemotherapy" vs. "HIV")
 
 - Implementation notes: Data encoded in `OrderSetMember.orderTemplate` is a seralized escaped JSON string that must be decoded in presentation later to understand data. When creating `Order` objects in the next use case, the final JSON string must be serialized similarly containing the updated (if applicable) chemotherapy drugs being ordered by doctor in final initial order.
 
@@ -115,7 +115,11 @@ response: HTTP 200 [body](samples/get-ordersets-response.json)
   
 request: `GET https://humci.pih-emr.org:443/mirebalais/ws/rest/v1/orderset/c1c121bf-c660-4435-bdcf-04ac6e99c870`  
 response: HTTP 200 [body](samples/get-orderset-chop-response.json)  
-
+  
+request: `GET https://humci.pih-emr.org:443/mirebalais/ws/rest/v1/orderset/c1c121bf-c660-4435-bdcf-04ac6e99c870/ordersetmember/2ab90f6b-83c3-4278-8dcb-aa9480f07d01`  
+response: HTTP 200 [body](samples/get-ordersetmember-response.json)  
+  
+  
 UC2 API Flow
 ------------
 
