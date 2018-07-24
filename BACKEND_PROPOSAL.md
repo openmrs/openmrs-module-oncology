@@ -221,11 +221,13 @@ Several objects in the data model are missing fields that are necessary for the 
     - Chemo administration group (Indication - Premedication, Chemotherapy, Post Medication)
 
 For Drug, maximum lifetime dose is a fundamental quality of the drug, therefore the Drug class should have the necessary fields added to the core data model. The fields added would be maximumLifetimeDose and doseLimitUnits to denote the units for the various max and min fields.
-<<<Insert picture of proposed data class from mural.ly>>>
+<img src="images/DrugTable.png" width="500" height="383">
+
 OrderGroup and OrderSet would be extended via attribute tables. An Attribute and AttributeType table would be created for both OrderGroup and OrderSet, and the AttributeTypes in each table would be the missing fields.
-<<<Picture from mural.ly>>>
+<img src="images/OrderSetExt.png" width="600" height="514">
+
 In order to add the necessary fields to DrugOrder, we propose extending the DrugOrder class in a new class called ChemoOrder.
-<<<Picture from mural.ly>>>
+<img src="images/ChemoOrderExt.png" width="600" height="292">
 
 
 Extended Content
