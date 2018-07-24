@@ -224,7 +224,7 @@ For Drug, maximum lifetime dose is a fundamental quality of the drug, therefore 
 
 <img src="images/DrugTable.png" width="500" height="383">
 
-OrderGroup and OrderSet would be extended via attribute tables. An Attribute and AttributeType table would be created for both OrderGroup and OrderSet, and the AttributeTypes in each table would be the missing fields.
+OrderGroup and OrderSet would be extended via attribute tables, which would involve changing the parent class of both java classes from Changeable to Customizable. An Attribute and AttributeType table would be created for both OrderGroup and OrderSet, and the AttributeTypes in each table would be the missing fields.
 
 <img src="images/OrderSetExt.png" width="600" height="514">
 
