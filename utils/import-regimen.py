@@ -34,7 +34,7 @@ for x in range(len(regimen["orderset"]["orders"])):
 
     print "[INFO] orderSetMember[",x,"]"
 
-    # FETCH REQUIRED UUIDs...
+    # build orderSetMember number [x]...
 
     print regimen["orderset"]["orders"][x]
 
@@ -123,9 +123,10 @@ for x in range(len(regimen["orderset"]["orders"])):
     # append new orderSetMember into array
     order.orderSetMembers.append(orderSetMember)
 
- #   order.attributes = ObjDict()
- #   order.attributes.attributeType = "a5fb5770-409a-11e2-a25f-0800200c9a66"
- #   order.attributes.value = "test value"
+# TODO: add orderSet attribute values
+#   order.attributes = ObjDict()
+#   order.attributes.attributeType = "a5fb5770-409a-11e2-a25f-0800200c9a66"
+#   order.attributes.value = "test value"
 
 
 print "[DEBUG] CREATE ORDERSET PAYLOAD:"
@@ -139,167 +140,3 @@ r = requests.post(url = API_ENDPOINT + "/orderset",
                   verify = False)
 
 print r;
-
-exit()
-
-body = {}
-body["name"] = "Mario's Automated Regimen"
-body["description"] = "OrderSet regimen provisioned using nifty automation python script + metadata"
-body["operator"] = "ANY"
-
-#body["orderSetMembers"] = {"orderType: { uuid: drugorder }"}
-
-#body["orderSetMembers"]["orderType"]["uuid"] = "drugorder"
-#body["orderSetMembers"]["orderTemplate"] = "{\"administrationInstructions\":\"In the evening\",\"dosingInstructions\":{\"doseUnits\":\"Tablet(s)\",\"frequency\":\"Once a day\",\"route\":\"Oral\",\"dose\":1},\"durationUnits\":\"Day(s)\",\"duration\":1,\"drug\":{\"name\":\"Aspirin 75mg\",\"uuid\":\"49f0c5c2-4738-4382-9928-69fd330d4624\",\"form\":\"Tablet\"},\"additionalInstructions\":\"This is good\"}"
-#body["orderSetMembers"]["concept"]["display"] = "Aspirin"
-#body["orderSetMembers"]["concept"]["uuid"] = "09291895-fb7d-4989-9e31-723ab44856d2"
-
-#body["orderSetMembers"]["orderType"]["uuid"] = "drugorder"
-#body["orderSetMembers"]["orderTemplate"] = "{\"drug\":{\"name\":\"Paracetamol 150mg\",\"uuid\":\"671ddb89-a30c-46e8-9f0c-5663714267d4\",\"form\":\"Injection\"},\"dosingInstructions\":{\"dose\":1,\"doseUnits\":\"Tablet(s)\",\"frequency\":\"Once a day\",\"route\":\"Oral\"},\"administrationInstructions\":\"In the evening\",\"duration\":1,\"durationUnits\":\"Day(s)\",\"additionalInstructions\":\"This is better\"}"
-#body["orderSetMembers"]["concept"]["display"] = "Paracetamol"
-#body["orderSetMembers"]["concept"]["uuid"] = "9881091b-1802-4c62-8b80-a8fcb170b59f"
-
-
-print json.dumps(body);
-
-
-#req.add_header('Content-Type', 'application/json; charset=utf-8')
-
-#headers = {'Content-Type': 'application/json', 'Accept': 'text/plain'}
-
-# sending post request and saving response as response object
-r = requests.post(url = API_ENDPOINT, auth = ('IBMHC1', 'Ibmhc123'), headers = headers, data = order.dumps(), verify = False)
-#r = requests.post(url = API_ENDPOINT, auth = ('IBMHC1', 'Ibmhc123'), headers = headers, data = json.dumps(body), verify = False)
-#r = requests.get(url = API_ENDPOINT, auth = ('IBMHC1', 'Ibmhc123'), headers = headers, verify = False)
-
-print r
-
-# extracting response text
-#print r.json()
-
-exit()
-
-# fetch UUID for order "indication" or any other CIEL or PIH code concept value
-#curl -X GET "https://humci-azure.pih-emr.org/mirebalais/ws/rest/v1/conceptreferenceterm?v=full&codeOrName=163073&source=CIEL" -H  "accept: application/json"
-
-# fetch UUID for order type
-#curl -X GET "https://humci-azure.pih-emr.org/mirebalais/ws/rest/v1/ordertype?v=full&q=drug%20order" -H  "accept: application/json"
-
-
-
-o1 = osm.format( regimen["orderset"]["orders"][x]["type"],
-                            regimen["orderset"]["orders"][x]["administrationInstructions"],
-                            regimen["orderset"]["orders"][0]["dosingInstructions"]["doseUnits"],
-                            regimen["orderset"]["orders"][0]["dosingInstructions"]["frequency"],
-                            regimen["orderset"]["orders"][0]["dosingInstructions"]["route"],
-                            regimen["orderset"]["orders"][0]["dosingInstructions"]["dose"],
-                            regimen["orderset"]["orders"][0]["durationUnits"],
-                            regimen["orderset"]["orders"][0]["duration"],
-                            regimen["orderset"]["orders"][0]["relativeStartDay"],
-                            regimen["orderset"]["orders"][0]["orderReason"],
-                            regimen["orderset"]["orders"][0]["drug"]["name"],
-                            regimen["orderset"]["orders"][0]["drug"]["form"],
-                            regimen["orderset"]["orders"][0]["drug"]["additionalInstructions"],
-                            regimen["orderset"]["orders"][0]["concept"],
-                            "09291895-fb7d-4989-9e31-723ab44856d2"
-                            )
-
-#print o1
-
-exit()
-
-
-orderSetMember4 = {
-    "orderType": {
-        "uuid": "foo"
-    },
-    "orderTemplate": "{\"administrationInstructions\":\"foo\",\"dosingInstructions\":{\"doseUnits\":\"foo\",\"frequency\":\"foo\",\"route\":\"foo\",\"dose\":foo},\"durationUnits\":\"foo\",\"duration\":foo,\"drug\":{\"name\":\"foo\",\"uuid\":\"foo\",\"form\":\"foo\"},\"additionalInstructions\":\"foo\"}",
-    "concept": {
-        "display": "foo",
-        "uuid": "foo"
-    }
-}
-
-
-orderSetMember1 = {
-    "orderType": {
-        "uuid": "{}"
-    },
-    "orderTemplate": "{\"administrationInstructions\":\"{}\",\"dosingInstructions\":{\"doseUnits\":\"{}\",\"frequency\":\"{}\",\"route\":\"{}\",\"dose\":{}},\"durationUnits\":\"{}\",\"duration\":{},\"drug\":{\"name\":\"{}\",\"uuid\":\"{}\",\"form\":\"{}\"},\"additionalInstructions\":\"{}\"}",
-    "concept": {
-        "display": "{}",
-        "uuid": "{}"
-    }
-}
-
-
-orderSet = { "name": "foo",
-             "description": "foo",
-             "operator": "foo" }
-
-orderType = { "orderType": {
-        "uuid": "foo"
-    } }
-
-orderTemplateJSONString = {"administrationInstructions":"foo","dosingInstructions":{"doseUnits":"foo","frequency":"foo","route":"foo","dose":"foo"},"durationUnits":"foo","duration":"foo","drug":{"name":"foo","uuid":"foo","form":"foo"}, "additionalInstructions":"foo"}
-
-orderTemplate = { "orderTemplate": json.dumps(orderTemplateJSONString) }
-
-orderConcept = { "concept": {
-        "display": "foo",
-        "uuid": "foo"
-    } }
-
-orderSetMember = json.dumps(orderType) + "," + json.dumps(orderTemplate) + "," + json.dumps(orderConcept)
-
-order = str(orderSet) + "," + "\"orderSetMembers\": [" + orderSetMember + "]"
-
-print "dict:"
-print str(orderSetMember)
-
-orderType["orderType"]["uuid"] = "bar"
-
-#orderSetMember = json.dumps(orderType) + "," + json.dumps(json.dumps(orderTemplate)) + "," + json.dumps(orderConcept)
-
-#print "json.dumps:"
-#print json.dumps(orderSetMember)
-
-#print "dict:"
-#print str(orderSetMember)
-
-#print "dict:"
-#print str(order)
-
-
-
-#print "This is the name of the script: ", sys.argv[0]
-#print "Number of arguments: ", len(sys.argv)
-#print "The arguments are: " , str(sys.argv)
-
-
-#print regimen
-#print regimen["orderset"]
-#print regimen["orderset"]["name"]
-#print regimen["orderset"]["cycleLength"]
-#print regimen["orderset"]["orders"][0]["type"]
-#print urllib.quote(regimen["orderset"]["orders"][0]["type"])
-
-
-# define JSON body parts required for OrderSet creation:
-# { OrderSet.name, OrderSet.description, OrderSet.operator,
-#   OrderSetMember[*]
-# }
-
-
-#print json.dumps(regimen["orderset"]["orders"][0]["type"])
-
-# lookup orderType UUID
-#curl -X GET "https://humci-azure.pih-emr.org/mirebalais/ws/rest/v1/ordertype?v=full&q=drug%20order" -H  "accept: application/json"
-
-print "RESPONSE:"
-r2 = r.text  #json.loads(r.text).get("results")
-r2json = json.loads(r2)
-
-print json.loads(r.text)["results"][0]["uuid"]
-
-exit()
