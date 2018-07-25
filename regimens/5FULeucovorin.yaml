@@ -1,10 +1,3 @@
-# 5-FU with Leucovorin
-# Roswell Park Regimen for Colorectal and Breast Cancer
-#D1, 8, 15 of 28 day cycle x 6+ cycles
-#
-# author:
-# date:
-#
 orderset:
   dependency: https://github.com/PIH/openmrs-module-mirebalais
   name: "5-FU with Leucovorin"
@@ -19,31 +12,31 @@ orderset:
 
     - # order PREMED 1
       type: "Drug Order"
-      concept: "PIH:4037" #TODO: add :DEXTROSE validation step
+      concept: "Dextrose" #"PIH:4037" #TODO: add :DEXTROSE validation step
       # all of the order info below would be serialized in the template field in orderSetMember
       administrationInstructions: "Once prior to chemotherapy"
       dosingInstructions:
-        doseUnits: "Tablet(s)"
-        frequency: "Once a day"
-        route: "Oral"
+        doseUnits: "Milliliter"
+        frequency: "Once"
+        route: "Intravenous"
         dose: 250
-      durationUnits: "Day(s)"
-      duration: 30
+      durationUnits: "mL"
+      duration: 1
       relativeStartDay: 1
       orderReason: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
       drug:
         name: "Dextrose 5 %, intravenous infusion, 500 mL bottle"
         form: "Tablet"
-        additionalInstructions: "You should feel better within 3-5 days"
+        additionalInstructions: "IV Route. Once prior to chemotherapy"
 
     - # order PREMED 2
       type: "Drug Order"
-      concept: "CIEL:81073" #TODO: add :Ondansetron validation step
+      concept: "Ondansetron" #"CIEL:81073" #TODO: add :Ondansetron validation step
       # all of the order info below would be serialized in the template field in orderSetMember
       administrationInstructions: "Once 60 minutes prior to chemotherapy"
       dosingInstructions:
         doseUnits: "Tablet(s)"
-        frequency: "Once a day"
+        frequency: "Once"
         route: "Oral"
         dose: 8
       durationUnits: "Day(s)"
@@ -51,15 +44,15 @@ orderset:
       relativeStartDay: 1
       orderReason: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
       drug:
-        name: "Ondansetron, 4mg, tablet film coated tablet"
+        name: "PO Route. Once 60 minutes prior to chemotherapy"
         form: "Tablet"
-        additionalInstructions: "You should feel better within 3-5 days"
+        additionalInstructions: ""
 
 # ---------------- CHEMO DRUGS ----------------
 
     - # order CHEMO 1
       type: "Drug Order"
-      concept: "PIH:89" #TODO: add :ASPIRIN validation step
+      concept: "Aspirin" #TODO: fix Paracetamol
       administrationInstructions: "In the evening"
       dosingInstructions:
         doseUnits: "Tablet(s)"
@@ -71,13 +64,13 @@ orderset:
       relativeStartDay: 15
       orderReason: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
       drug:
-        name: "PHI.10727:Paracetamol dose (mg)"
+        name: "Paracetamol dose (mg)"
         form: "Tablet"
-        additionalInstructions: "You should feel better within 3-5 days"
+        additionalInstructions: "Mix with 500ml of D5W. Infuse over 2 hours"
 
     - # order CHEMO 2
       type: "Drug Order"
-      concept: "PIH:89" #TODO: add :ASPIRIN validation step
+      concept: "Aspirin" #"PIH:89" #TODO: add :ASPIRIN validation step
       administrationInstructions: "In the evening"
       dosingInstructions:
         doseUnits: "Tablet(s)"
@@ -89,6 +82,6 @@ orderset:
       relativeStartDay: 15
       orderReason: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
       drug:
-        name: "PHI.10727:Paracetamol dose (mg)"
+        name: "Paracetamol dose (mg)"
         form: "Tablet"
-        additionalInstructions: "You should feel better within 3-5 days"
+        additionalInstructions: "IV Push, no dilution needed. IV push over 2-4 minutes. Administer 1 hour into Leucovorin infusion with D5 flush before and after."
