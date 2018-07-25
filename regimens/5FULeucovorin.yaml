@@ -1,0 +1,94 @@
+# 5-FU with Leucovorin
+# Roswell Park Regimen for Colorectal and Breast Cancer
+#D1, 8, 15 of 28 day cycle x 6+ cycles
+#
+# author:
+# date:
+#
+orderset:
+  dependency: https://github.com/PIH/openmrs-module-mirebalais
+  name: "5-FU with Leucovorin"
+  description: "Roswell Park Regimen for Colorectal and Breast Cancer"
+  indication: "CIEL:163073" # chemotherapy regimen
+  cycleCount: 4 # recommended number of cycles
+  cycleLength: 21 # cycle length unit defined below
+  cycleLengthUnits:  "Day(s)"
+  orders:
+
+ # ---------------- PREMED DRUGS ----------------
+
+    - # order PREMED 1
+      type: "Drug Order"
+      concept: "PIH:4037" #TODO: add :DEXTROSE validation step
+      # all of the order info below would be serialized in the template field in orderSetMember
+      administrationInstructions: "Once prior to chemotherapy"
+      dosingInstructions:
+        doseUnits: "Tablet(s)"
+        frequency: "Once a day"
+        route: "Oral"
+        dose: 250
+      durationUnits: "Day(s)"
+      duration: 30
+      relativeStartDay: 1
+      orderReason: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drug:
+        name: "Dextrose 5 %, intravenous infusion, 500 mL bottle"
+        form: "Tablet"
+        additionalInstructions: "You should feel better within 3-5 days"
+
+    - # order PREMED 2
+      type: "Drug Order"
+      concept: "CIEL:81073" #TODO: add :Ondansetron validation step
+      # all of the order info below would be serialized in the template field in orderSetMember
+      administrationInstructions: "Once 60 minutes prior to chemotherapy"
+      dosingInstructions:
+        doseUnits: "Tablet(s)"
+        frequency: "Once a day"
+        route: "Oral"
+        dose: 8
+      durationUnits: "Day(s)"
+      duration: 30
+      relativeStartDay: 1
+      orderReason: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drug:
+        name: "Ondansetron, 4mg, tablet film coated tablet"
+        form: "Tablet"
+        additionalInstructions: "You should feel better within 3-5 days"
+
+# ---------------- CHEMO DRUGS ----------------
+
+    - # order CHEMO 1
+      type: "Drug Order"
+      concept: "PIH:89" #TODO: add :ASPIRIN validation step
+      administrationInstructions: "In the evening"
+      dosingInstructions:
+        doseUnits: "Tablet(s)"
+        frequency: "Once a day"
+        route: "Oral"
+        dose: 1
+      durationUnits: "Day(s)"
+      duration: 1
+      relativeStartDay: 15
+      orderReason: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drug:
+        name: "PHI.10727:Paracetamol dose (mg)"
+        form: "Tablet"
+        additionalInstructions: "You should feel better within 3-5 days"
+
+    - # order CHEMO 2
+      type: "Drug Order"
+      concept: "PIH:89" #TODO: add :ASPIRIN validation step
+      administrationInstructions: "In the evening"
+      dosingInstructions:
+        doseUnits: "Tablet(s)"
+        frequency: "Once a day"
+        route: "Oral"
+        dose: 1
+      durationUnits: "Day(s)"
+      duration: 1
+      relativeStartDay: 15
+      orderReason: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drug:
+        name: "PHI.10727:Paracetamol dose (mg)"
+        form: "Tablet"
+        additionalInstructions: "You should feel better within 3-5 days"
