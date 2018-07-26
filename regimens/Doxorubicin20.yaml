@@ -1,10 +1,10 @@
 orderset:
   dependency: https://github.com/PIH/openmrs-module-mirebalais
-  name: "CMF - Breast Cancer Regimen"
-  description: "Every 3 weeks x 6 or 8 cycles"
+  name: "Single-Agent Doxorubicin - Breast Cancer Regimen"
+  description: "20 mg/m2 weekly x 12 weeks"
   indication: "CIEL:163073" # chemotherapy regimen
-  cycleCount: 8 # recommended number of cycles
-  cycleLength: 3 # cycle length unit defined below
+  cycleCount: 12 # recommended number of cycles
+  cycleLength: 1 # cycle length unit defined below
   cycleLengthUnits:  "Week(s)"
   orders:
 
@@ -19,7 +19,7 @@ orderset:
         doseUnits: "Milliliter"
         frequency: "Once"
         route: "Intravenous"
-        dose: 1000
+        dose: 500
       durationUnits: "Hour(s)"
       duration: 1
       relativeStartDay: 1
@@ -72,54 +72,18 @@ orderset:
 
     - # order CHEMO 1
       type: "Drug Order"
-      concept: "Fluorouracil"
-      administrationInstructions: "No dilution needed. IV Push over 10 minutes."
+      concept: "Doxorubicin"
+      administrationInstructions: "Dilute to 2mg/mL with 0.9% NS. Give via IV push with free flowing 0.9% NS. IV Push over 15 minutes."
       dosingInstructions:
-        doseUnits: "Milliliter"
+        doseUnits: "Tablet(s)"
         frequency: "Once"
-        route: "Intravenous"
-        dose: 600
+        route: "Oral"
+        dose: 20
       durationUnits: "Day(s)"
       duration: 1
       relativeStartDay: 1
       orderReason: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
       drug:
-        name: "fluorouracil 600 mg/m2 IV Push"
-        form: "Milliliter"
-        additionalInstructions: "No dilution needed. IV Push over 10 minutes."
-
-    - # order CHEMO 2
-      type: "Drug Order"
-      concept: "Methotrexate"
-      administrationInstructions: "No dilution needed. IV Push at 10 mg/min."
-      dosingInstructions:
-        doseUnits: "Milligram"
-        frequency: "Once"
-        route: "Syringe"
-        dose: 40
-      durationUnits: "Day(s)"
-      duration: 1
-      relativeStartDay: 1
-      orderReason: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "methotrexate 40 mg/m2"
-        form: "Milligram"
-        additionalInstructions: "No dilution needed. IV Push at 10 mg/min."
-
-    - # order CHEMO 3
-      type: "Drug Order"
-      concept: "Cyclophosphamide"
-      administrationInstructions: "Mix prescribed dose/volume with 500 mL 0.9% NS."
-      dosingInstructions:
-        doseUnits: "Milligram"
-        frequency: "Once"
-        route: "Syringe"
-        dose: 600
-      durationUnits: "Day(s)"
-      duration: 1
-      relativeStartDay: 1
-      orderReason: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "cycloPHOSPHAMIDE 600 mg/m2"
-        form: "Milligram"
-        additionalInstructions: "Mix prescribed dose/volume with 500 mL 0.9% NS."
+        name: "DOXOrubicin 20 mg/m2"
+        form: "Intravenous"
+        additionalInstructions: "Dilute to 2mg/mL with 0.9% NS. Give via IV push with free flowing 0.9% NS. IV Push over 15 minutes."

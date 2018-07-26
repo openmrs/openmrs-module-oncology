@@ -1,9 +1,9 @@
 orderset:
   dependency: https://github.com/PIH/openmrs-module-mirebalais
-  name: "CMF - Breast Cancer Regimen"
-  description: "Every 3 weeks x 6 or 8 cycles"
+  name: "Paclitaxel: Breast Cancer Regimen"
+  description: "175 mg/m2 weekly x 12 weeks"
   indication: "CIEL:163073" # chemotherapy regimen
-  cycleCount: 8 # recommended number of cycles
+  cycleCount: 4 # recommended number of cycles
   cycleLength: 3 # cycle length unit defined below
   cycleLengthUnits:  "Week(s)"
   orders:
@@ -19,13 +19,13 @@ orderset:
         doseUnits: "Milliliter"
         frequency: "Once"
         route: "Intravenous"
-        dose: 1000
+        dose: 500
       durationUnits: "Hour(s)"
       duration: 1
       relativeStartDay: 1
       orderReason: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
       drug:
-        name: "sodium chloride 0.9%, intravenous infusion, 250ml"
+        name: "sodium chloride 0.9%, intravenous infusion, 500ml"
         form: "Milliliter"
         additionalInstructions: "IV Route. Once prior to chemotherapy"
 
@@ -50,6 +50,44 @@ orderset:
 
     - # order PREMED 3
       type: "Drug Order"
+      concept: "Cimetidine"
+      # all of the order info below would be serialized in the template field in orderSetMember
+      administrationInstructions: "PO Route. Once 60 minutes prior to chemotherapy"
+      dosingInstructions:
+        doseUnits: "Milligrams"
+        frequency: "Once"
+        route: "Oral"
+        dose: 600
+      durationUnits: "Hour(s)"
+      duration: 1
+      relativeStartDay: 1
+      orderReason: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drug:
+        name: "cimetidine 600mg"
+        form: "Milligrams"
+        additionalInstructions: "PO Route. Once 60 minutes prior to chemotherapy"
+
+    - # order PREMED 4
+      type: "Drug Order"
+      concept: "Diphenhydramine"
+      # all of the order info below would be serialized in the template field in orderSetMember
+      administrationInstructions: "Once 60 minutes prior to chemotherapy"
+      dosingInstructions:
+        doseUnits: "Tablet(s)"
+        frequency: "Once"   # another option: "Every hour" ?
+        route: "Oral"
+        dose: 50
+      durationUnits: "Hour(s)"
+      duration: 1  # TODO: how many hours?
+      relativeStartDay: 1
+      orderReason: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drug:
+        name: "diphenhydramine 50mg PO"
+        form: "Tablet"
+        additionalInstructions: "PO Route. Once 60 minutes prior to chemotherapy"
+
+    - # order PREMED 5
+      type: "Drug Order"
       concept: "Ondansetron"
       # all of the order info below would be serialized in the template field in orderSetMember
       administrationInstructions: "Once 60 minutes prior to chemotherapy"
@@ -72,54 +110,18 @@ orderset:
 
     - # order CHEMO 1
       type: "Drug Order"
-      concept: "Fluorouracil"
-      administrationInstructions: "No dilution needed. IV Push over 10 minutes."
+      concept: "Paclitaxel"
+      administrationInstructions: "Mix prescribed dose/volume in 500 mL 0.9% NS. Infuse over 1 hour."
       dosingInstructions:
-        doseUnits: "Milliliter"
+        doseUnits: "Milligram"
         frequency: "Once"
-        route: "Intravenous"
-        dose: 600
+        route: "Syringe"
+        dose: 175
       durationUnits: "Day(s)"
       duration: 1
       relativeStartDay: 1
       orderReason: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
       drug:
-        name: "fluorouracil 600 mg/m2 IV Push"
+        name: "PACLitaxel 175 mg/m2"
         form: "Milliliter"
-        additionalInstructions: "No dilution needed. IV Push over 10 minutes."
-
-    - # order CHEMO 2
-      type: "Drug Order"
-      concept: "Methotrexate"
-      administrationInstructions: "No dilution needed. IV Push at 10 mg/min."
-      dosingInstructions:
-        doseUnits: "Milligram"
-        frequency: "Once"
-        route: "Syringe"
-        dose: 40
-      durationUnits: "Day(s)"
-      duration: 1
-      relativeStartDay: 1
-      orderReason: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "methotrexate 40 mg/m2"
-        form: "Milligram"
-        additionalInstructions: "No dilution needed. IV Push at 10 mg/min."
-
-    - # order CHEMO 3
-      type: "Drug Order"
-      concept: "Cyclophosphamide"
-      administrationInstructions: "Mix prescribed dose/volume with 500 mL 0.9% NS."
-      dosingInstructions:
-        doseUnits: "Milligram"
-        frequency: "Once"
-        route: "Syringe"
-        dose: 600
-      durationUnits: "Day(s)"
-      duration: 1
-      relativeStartDay: 1
-      orderReason: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "cycloPHOSPHAMIDE 600 mg/m2"
-        form: "Milligram"
-        additionalInstructions: "Mix prescribed dose/volume with 500 mL 0.9% NS."
+        additionalInstructions: "Mix prescribed dose/volume in 500 mL 0.9% NS. Infuse over 1 hour."

@@ -23,7 +23,7 @@ orderset:
       durationUnits: "Hour(s)"
       duration: 1
       relativeStartDay: 1
-      orderReason: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      orderReason: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
       drug:
         name: "sodium chloride 0.9%, intravenous infusion, 250ml"
         form: "Milliliter"
@@ -42,7 +42,7 @@ orderset:
       durationUnits: "Hour(s)"
       duration: 1  # TODO: how many hours?
       relativeStartDay: 1
-      orderReason: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      orderReason: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
       drug:
         name: "dexamethasone 16mg PO"
         form: "Tablet"
@@ -61,7 +61,7 @@ orderset:
       durationUnits: "Hour(s)"
       duration: 1  # TODO: how many hours?
       relativeStartDay: 1
-      orderReason: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      orderReason: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
       drug:
         name: "ondansetron, 4mg, tablet film coated tablet"
         form: "Tablet"
