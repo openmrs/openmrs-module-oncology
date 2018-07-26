@@ -101,7 +101,7 @@ orderset:
       relativeStartDay: 1
       orderReason: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
       drug:
-        name: "Ondansetron"
+        name: "ondansetron, 4mg, tablet film coated tablet"
         form: "Tablet"
         additionalInstructions: "PO Route. Once 60 minutes prior to chemotherapy"
 
