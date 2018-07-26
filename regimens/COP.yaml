@@ -1,7 +1,7 @@
 orderset:
   dependency: https://github.com/PIH/openmrs-module-mirebalais
-  name: "CHOP: Protocol for Non Hodgkin Lymphoma"
-  description: "Every 3 weeks x 4 cycles"
+  name: "COP – Regimen for Non-Metastatic Non Hodgkin Lymphoma"
+  description: "Every 3 weeks x 4 or 6 cycles"
   indication: "CIEL:163073" # chemotherapy regimen
   cycleCount: 6 # recommended number of cycles
   cycleLength: 3 # cycle length unit defined below
@@ -71,24 +71,6 @@ orderset:
 
     - # order CHEMO 2
       type: "Drug Order"
-      concept: "Doxorubicin"
-      administrationInstructions: "*Vesicant* Dilute to 2mg/mL with 0.9% NS. Give via IV push with free flowing 0.9% NS. IV Push over 15 minutes."
-      dosingInstructions:
-        doseUnits: "Milligram"
-        frequency: "Once"
-        route: "Syringe"
-        dose: 600
-      durationUnits: "Day(s)"
-      duration: 1
-      relativeStartDay: 15
-      orderReason: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "DOXOrubicin 50 mg/m2"
-        form: "Tablet"
-        additionalInstructions: "*Vesicant* Dilute to 2mg/mL with 0.9% NS. Give via IV push with free flowing 0.9% NS. IV Push over 15 minutes."
-
-    - # order CHEMO 3
-      type: "Drug Order"
       concept: "Vincristine"
       administrationInstructions: "Dilute to 1mg/mL with 0.9% NS. Give via IV push with free flowing 0.9% NS. IV Push over 1-2 minutes."
       dosingInstructions:
@@ -105,7 +87,7 @@ orderset:
         form: "Milligram"
         additionalInstructions: "Dilute to 1mg/mL with 0.9% NS. Give via IV push with free flowing 0.9% NS. IV Push over 1-2 minutes."
 
-    - # order CHEMO 4
+    - # order CHEMO 3
       type: "Drug Order"
       concept: "Cyclophosphamide"
       administrationInstructions: "Dilute to 1mg/50mL with sterile water. Mix prescribed does/volume with 500mL 0.9% NS. Infuse over 1-2 hours."

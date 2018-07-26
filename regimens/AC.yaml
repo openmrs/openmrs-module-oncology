@@ -90,7 +90,7 @@ orderset:
 
     - # order CHEMO 2
       type: "Drug Order"
-      concept: "Cytoxan"
+      concept: "Cyclophosphamide"
       administrationInstructions: "Dilute to 1g/50mL with sterile water for injection. Mix prescribed does/volume with 500mL 0.9% NS. Infuse over 1-2 hours."
       dosingInstructions:
         doseUnits: "Milligram"
@@ -102,6 +102,6 @@ orderset:
       relativeStartDay: 15
       orderReason: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
       drug:
-        name: "Cytoxan 600 mg/m2"
+        name: "cycloPHOSPHAMIDE 600 mg/m2"
         form: "Tablet"
         additionalInstructions: "Dilute to 1g/50mL with sterile water for injection. Mix prescribed does/volume with 500mL 0.9% NS. Infuse over 1-2 hours."

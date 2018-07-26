@@ -1,3 +1,8 @@
+# OpenMRS Regimen OrderSet Tool (OROT)
+# author: Mario De Armas
+# date: 2018.08.03
+# version: 1.0
+
 import sys
 import json
 import yaml
@@ -16,7 +21,7 @@ def displayArgsHelp():
     print "              orot -get <config-file> [<uuid>]"
     print "              orot -update <config-file> <input-file> <uuid>"
     print "              orot -retire <config-file> <uuid>"
-    print "              orot -purge <config-file> <uuid>"
+    #print "              orot -purge <config-file> <uuid>"  # <<< action currently not supported by model
 
 # start tool implementation
 print "OPENMRS REGIMEN ORDERSET TOOL v1.0 (20180803)..."
