@@ -1,7 +1,7 @@
 orderset:
   dependency: https://github.com/PIH/openmrs-module-mirebalais
-  name: "5-FU with Leucovorin"
-  description: "Roswell Park Regimen for Colorectal and Breast Cancer"
+  name: "AC - Regimen for Non-Metastatic, Locally-Advanced Breast Cancer"
+  description: "Every 3 weeks x 4 cycles before or after Taxol"
   indication: "CIEL:163073" # chemotherapy regimen
   cycleCount: 4 # recommended number of cycles
   cycleLength: 21 # cycle length unit defined below
@@ -12,24 +12,43 @@ orderset:
 
     - # order PREMED 1
       type: "Drug Order"
-      concept: "Dextrose"
+      concept: "0.9% Normal Saline"
       # all of the order info below would be serialized in the template field in orderSetMember
       administrationInstructions: "Once prior to chemotherapy"
       dosingInstructions:
         doseUnits: "Milliliter"
         frequency: "Once"
         route: "Intravenous"
-        dose: 250
+        dose: 1000
       durationUnits: "Hour(s)"
       duration: 1
       relativeStartDay: 1
       orderReason: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
       drug:
-        name: "Dextrose 5 %, intravenous infusion, 500 mL bottle"
-        form: "Milliliter" # TODO: what to put here?
+        name: "sodium chloride 0.9%, intravenous infusion, 250ml"
+        form: "Milliliter"
         additionalInstructions: "IV Route. Once prior to chemotherapy"
 
     - # order PREMED 2
+      type: "Drug Order"
+      concept: "Dexamethasone"
+      # all of the order info below would be serialized in the template field in orderSetMember
+      administrationInstructions: "Once 60 minutes prior to chemotherapy"
+      dosingInstructions:
+        doseUnits: "Tablet(s)"
+        frequency: "Once"
+        route: "Oral"
+        dose: 16
+      durationUnits: "Hour(s)"
+      duration: 1  # TODO: how many hours?
+      relativeStartDay: 1
+      orderReason: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drug:
+        name: "dexamethasone 16mg PO"
+        form: "Tablet"
+        additionalInstructions: "PO Route. Once 60 minutes prior to chemotherapy"
+
+    - # order PREMED 3
       type: "Drug Order"
       concept: "Ondansetron"
       # all of the order info below would be serialized in the template field in orderSetMember
@@ -48,40 +67,41 @@ orderset:
         form: "Tablet"
         additionalInstructions: "PO Route. Once 60 minutes prior to chemotherapy"
 
+
 # ---------------- CHEMO DRUGS ----------------
 
     - # order CHEMO 1
       type: "Drug Order"
-      concept: "Leucovorin"
-      administrationInstructions: "Mix with 500ml of D5W. Infuse over 2 hours"
+      concept: "Doxorubicin"
+      administrationInstructions: "Dilute to 2mg/mL with 0.9% NS. Give via IV push with free flowing 0.9% NS. IV Push over 15 minutes."
       dosingInstructions:
-        doseUnits: "Milliliter"
+        doseUnits: "Tablet(s)"
         frequency: "Once"
-        route: "Intravenous"
+        route: "Oral"
         dose: 1
       durationUnits: "Day(s)"
       duration: 1
       relativeStartDay: 1
       orderReason: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
       drug:
-        name: "leucovorin calcium 500 mg/m2"
-        form: "Milliliter"
-        additionalInstructions: "Mix with 500ml of D5W. Infuse over 2 hours"
+        name: "DOXOrubicin 60 mg/m2"
+        form: "Tablet"
+        additionalInstructions: "Dilute to 2mg/mL with 0.9% NS. Give via IV push with free flowing 0.9% NS. IV Push over 15 minutes."
 
     - # order CHEMO 2
       type: "Drug Order"
-      concept: "Fluorouracil"
-      administrationInstructions: "IV Push, no dilution needed. IV push over 2-4 minutes. Administer 1 hour into Leucovorin infusion with D5 flush before and after."
+      concept: "Cytoxan"
+      administrationInstructions: "Dilute to 1g/50mL with sterile water for injection. Mix prescribed does/volume with 500mL 0.9% NS. Infuse over 1-2 hours."
       dosingInstructions:
-        doseUnits: "Milliliter"
+        doseUnits: "Milligram"
         frequency: "Once"
-        route: "Intravenous"
-        dose: 1
+        route: "Syringe"
+        dose: 600
       durationUnits: "Day(s)"
       duration: 1
-      relativeStartDay: 1
+      relativeStartDay: 15
       orderReason: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
       drug:
-        name: "fluorouracil 500 mg/m2 IV Infusion"
-        form: "Milliliter"
-        additionalInstructions: "IV Push, no dilution needed. IV push over 2-4 minutes. Administer 1 hour into Leucovorin infusion with D5 flush before and after."
+        name: "Cytoxan 600 mg/m2"
+        form: "Tablet"
+        additionalInstructions: "Dilute to 1g/50mL with sterile water for injection. Mix prescribed does/volume with 500mL 0.9% NS. Infuse over 1-2 hours."
