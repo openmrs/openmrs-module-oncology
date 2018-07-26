@@ -12,10 +12,11 @@ requests.packages.urllib3.disable_warnings()
 
 
 def displayArgsHelp():
-    print "[INFO] usage: orot -add <host> <input-file>"
-    print "              orot -get <host> [<uuid>]"
-    print "              orot -retire <host> <uuid>"
-
+    print "[INFO] usage: orot -add <config-file> <input-file>"
+    print "              orot -get <config-file> [<uuid>]"
+    print "              orot -update <config-file> <input-file> <uuid>"
+    print "              orot -retire <config-file> <uuid>"
+    print "              orot -purge <config-file> <uuid>"
 
 # start tool implementation
 print "OPENMRS REGIMEN ORDERSET TOOL v1.0 (20180803)..."
@@ -25,17 +26,26 @@ if len(sys.argv) < 3:
     displayArgsHelp()
     exit()
 
+# parse base tool parameters
+ACTION = sys.argv[1]
+CONFIG_FILE = sys.argv[2]
+print "[INFO] ACTION: " + ACTION
+print "[INFO] CONFIG_FILE: " + CONFIG_FILE
+file = open(CONFIG_FILE, "r")
+config = yaml.load(file)
+
+
 # define api host & endpoint info
-#HOST = "https://humci-azure.pih-emr.org"
-HOST = "https://" + sys.argv[2]  # TODO: create a tool configure file for host info?
-API_ENDPOINT = HOST+"/mirebalais/ws/rest/v1"
-USERID = "IBMHC1"
-PASSWORD = "Ibmhc123"
+HOST = config["hostURL"]
+API_ENDPOINT = HOST + config["apiEndpoint"]
+USERID = config["userID"]
+PASSWORD = config["password"]
 HEADERS = {'Content-Type': 'application/json'}
 print "[INFO] API_ENDPOINT: " + API_ENDPOINT
 
+
 # if tool action is to fetch orderSet...
-if sys.argv[1] == "-get":
+if ACTION == "-get":
     # if params include <uuid>, then use it
     if len(sys.argv) > 3:
         uuidOrderSetParam = "/" + sys.argv[3]   # uuid url path
@@ -52,8 +62,8 @@ if sys.argv[1] == "-get":
     print json.dumps(json.loads(r.text), indent=4)
     exit()
 
-# if tool action is to retire an orderSet...
-if sys.argv[1] == "-retire":
+# if tool action is to retire or purge an orderSet...
+if (ACTION == "-retire") or (ACTION == "-purge"):
     # if params include <uuid>, then use it
     if len(sys.argv) > 3:
         uuidOrderSetParam = "/" + sys.argv[3]   # uuid url path
@@ -61,6 +71,11 @@ if sys.argv[1] == "-retire":
         # bad params list, exit
         displayArgsHelp()
         exit()
+
+# if tool action is to purge an orderSet...
+if (ACTION == "-purge"):
+    # add an additional "purge=true" param to end of url
+    uuidOrderSetParam.append("?purge=true")
 
     # retire orderSet
     r = requests.delete(url = API_ENDPOINT + "/orderset" + uuidOrderSetParam,
@@ -71,8 +86,9 @@ if sys.argv[1] == "-retire":
     print r
     exit()
 
-# if tool action is to add a new regimen orderSet...
-if sys.argv[1] != "-add":
+
+# if tool action is to add or update a regimen orderSet...
+if (ACTION == "-add") or (ACTION == "-update"):
     # if params include <input-file>, then use it
     if len(sys.argv) > 3:
         INPUT_FILE = sys.argv[3] # use <input-file>
@@ -80,7 +96,10 @@ if sys.argv[1] != "-add":
         # bad params list, exit
         displayArgsHelp()
         exit()
-
+else:
+    # bad params list, exit
+    displayArgsHelp()
+    exit()
 
 # read orderSet Regimen template file (uses a YAML schema)
 print "[INFO] INPUT_FILE: " + INPUT_FILE
@@ -90,11 +109,12 @@ regimen = yaml.load(file)
 # build new orderSet's orderSetMember list in a loop...
 for x in range(len(regimen["orderset"]["orders"])):
 
-    print "[INFO] orderSetMember[",x,"]"
+    print "[INFO] processing orderSetMember[",x,"]"
 
     # build orderSetMember number [x]...
 
-    print regimen["orderset"]["orders"][x]
+    # DEBUG
+    #print regimen["orderset"]["orders"][x]
 
     # prepare to query UUIDs that will be required during OrderSet creation phase
     # fetch UUIDs using metadata coded into OrderSet Regimen definition YAML source
@@ -129,7 +149,7 @@ for x in range(len(regimen["orderset"]["orders"])):
     #                 headers = HEADERS,
     #                 verify = False)
 
-    print "[DEBUG] concept result\n" + r.text
+    #print "[DEBUG] concept result\n" + r.text
 
     # TODO: change to capture retrieved concept display name
     nameOrderTypeConcept = conceptCodeValue #json.loads(r.text)["results"][0]["display"]
@@ -157,7 +177,8 @@ for x in range(len(regimen["orderset"]["orders"])):
     jsonOrderTemplate.drug.additionalInstructions = regimen["orderset"]["orders"][x]["drug"]["additionalInstructions"]
     jsonOrderTemplate.orderTemplateType = None
 
-    print "[jsonOrderTemplate]:\n"+jsonOrderTemplate.dumps()
+    # DEBUG
+    #print "[jsonOrderTemplate]:\n"+jsonOrderTemplate.dumps()
 
     # build orderSetMember JSON payload data set...
     orderSetMember = ObjDict()
@@ -187,14 +208,28 @@ for x in range(len(regimen["orderset"]["orders"])):
 #   order.attributes.value = "test value"
 
 
-print "[DEBUG] CREATE ORDERSET PAYLOAD:"
-print order.dumps()
+#print "[DEBUG] CREATE ORDERSET PAYLOAD:"
+#print order.dumps()
 
-# create new orderSet (Regimen) template
-r = requests.post(url = API_ENDPOINT + "/orderset",
+# reset extra url parameter (only used in "-update" use case)
+uuidOrderSetParam = ""
+
+# if tool action is to add or update a regimen orderSet...
+if ACTION == "-update":
+    # if params include <uuid> param...
+    if len(sys.argv) > 4:
+        uuidOrderSetParam = "/" + sys.argv[4] # use <uuid> in url
+    else:
+        # bad params list, exit
+        displayArgsHelp()
+        exit()
+
+# create or update an orderSet (Regimen) template
+r = requests.post(url = API_ENDPOINT + "/orderset" + uuidOrderSetParam,
                   auth = (USERID,PASSWORD),
                   headers = HEADERS,
                   data = order.dumps(),
                   verify = False)
 
+# display results
 print r;
