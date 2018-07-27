@@ -2,7 +2,7 @@ orderset:
   dependency: https://github.com/PIH/openmrs-module-mirebalais
   name: "Paclitaxel: Breast Cancer Regimen - RECHALLENGE"
   description: "175 mg/m2 weekly x 12 weeks"
-  indication: "CIEL:163073" # chemotherapy regimen
+  category: "CIEL:163073" # chemotherapy regimen
   cycleCount: 4 # recommended number of cycles
   cycleLength: 3 # cycle length unit defined below
   cycleLengthUnits:  "Week(s)"

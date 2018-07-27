@@ -2,7 +2,7 @@ orderset:
   dependency: https://github.com/PIH/openmrs-module-mirebalais
   name: "Single-Agent Doxorubicin - Breast Cancer Regimen"
   description: "20 mg/m2 weekly x 12 weeks"
-  indication: "CIEL:163073" # chemotherapy regimen
+  category: "CIEL:163073" # chemotherapy regimen
   cycleCount: 12 # recommended number of cycles
   cycleLength: 1 # cycle length unit defined below
   cycleLengthUnits:  "Week(s)"

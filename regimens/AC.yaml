@@ -2,7 +2,7 @@ orderset:
   dependency: https://github.com/PIH/openmrs-module-mirebalais
   name: "AC - Regimen for Non-Metastatic, Locally-Advanced Breast Cancer"
   description: "Every 3 weeks x 4 cycles before or after Taxol"
-  indication: "CIEL:163073" # chemotherapy regimen
+  category: "CIEL:163073" # chemotherapy regimen
   cycleCount: 4 # recommended number of cycles
   cycleLength: 21 # cycle length unit defined below
   cycleLengthUnits:  "Day(s)"

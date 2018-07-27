@@ -2,7 +2,7 @@ orderset:
   dependency: https://github.com/PIH/openmrs-module-mirebalais
   name: "CHOP: Protocol for Non Hodgkin Lymphoma"
   description: "Every 3 weeks x 4 cycles"
-  indication: "CIEL:163073" # chemotherapy regimen
+  category: "CIEL:163073" # chemotherapy regimen
   cycleCount: 6 # recommended number of cycles
   cycleLength: 3 # cycle length unit defined below
   cycleLengthUnits:  "Weeks(s)"

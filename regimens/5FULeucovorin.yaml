@@ -2,7 +2,7 @@ orderset:
   dependency: https://github.com/PIH/openmrs-module-mirebalais
   name: "5-FU with Leucovorin"
   description: "Roswell Park Regimen for Colorectal and Breast Cancer"
-  indication: "CIEL:163073" # chemotherapy regimen
+  category: "CIEL:163073" # chemotherapy regimen
   cycleCount: 4 # recommended number of cycles
   cycleLength: 21 # cycle length unit defined below
   cycleLengthUnits:  "Day(s)"
