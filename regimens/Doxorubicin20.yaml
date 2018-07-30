@@ -1,89 +1,66 @@
+# chemotherapy regimen definition file
+# usage: this file is input to OpenMRS Regimen OrderSet Tool (OROT), see tool docs for details
 orderset:
   dependency: https://github.com/PIH/openmrs-module-mirebalais
-  name: "Single-Agent Doxorubicin - Breast Cancer Regimen"
-  description: "20 mg/m2 weekly x 12 weeks"
+  name: "Single-Agent Doxorubicin - Breast Cancer Regimen 20 mg/m2"
   category: "CIEL:163073" # chemotherapy regimen
   cycleCount: 12 # recommended number of cycles
   cycleLength: 1 # cycle length unit defined below
-  cycleLengthUnits:  "Week(s)"
+  cycleLengthUnits:  "Weeks"
   orders:
 
  # ---------------- PREMED DRUGS ----------------
 
     - # order PREMED 1
       type: "Drug Order"
-      concept: "0.9% Normal Saline"
-      # all of the order info below would be serialized in the template field in orderSetMember
-      administrationInstructions: "Once prior to chemotherapy"
-      dosingInstructions:
-        doseUnits: "Milliliter"
-        frequency: "Once"
-        route: "Intravenous"
-        dose: 500
-      durationUnits: "Hour(s)"
-      duration: 1
       relativeStartDay: 1
-      orderReason: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "sodium chloride 0.9%, intravenous infusion, 250ml"
-        form: "Milliliter"
-        additionalInstructions: "IV Route. Once prior to chemotherapy"
+      category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drugConcept: "0.9% Normal Saline"
+      drugName: "sodium chloride 0.9%, intravenous infusion, 500ml"
+      dose: 500
+      doseUnits: "Milliliter"
+      route: "Intravenous"
+      dosingInstructions:
+        timing: "Once prior to chemotherapy"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
     - # order PREMED 2
       type: "Drug Order"
-      concept: "Dexamethasone"
-      # all of the order info below would be serialized in the template field in orderSetMember
-      administrationInstructions: "Once 60 minutes prior to chemotherapy"
-      dosingInstructions:
-        doseUnits: "Tablet(s)"
-        frequency: "Once"
-        route: "Oral"
-        dose: 16
-      durationUnits: "Hour(s)"
-      duration: 1  # TODO: how many hours?
       relativeStartDay: 1
-      orderReason: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "dexamethasone 16mg PO"
-        form: "Tablet"
-        additionalInstructions: "PO Route. Once 60 minutes prior to chemotherapy"
+      category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drugConcept: "Dexamethasone"
+      drugName: "dexamethasone 16mg PO"
+      dose: 16
+      doseUnits: "Milligram"
+      route: "Oral"
+      dosingInstructions:
+        timing: "Once 60 minutes prior to chemotherapy"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
     - # order PREMED 3
       type: "Drug Order"
-      concept: "Ondansetron"
-      # all of the order info below would be serialized in the template field in orderSetMember
-      administrationInstructions: "Once 60 minutes prior to chemotherapy"
-      dosingInstructions:
-        doseUnits: "Tablet(s)"
-        frequency: "Once"   # another option: "Every hour" ?
-        route: "Oral"
-        dose: 8
-      durationUnits: "Hour(s)"
-      duration: 1  # TODO: how many hours?
       relativeStartDay: 1
-      orderReason: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "ondansetron, 4mg, tablet film coated tablet"
-        form: "Tablet"
-        additionalInstructions: "PO Route. Once 60 minutes prior to chemotherapy"
+      category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drugConcept: "Ondansetron"
+      drugName: "ondansetron, 8mg, tablet film coated tablet"
+      dose: 8
+      doseUnits: "Milligram"
+      route: "Oral"
+      dosingInstructions:
+        timing: "Once 60 minutes prior to chemotherapy"   # another option: "Every hour" ?
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
 
 # ---------------- CHEMO DRUGS ----------------
 
     - # order CHEMO 1
       type: "Drug Order"
-      concept: "Doxorubicin"
-      administrationInstructions: "Dilute to 2mg/mL with 0.9% NS. Give via IV push with free flowing 0.9% NS. IV Push over 15 minutes."
-      dosingInstructions:
-        doseUnits: "Tablet(s)"
-        frequency: "Once"
-        route: "Oral"
-        dose: 20
-      durationUnits: "Day(s)"
-      duration: 1
       relativeStartDay: 1
-      orderReason: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "DOXOrubicin 20 mg/m2"
-        form: "Intravenous"
-        additionalInstructions: "Dilute to 2mg/mL with 0.9% NS. Give via IV push with free flowing 0.9% NS. IV Push over 15 minutes."
+      category: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drugConcept: "Doxorubicin"
+      drugName: "DOXOrubicin 20 mg/m2"
+      route: "Intravenous"
+      dosingInstructions:
+        dilution: "Dilute to 2mg/mL with 0.9% NS. Give via IV push with free flowing 0.9% NS."
+        timing: "IV Push over 15 minutes"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order

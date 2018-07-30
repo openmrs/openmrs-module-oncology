@@ -1,127 +1,91 @@
+# chemotherapy regimen definition file
+# usage: this file is input to OpenMRS Regimen OrderSet Tool (OROT), see tool docs for details
 orderset:
   dependency: https://github.com/PIH/openmrs-module-mirebalais
-  name: "Paclitaxel: Breast Cancer Regimen"
-  description: "175 mg/m2 weekly x 12 weeks"
+  name: "Paclitaxel: Breast Cancer Regimen 175 mg/m2"
   category: "CIEL:163073" # chemotherapy regimen
   cycleCount: 4 # recommended number of cycles
   cycleLength: 3 # cycle length unit defined below
-  cycleLengthUnits:  "Week(s)"
+  cycleLengthUnits:  "Weeks"
   orders:
 
  # ---------------- PREMED DRUGS ----------------
 
     - # order PREMED 1
       type: "Drug Order"
-      concept: "0.9% Normal Saline"
-      # all of the order info below would be serialized in the template field in orderSetMember
-      administrationInstructions: "Once prior to chemotherapy"
-      dosingInstructions:
-        doseUnits: "Milliliter"
-        frequency: "Once"
-        route: "Intravenous"
-        dose: 500
-      durationUnits: "Hour(s)"
-      duration: 1
       relativeStartDay: 1
-      orderReason: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "sodium chloride 0.9%, intravenous infusion, 500ml"
-        form: "Milliliter"
-        additionalInstructions: "IV Route. Once prior to chemotherapy"
+      category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drugConcept: "0.9% Normal Saline"
+      drugName: "sodium chloride 0.9%, intravenous infusion, 500ml"
+      dose: 500
+      doseUnits: "Milliliter"
+      route: "Intravenous"
+      dosingInstructions:
+        timing: "Once prior to chemotherapy"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
     - # order PREMED 2
       type: "Drug Order"
-      concept: "Dexamethasone"
-      # all of the order info below would be serialized in the template field in orderSetMember
-      administrationInstructions: "Once 60 minutes prior to chemotherapy"
-      dosingInstructions:
-        doseUnits: "Tablet(s)"
-        frequency: "Once"
-        route: "Oral"
-        dose: 16
-      durationUnits: "Hour(s)"
-      duration: 1  # TODO: how many hours?
       relativeStartDay: 1
-      orderReason: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "dexamethasone 16mg PO"
-        form: "Tablet"
-        additionalInstructions: "PO Route. Once 60 minutes prior to chemotherapy"
+      category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drugConcept: "Dexamethasone"
+      drugName: "dexamethasone 16mg PO"
+      dose: 16
+      doseUnits: "Milligram"
+      route: "Oral"
+      dosingInstructions:
+        timing: "Once 60 minutes prior to clinic arrival"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
     - # order PREMED 3
       type: "Drug Order"
-      concept: "Cimetidine"
-      # all of the order info below would be serialized in the template field in orderSetMember
-      administrationInstructions: "PO Route. Once 60 minutes prior to chemotherapy"
-      dosingInstructions:
-        doseUnits: "Milligrams"
-        frequency: "Once"
-        route: "Oral"
-        dose: 600
-      durationUnits: "Hour(s)"
-      duration: 1
       relativeStartDay: 1
-      orderReason: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "cimetidine 600mg"
-        form: "Milligrams"
-        additionalInstructions: "PO Route. Once 60 minutes prior to chemotherapy"
+      category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drugConcept: "Cimetidine"
+      drugName: "cimetidine 600mg PO"
+      dose: 600
+      doseUnits: "Milligram"
+      route: "Oral"
+      dosingInstructions:
+        timing: "Once 60 minutes prior to chemotherapy"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
     - # order PREMED 4
       type: "Drug Order"
-      concept: "Diphenhydramine"
-      # all of the order info below would be serialized in the template field in orderSetMember
-      administrationInstructions: "Once 60 minutes prior to chemotherapy"
-      dosingInstructions:
-        doseUnits: "Tablet(s)"
-        frequency: "Once"   # another option: "Every hour" ?
-        route: "Oral"
-        dose: 50
-      durationUnits: "Hour(s)"
-      duration: 1  # TODO: how many hours?
       relativeStartDay: 1
-      orderReason: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "diphenhydramine 50mg PO"
-        form: "Tablet"
-        additionalInstructions: "PO Route. Once 60 minutes prior to chemotherapy"
+      category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drugConcept: "Diphenhydramine"
+      drugName: "diphenhydramine 50mg PO"
+      dose: 50
+      doseUnits: "Milligram"
+      route: "Oral"
+      dosingInstructions:
+        timing: "Once 60 minutes prior to chemotherapy"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
     - # order PREMED 5
       type: "Drug Order"
-      concept: "Ondansetron"
-      # all of the order info below would be serialized in the template field in orderSetMember
-      administrationInstructions: "Once 60 minutes prior to chemotherapy"
-      dosingInstructions:
-        doseUnits: "Tablet(s)"
-        frequency: "Once"   # another option: "Every hour" ?
-        route: "Oral"
-        dose: 8
-      durationUnits: "Hour(s)"
-      duration: 1  # TODO: how many hours?
       relativeStartDay: 1
-      orderReason: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "ondansetron, 4mg, tablet film coated tablet"
-        form: "Tablet"
-        additionalInstructions: "PO Route. Once 60 minutes prior to chemotherapy"
+      category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drugConcept: "Ondansetron"
+      drugName: "ondansetron, 8mg, tablet film coated tablet"
+      dose: 8
+      doseUnits: "Milligram"
+      route: "Oral"
+      dosingInstructions:
+        timing: "Once 60 minutes prior to chemotherapy"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
-
-# ---------------- CHEMO DRUGS ----------------
+  # ---------------- CHEMO DRUGS ----------------
 
     - # order CHEMO 1
       type: "Drug Order"
-      concept: "Paclitaxel"
-      administrationInstructions: "Mix prescribed dose/volume in 500 mL 0.9% NS. Infuse over 1 hour."
-      dosingInstructions:
-        doseUnits: "Milligram"
-        frequency: "Once"
-        route: "Syringe"
-        dose: 175
-      durationUnits: "Day(s)"
-      duration: 1
       relativeStartDay: 1
-      orderReason: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "PACLitaxel 175 mg/m2"
-        form: "Milliliter"
-        additionalInstructions: "Mix prescribed dose/volume in 500 mL 0.9% NS. Infuse over 1 hour."
+      category: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drugConcept: "Paclitaxel"
+      drugName: "PACLitaxel 175 mg/m2"
+      route: "Intravenous"
+      dosingInstructions:
+        dilution: "Mix prescribed dose / volume with 500mL 0.9% NS."
+        timing: "Infuse over 4 hours"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order

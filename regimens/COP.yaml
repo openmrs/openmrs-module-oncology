@@ -1,106 +1,79 @@
+# chemotherapy regimen definition file
+# usage: this file is input to OpenMRS Regimen OrderSet Tool (OROT), see tool docs for details
 orderset:
   dependency: https://github.com/PIH/openmrs-module-mirebalais
   name: "COP – Regimen for Non-Metastatic Non Hodgkin Lymphoma"
-  description: "Every 3 weeks x 4 or 6 cycles"
   category: "CIEL:163073" # chemotherapy regimen
   cycleCount: 6 # recommended number of cycles
   cycleLength: 3 # cycle length unit defined below
-  cycleLengthUnits:  "Weeks(s)"
+  cycleLengthUnits:  "Weeks"
   orders:
 
  # ---------------- PREMED DRUGS ----------------
 
     - # order PREMED 1
       type: "Drug Order"
-      concept: "0.9% Normal Saline"
-      # all of the order info below would be serialized in the template field in orderSetMember
-      administrationInstructions: "Once prior to chemotherapy"
-      dosingInstructions:
-        doseUnits: "Milliliter"
-        frequency: "Once"
-        route: "Intravenous"
-        dose: 1000
-      durationUnits: "Hour(s)"
-      duration: 1
       relativeStartDay: 1
-      orderReason: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "sodium chloride 0.9%, intravenous infusion, 250ml"
-        form: "Milliliter"
-        additionalInstructions: "IV Route. Once prior to chemotherapy"
+      category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drugConcept: "0.9% Normal Saline"
+      drugName: "sodium chloride 0.9%, intravenous infusion, 1000ml"
+      dose: 1000
+      doseUnits: "Milliliter"
+      route: "Intravenous"
+      dosingInstructions:
+        timing: "Once prior to chemotherapy"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
     - # order PREMED 2
       type: "Drug Order"
-      concept: "Ondansetron"
-      # all of the order info below would be serialized in the template field in orderSetMember
-      administrationInstructions: "Once 60 minutes prior to chemotherapy"
-      dosingInstructions:
-        doseUnits: "Tablet(s)"
-        frequency: "Once"   # another option: "Every hour" ?
-        route: "Oral"
-        dose: 8
-      durationUnits: "Hour(s)"
-      duration: 1  # TODO: how many hours?
       relativeStartDay: 1
-      orderReason: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "ondansetron, 4mg, tablet film coated tablet"
-        form: "Tablet"
-        additionalInstructions: "PO Route. Once 60 minutes prior to chemotherapy"
+      category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drugConcept: "Ondansetron"
+      drugName: "ondansetron, 8mg, tablet film coated tablet"
+      dose: 8
+      doseUnits: "Milligram"
+      route: "Oral"
+      dosingInstructions:
+        timing: "Once 60 minutes prior to chemotherapy"   # another option: "Every hour" ?
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
 
 # ---------------- CHEMO DRUGS ----------------
 
     - # order CHEMO 1
       type: "Drug Order"
-      concept: "Prednisone"
-      administrationInstructions: "Daily x 5 days. 1st dose 1 hour prior to chemo."
-      dosingInstructions:
-        doseUnits: "Milligram"
-        frequency: "Once"
-        route: "Oral"
-        dose: 100
-      durationUnits: "Day(s)"
-      duration: 5
       relativeStartDay: 1
-      orderReason: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "predniSONE"
-        form: "Tablet"
-        additionalInstructions: "Daily x 5 days. 1st dose 1 hour prior to chemo."
+      category: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drugConcept: "Prednisone"
+      drugName: "predniSONE"
+      dose: 100
+      doseUnits: "Milligram"
+      route: "Oral"
+      dosingInstructions:
+        dilution: "Oral"
+        timing: "Daily x 5 days. 1st dose 60 minutes prio to chemotherapy."
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
     - # order CHEMO 2
       type: "Drug Order"
-      concept: "Vincristine"
-      administrationInstructions: "Dilute to 1mg/mL with 0.9% NS. Give via IV push with free flowing 0.9% NS. IV Push over 1-2 minutes."
+      relativeStartDay: 1
+      category: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drugConcept: "Vincristine"
+      drugName: "vinCRIStine 1.4 mg/m2"
+      route: "Intravenous"
       dosingInstructions:
-        doseUnits: "Milligram"
-        frequency: "Once"
-        route: "Syringe"
-        dose: 1.4
-      durationUnits: "Day(s)"
-      duration: 1
-      relativeStartDay: 15
-      orderReason: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "vinCRIStine 1.4 mg/m2"
-        form: "Milligram"
-        additionalInstructions: "Dilute to 1mg/mL with 0.9% NS. Give via IV push with free flowing 0.9% NS. IV Push over 1-2 minutes."
+        dilution: "No dilution needed"
+        timing: "IV Push over 1-2 minutes"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
     - # order CHEMO 3
       type: "Drug Order"
-      concept: "Cyclophosphamide"
-      administrationInstructions: "Dilute to 1mg/50mL with sterile water. Mix prescribed does/volume with 500mL 0.9% NS. Infuse over 1-2 hours."
+      relativeStartDay: 1
+      category: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drugConcept: "Cyclophosphamide"
+      drugName: "cycloPHOSPHAMIDE 750 mg/m2"
+      route: "Intravenous"
       dosingInstructions:
-        doseUnits: "Milligram"
-        frequency: "Once"
-        route: "Syringe"
-        dose: 1.4
-      durationUnits: "Day(s)"
-      duration: 1
-      relativeStartDay: 15
-      orderReason: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "cycloPHOSPHAMIDE 750 mg/m2"
-        form: "Milligram"
-        additionalInstructions: "Dilute to 1mg/50mL with sterile water. Mix prescribed does/volume with 500mL 0.9% NS. Infuse over 1-2 hours."
+        dilution: "Dilute to 1g/50mL with sterile water for injection. Mix prescribed dose/volume with 500mL 0.9% NS."
+        timing: "IV Push over 1-2 hours"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order

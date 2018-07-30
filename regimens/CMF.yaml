@@ -1,125 +1,89 @@
+# chemotherapy regimen definition file
+# usage: this file is input to OpenMRS Regimen OrderSet Tool (OROT), see tool docs for details
 orderset:
   dependency: https://github.com/PIH/openmrs-module-mirebalais
   name: "CMF - Breast Cancer Regimen"
-  description: "Every 3 weeks x 6 or 8 cycles"
   category: "CIEL:163073" # chemotherapy regimen
   cycleCount: 8 # recommended number of cycles
   cycleLength: 3 # cycle length unit defined below
-  cycleLengthUnits:  "Week(s)"
+  cycleLengthUnits:  "Weeks"
   orders:
 
  # ---------------- PREMED DRUGS ----------------
 
     - # order PREMED 1
       type: "Drug Order"
-      concept: "0.9% Normal Saline"
-      # all of the order info below would be serialized in the template field in orderSetMember
-      administrationInstructions: "Once prior to chemotherapy"
-      dosingInstructions:
-        doseUnits: "Milliliter"
-        frequency: "Once"
-        route: "Intravenous"
-        dose: 1000
-      durationUnits: "Hour(s)"
-      duration: 1
       relativeStartDay: 1
-      orderReason: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "sodium chloride 0.9%, intravenous infusion, 250ml"
-        form: "Milliliter"
-        additionalInstructions: "IV Route. Once prior to chemotherapy"
+      category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drugConcept: "0.9% Normal Saline"
+      drugName: "sodium chloride 0.9%, intravenous infusion, 1000ml"
+      dose: 1000
+      doseUnits: "Milliliter"
+      route: "Intravenous"
+      dosingInstructions:
+        timing: "Once prior to chemotherapy"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
     - # order PREMED 2
       type: "Drug Order"
-      concept: "Dexamethasone"
-      # all of the order info below would be serialized in the template field in orderSetMember
-      administrationInstructions: "Once 60 minutes prior to chemotherapy"
-      dosingInstructions:
-        doseUnits: "Tablet(s)"
-        frequency: "Once"
-        route: "Oral"
-        dose: 16
-      durationUnits: "Hour(s)"
-      duration: 1  # TODO: how many hours?
       relativeStartDay: 1
-      orderReason: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "dexamethasone 16mg PO"
-        form: "Tablet"
-        additionalInstructions: "PO Route. Once 60 minutes prior to chemotherapy"
+      category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drugConcept: "Dexamethasone"
+      drugName: "dexamethasone 16mg PO"
+      dose: 16
+      doseUnits: "Milligram"
+      route: "Oral"
+      dosingInstructions:
+        timing: "Once 60 minutes prior to chemotherapy"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
     - # order PREMED 3
-      type: "Drug Order"
-      concept: "Ondansetron"
-      # all of the order info below would be serialized in the template field in orderSetMember
-      administrationInstructions: "Once 60 minutes prior to chemotherapy"
-      dosingInstructions:
-        doseUnits: "Tablet(s)"
-        frequency: "Once"   # another option: "Every hour" ?
-        route: "Oral"
+        type: "Drug Order"
+        relativeStartDay: 1
+        category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+        drugConcept: "Ondansetron"
+        drugName: "ondansetron, 8mg, tablet film coated tablet"
         dose: 8
-      durationUnits: "Hour(s)"
-      duration: 1  # TODO: how many hours?
-      relativeStartDay: 1
-      orderReason: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "ondansetron, 4mg, tablet film coated tablet"
-        form: "Tablet"
-        additionalInstructions: "PO Route. Once 60 minutes prior to chemotherapy"
-
+        doseUnits: "Milligram"
+        route: "Oral"
+        dosingInstructions:
+          timing: "Once 60 minutes prior to chemotherapy"   # another option: "Every hour" ?
+          dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
 # ---------------- CHEMO DRUGS ----------------
 
     - # order CHEMO 1
       type: "Drug Order"
-      concept: "Fluorouracil"
-      administrationInstructions: "No dilution needed. IV Push over 10 minutes."
-      dosingInstructions:
-        doseUnits: "Milliliter"
-        frequency: "Once"
-        route: "Intravenous"
-        dose: 600
-      durationUnits: "Day(s)"
-      duration: 1
       relativeStartDay: 1
-      orderReason: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "fluorouracil 600 mg/m2 IV Push"
-        form: "Milliliter"
-        additionalInstructions: "No dilution needed. IV Push over 10 minutes."
+      category: "Chemotherapy" # Premedication, Chemotherapy, Post medication
+      drugConcept: "Fluorouracil"
+      drugName: "fluorouracil 600 mg/m2 IV Push"
+      route: "Intravenous"
+      dosingInstructions:
+        dilution: "No dilution needed"
+        timing: "IV push over 10 minutes."
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
     - # order CHEMO 2
       type: "Drug Order"
-      concept: "Methotrexate"
-      administrationInstructions: "No dilution needed. IV Push at 10 mg/min."
-      dosingInstructions:
-        doseUnits: "Milligram"
-        frequency: "Once"
-        route: "Syringe"
-        dose: 40
-      durationUnits: "Day(s)"
-      duration: 1
       relativeStartDay: 1
-      orderReason: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "methotrexate 40 mg/m2"
-        form: "Milligram"
-        additionalInstructions: "No dilution needed. IV Push at 10 mg/min."
+      category: "Chemotherapy" # Premedication, Chemotherapy, Post medication
+      drugConcept: "Methotrexate"
+      drugName: "methotrexate 40 mg/m2"
+      route: "Intravenous"
+      dosingInstructions:
+        dilution: "No dilution needed"
+        timing: "IV push over 10 mg/min."
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
     - # order CHEMO 3
       type: "Drug Order"
-      concept: "Cyclophosphamide"
-      administrationInstructions: "Mix prescribed dose/volume with 500 mL 0.9% NS."
-      dosingInstructions:
-        doseUnits: "Milligram"
-        frequency: "Once"
-        route: "Syringe"
-        dose: 600
-      durationUnits: "Day(s)"
-      duration: 1
       relativeStartDay: 1
-      orderReason: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "cycloPHOSPHAMIDE 600 mg/m2"
-        form: "Milligram"
-        additionalInstructions: "Mix prescribed dose/volume with 500 mL 0.9% NS."
+      category: "Chemotherapy" # Premedication, Chemotherapy, Post medication
+      drugConcept: "Cyclophosphamide"
+      drugName: "cycloPHOSPHAMIDE 600 mg/m2"
+      route: "Intravenous"
+      dosingInstructions:
+        dilution: "Mix prescribed dose/volume with 500mL 0.9% NS."
+        timing: "Infuse over 1-2 hours."
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order

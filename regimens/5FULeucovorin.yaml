@@ -1,87 +1,65 @@
+# chemotherapy regimen definition file
+# usage: this file is input to OpenMRS Regimen OrderSet Tool (OROT), see tool docs for details
 orderset:
   dependency: https://github.com/PIH/openmrs-module-mirebalais
-  name: "5-FU with Leucovorin"
-  description: "Roswell Park Regimen for Colorectal and Breast Cancer"
+  name: "5-FU with Leucovorin. Roswell Park Regimen for Colorectal and Breast Cancer"
   category: "CIEL:163073" # chemotherapy regimen
-  cycleCount: 4 # recommended number of cycles
-  cycleLength: 21 # cycle length unit defined below
-  cycleLengthUnits:  "Day(s)"
+  cycleCount: 6 # recommended number of cycles
+  cycleLength: 28 # cycle length unit defined below
+  cycleLengthUnits:  "Days"
   orders:
 
  # ---------------- PREMED DRUGS ----------------
 
     - # order PREMED 1
       type: "Drug Order"
-      concept: "Dextrose"
-      # all of the order info below would be serialized in the template field in orderSetMember
-      administrationInstructions: "Once prior to chemotherapy"
+      relativeStartDay: 1,8,15
+      category: "Premedication" # Premedication, Chemotherapy, Post medication
+      drugConcept: "Dextrose"
+      drugName: "Dextrose 5 %, intravenous infusion, 250 mL bottle"
+      dose: 250
+      doseUnits: "Milliliter"
+      route: "Intravenous"
       dosingInstructions:
-        doseUnits: "Milliliter"
-        frequency: "Once"
-        route: "Intravenous"
-        dose: 250
-      durationUnits: "Hour(s)"
-      duration: 1
-      relativeStartDay: 1
-      orderReason: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "Dextrose 5 %, intravenous infusion, 500 mL bottle"
-        form: "Milliliter" # TODO: what to put here?
-        additionalInstructions: "IV Route. Once prior to chemotherapy"
+        timing: "Once prior to chemotherapy"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
     - # order PREMED 2
       type: "Drug Order"
-      concept: "Ondansetron"
-      # all of the order info below would be serialized in the template field in orderSetMember
-      administrationInstructions: "Once 60 minutes prior to chemotherapy"
+      relativeStartDay: 1,8,15
+      category: "Premedication" # Premedication, Chemotherapy, Post medication
+      drugConcept: "ondansetron"
+      drugName: "ondansetron, 8mg, tablet film coated tablet"
+      dose: 8
+      doseUnits: "Milligram"
+      route: "Oral"
       dosingInstructions:
-        doseUnits: "Tablet(s)"
-        frequency: "Once"   # another option: "Every hour" ?
-        route: "Oral"
-        dose: 8
-      durationUnits: "Hour(s)"
-      duration: 1  # TODO: how many hours?
-      relativeStartDay: 1
-      orderReason: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "ondansetron, 4mg, tablet film coated tablet"
-        form: "Tablet"
-        additionalInstructions: "PO Route. Once 60 minutes prior to chemotherapy"
+        timing: "Once 60 minutes prior to chemotherapy"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
+
 
 # ---------------- CHEMO DRUGS ----------------
 
     - # order CHEMO 1
       type: "Drug Order"
-      concept: "Leucovorin"
-      administrationInstructions: "Mix with 500ml of D5W. Infuse over 2 hours"
+      relativeStartDay: 1,8,15
+      category: "Chemotherapy" # Premedication, Chemotherapy, Post medication
+      drugConcept: "Leucovorin"
+      drugName: "leucovorin calcium 500 mg/m2"
+      route: "Intravenous"
       dosingInstructions:
-        doseUnits: "Milliliter"
-        frequency: "Once"
-        route: "Intravenous"
-        dose: 1
-      durationUnits: "Day(s)"
-      duration: 1
-      relativeStartDay: 1
-      orderReason: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "leucovorin calcium 500 mg/m2"
-        form: "Milliliter"
-        additionalInstructions: "Mix with 500ml of D5W. Infuse over 2 hours"
+        dilution: "Mix with 500ml of D5W"
+        timing: "Infuse over 2 hours"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
     - # order CHEMO 2
       type: "Drug Order"
-      concept: "Fluorouracil"
-      administrationInstructions: "IV Push, no dilution needed. IV push over 2-4 minutes. Administer 1 hour into Leucovorin infusion with D5 flush before and after."
+      relativeStartDay: 1,8,15
+      category: "Chemotherapy" # Premedication, Chemotherapy, Post medication
+      drugConcept: "Fluorouracil"
+      drugName: "fluorouracil 500 mg/m2 IV Infusion"
+      route: "Intravenous"
       dosingInstructions:
-        doseUnits: "Milliliter"
-        frequency: "Once"
-        route: "Intravenous"
-        dose: 1
-      durationUnits: "Day(s)"
-      duration: 1
-      relativeStartDay: 1
-      orderReason: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drug:
-        name: "fluorouracil 500 mg/m2 IV Infusion"
-        form: "Milliliter"
-        additionalInstructions: "IV Push, no dilution needed. IV push over 2-4 minutes. Administer 1 hour into Leucovorin infusion with D5 flush before and after."
+        dilution: "IV Push no dilution needed"
+        timing: "IV push over 2-4 minutes. Administer 1 hour into Leucovorin infusion with D5 flush before and after"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order

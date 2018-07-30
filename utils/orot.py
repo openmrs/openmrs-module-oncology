@@ -16,12 +16,15 @@ from objdict import ObjDict
 requests.packages.urllib3.disable_warnings()
 
 
+def buildDict(seq, key):
+    return dict((d[key], dict(d, index=index)) for (index, d) in enumerate(seq))
+
 def displayArgsHelp():
     print "[INFO] usage: orot -add <config-file> <input-file>"
     print "              orot -get <config-file> [<uuid>]"
     print "              orot -update <config-file> <input-file> <uuid>"
     print "              orot -retire <config-file> <uuid>"
-    #print "              orot -purge <config-file> <uuid>"  # <<< action currently not supported by model
+    #print "              orot -purge <config-file> <uuid>"  # <<< action currently not supported by OpenMRS
 
 # start tool implementation
 print "OPENMRS REGIMEN ORDERSET TOOL v1.0 (20180803)..."
@@ -38,7 +41,6 @@ print "[INFO] ACTION: " + ACTION
 print "[INFO] CONFIG_FILE: " + CONFIG_FILE
 file = open(CONFIG_FILE, "r")
 config = yaml.load(file)
-
 
 # define api host & endpoint info
 HOST = config["hostURL"]
@@ -88,10 +90,6 @@ if (ACTION == "-purge"):
                     headers = HEADERS,
                     verify = False)
 
-    print r
-    exit()
-
-
 # if tool action is to add or update a regimen orderSet...
 if (ACTION == "-add") or (ACTION == "-update"):
     # if params include <input-file>, then use it
@@ -111,6 +109,21 @@ print "[INFO] INPUT_FILE: " + INPUT_FILE
 file = open(INPUT_FILE, "r")
 regimen = yaml.load(file)
 
+
+# lookup regimen category UUID
+categoryCodedValue = regimen["orderset"]["category"].split(":")
+# fetch category concept UUID value
+r = requests.get(url = API_ENDPOINT + "/conceptreferenceterm?v=full&codeOrName=" + categoryCodedValue[1] + "&source=" + categoryCodedValue[0] + "?lang=en",
+                 auth = (USERID,PASSWORD),
+                 headers = HEADERS,
+                 verify = False)
+
+# store fetched UUID
+uuidRegimenCategory = json.loads(r.text)["results"][0]["uuid"]
+
+#print json.dumps(regimen)
+#exit()
+
 # build new orderSet's orderSetMember list in a loop...
 for x in range(len(regimen["orderset"]["orders"])):
 
@@ -124,6 +137,7 @@ for x in range(len(regimen["orderset"]["orders"])):
     # prepare to query UUIDs that will be required during OrderSet creation phase
     # fetch UUIDs using metadata coded into OrderSet Regimen definition YAML source
 
+    #--------------------------------------------------------------------------
     # use orderType encoded value
     order_type = urllib.quote(regimen["orderset"]["orders"][x]["type"])
 
@@ -136,25 +150,15 @@ for x in range(len(regimen["orderset"]["orders"])):
     # store fetched UUID
     uuidOrderType = json.loads(r.text)["results"][0]["uuid"]
 
+    #--------------------------------------------------------------------------
     # use orderType concept encoded value
-    #conceptCodeValue = regimen["orderset"]["orders"][x]["concept"].split(":")
-    conceptCodeValue = regimen["orderset"]["orders"][x]["concept"]
+    conceptCodeValue = regimen["orderset"]["orders"][x]["drugConcept"]
 
     # fetch orderType Concept UUID value
     r = requests.get(url = API_ENDPOINT + "/concept?locale='en'&q=" + conceptCodeValue,
                      auth = (USERID,PASSWORD),
                      headers = HEADERS,
                      verify = False)
-
-    #rest/v1/concept?v=full&q="Aspirine"&locale="en"
-    # TODO: not needed after all??!
-    # fetch orderType Concept UUID value
-    #r = requests.get(url = API_ENDPOINT + "/conceptreferenceterm?v=full&codeOrName=" + conceptCodeValue[1] + "&source=" + conceptCodeValue[x] + "?lang=en",
-    #                 auth = (USERID,PASSWORD),
-    #                 headers = HEADERS,
-    #                 verify = False)
-
-    #print "[DEBUG] concept result\n" + r.text
 
     # TODO: change to capture retrieved concept display name
     nameOrderTypeConcept = conceptCodeValue #json.loads(r.text)["results"][0]["display"]
@@ -163,23 +167,56 @@ for x in range(len(regimen["orderset"]["orders"])):
     print "[INFO] uuidOrderType: " + uuidOrderType + "   [" + order_type + "]"
     print "[INFO] uuidOrderTypeConcept: " + uuidOrderTypeConcept + "   [" + nameOrderTypeConcept + "]"
 
+    #--------------------------------------------------------------------------
+    # fetch OrderSetAttributeType UUID values
+    r = requests.get(url = API_ENDPOINT + "/ordersetattributetype",
+                     auth = (USERID,PASSWORD),
+                     headers = HEADERS,
+                     verify = False)
+
+    orderSetAttributeTypes = json.loads(r.text)["results"]
+
+    attribsByName = buildDict(orderSetAttributeTypes, key="display")
+    attribsByName.get("cycleLength")["uuid"]
+    #print "[DEBUG] uuidOrderSetAttributes: " + json.dumps(attribsByName)
+
+    #--------------------------------------------------------------------------
+    # fetch Time Units UUID value for cycleLengthUnits
+    #r = requests.get(url = API_ENDPOINT + "/concept/f1904502-319d-4681-9030-e642111e7ce2?v=full",
+    #                 auth = (USERID,PASSWORD),
+    #                 headers = HEADERS,
+    #                 verify = False)
+
+    #print r.text
+
+    #orderSetAttributeTypes = json.loads(r.text)["results"]
+
+    #attribsByName = buildDict(orderSetAttributeTypes, key="display")
+    #attribsByName.get("cycleLength")["uuid"]
+    #print "[DEBUG] uuidOrderSetAttributes: " + json.dumps(attribsByName)
+
+    # can't seem to find API that can cleanly fetch info needed, so hard-coding for now
+    if (regimen["orderset"]["cycleLengthUnits"] == "Months"):
+        uuidCycleLengthUnits = "3cd70b68-26fe-102b-80cb-0017a47871b2"
+    if (regimen["orderset"]["cycleLengthUnits"] == "Weeks"):
+        uuidCycleLengthUnits = "3cd7091a-26fe-102b-80cb-0017a47871b2"
+    if (regimen["orderset"]["cycleLengthUnits"] == "Days"):
+        uuidCycleLengthUnits = "3cd706b8-26fe-102b-80cb-0017a47871b2"
+
+
+    #--------------------------------------------------------------------------
     jsonOrderTemplate = ObjDict();
-    jsonOrderTemplate.administrationInstructions = regimen["orderset"]["orders"][x]["administrationInstructions"]
+    jsonOrderTemplate.category = regimen["orderset"]["orders"][x]["category"]
+    jsonOrderTemplate.drugConcept = regimen["orderset"]["orders"][x]["drugConcept"]
+    jsonOrderTemplate.drugName = regimen["orderset"]["orders"][x]["drugName"]
+    jsonOrderTemplate.route = regimen["orderset"]["orders"][x]["route"]
+    jsonOrderTemplate.dose = regimen["orderset"]["orders"][x].get("dose")
+    jsonOrderTemplate.doseUnits = regimen["orderset"]["orders"][x].get("doseUnits")
+    jsonOrderTemplate.relativeStartDay = regimen["orderset"]["orders"][x]["relativeStartDay"]
     jsonOrderTemplate.dosingInstructions = ObjDict()
-    jsonOrderTemplate.dosingInstructions.doseUnits = regimen["orderset"]["orders"][x]["dosingInstructions"]["doseUnits"]
-    jsonOrderTemplate.dosingInstructions.frequency = regimen["orderset"]["orders"][x]["dosingInstructions"]["frequency"]
-    jsonOrderTemplate.dosingInstructions.route = regimen["orderset"]["orders"][x]["dosingInstructions"]["route"]
-    jsonOrderTemplate.dosingInstructions.dose = regimen["orderset"]["orders"][x]["dosingInstructions"]["dose"]
-    jsonOrderTemplate.durationUnits = regimen["orderset"]["orders"][x]["durationUnits"]
-    jsonOrderTemplate.duration = regimen["orderset"]["orders"][x]["duration"]
-    # TODO: add this later when attributes are available
-    #jsonOrderTemplate.relativeStartDay = regimen["orderset"]["orders"][x]["relativeStartDay"]
-    jsonOrderTemplate.orderReason = regimen["orderset"]["orders"][x]["orderReason"]
-    jsonOrderTemplate.drug = ObjDict()
-    jsonOrderTemplate.drug.name = regimen["orderset"]["orders"][x]["drug"]["name"]
-    jsonOrderTemplate.drug.uuid = uuidOrderTypeConcept
-    jsonOrderTemplate.drug.form = regimen["orderset"]["orders"][x]["drug"]["form"]
-    jsonOrderTemplate.drug.additionalInstructions = regimen["orderset"]["orders"][x]["drug"]["additionalInstructions"]
+    jsonOrderTemplate.dosingInstructions.dosingTiming = regimen["orderset"]["orders"][x]["dosingInstructions"]["timing"]
+    jsonOrderTemplate.dosingInstructions.dosingDilution = regimen["orderset"]["orders"][x]["dosingInstructions"].get("dilution")
+    jsonOrderTemplate.dosingInstructions.dosingAdjustment = regimen["orderset"]["orders"][x]["dosingInstructions"]["dosingAdjustment"]
     jsonOrderTemplate.orderTemplateType = None
 
     # DEBUG
@@ -199,19 +236,27 @@ for x in range(len(regimen["orderset"]["orders"])):
         # build orderSet JSON payload data set...
         order = ObjDict()
         order.name = regimen["orderset"]["name"]
-        order.description = regimen["orderset"]["description"]
+        order.description = regimen["orderset"]["name"]
         order.operator = "ANY"
-        # TODO: add "indication", "cycle" info when data model ready
-        order.orderSetMembers = []
+        #order.category = ObjDict()     # TODO: add back when branch is integrated
+        #order.category.uuid = uuidRegimenCategory
+        order.orderSetMembers = []  # create empty orderSetMemberList array
+        order.attributes = []       # create empty orderSet attributes array
+        orderSetAttribute = ObjDict()     # cycleLength
+        orderSetAttribute.attributeType = attribsByName.get("cycleLength")["uuid"]
+        orderSetAttribute.value = str(regimen["orderset"]["cycleLength"])
+        order.attributes.append(orderSetAttribute)
+        orderSetAttribute = ObjDict()     # cycleLengthUnits
+        orderSetAttribute.attributeType = attribsByName.get("cycleLengthUnits")["uuid"]
+        orderSetAttribute.value = uuidCycleLengthUnits
+        order.attributes.append(orderSetAttribute)
+        orderSetAttribute = ObjDict()     # cycleCount
+        orderSetAttribute.attributeType = attribsByName.get("numCycles")["uuid"]
+        orderSetAttribute.value = str(regimen["orderset"]["cycleCount"])
+        order.attributes.append(orderSetAttribute)
 
     # append new orderSetMember into array
     order.orderSetMembers.append(orderSetMember)
-
-# TODO: add orderSet attribute values
-#   order.attributes = ObjDict()
-#   order.attributes.attributeType = "a5fb5770-409a-11e2-a25f-0800200c9a66"
-#   order.attributes.value = "test value"
-
 
 #print "[DEBUG] CREATE ORDERSET PAYLOAD:"
 #print order.dumps()
@@ -228,6 +273,8 @@ if ACTION == "-update":
         # bad params list, exit
         displayArgsHelp()
         exit()
+
+print order.dumps()
 
 # create or update an orderSet (Regimen) template
 r = requests.post(url = API_ENDPOINT + "/orderset" + uuidOrderSetParam,
