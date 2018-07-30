@@ -285,5 +285,4 @@ r = requests.post(url = API_ENDPOINT + "/orderset" + uuidOrderSetParam,
                   verify = False)
 
 # display results
-print r.results
 print r;
