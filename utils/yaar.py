@@ -1,4 +1,6 @@
-# OpenMRS Regimen OrderSet Tool (OROT)
+# Yet Another Automated Regimen (YAAR) management tool
+# OpenMRS OrderSet (Regimen) lifecycle automated tooling
+#   - query, create, update, retire OrderSets (Regimens)
 # author: Mario De Armas
 # date: 2018.08.03
 # version: 1.0
@@ -20,11 +22,11 @@ def buildDict(seq, key):
     return dict((d[key], dict(d, index=index)) for (index, d) in enumerate(seq))
 
 def displayArgsHelp():
-    print "[INFO] usage: orot -add <config-file> <input-file>"
-    print "              orot -get <config-file> [<uuid>]"
-    print "              orot -update <config-file> <input-file> <uuid>"
-    print "              orot -retire <config-file> <uuid>"
-    #print "              orot -purge <config-file> <uuid>"  # <<< action currently not supported by OpenMRS
+    print "[INFO] usage: yaar -add <config-file> <input-file>"
+    print "              yaar -get <config-file> [<uuid>]"
+    print "              yaar -update <config-file> <input-file> <uuid>"
+    print "              yaar -retire <config-file> <uuid>"
+    #print "              yaar -purge <config-file> <uuid>"  # <<< action currently not supported by OpenMRS
 
 # start tool implementation
 print "OPENMRS REGIMEN ORDERSET TOOL v1.0 (20180803)..."
@@ -238,8 +240,7 @@ for x in range(len(regimen["orderset"]["orders"])):
         order.name = regimen["orderset"]["name"]
         order.description = regimen["orderset"]["name"]
         order.operator = "ANY"
-        #order.category = ObjDict()     # TODO: add back when branch is integrated
-        #order.category.uuid = uuidRegimenCategory
+        order.category = uuidRegimenCategory
         order.orderSetMembers = []  # create empty orderSetMemberList array
         order.attributes = []       # create empty orderSet attributes array
         orderSetAttribute = ObjDict()     # cycleLength
@@ -284,4 +285,5 @@ r = requests.post(url = API_ENDPOINT + "/orderset" + uuidOrderSetParam,
                   verify = False)
 
 # display results
+print r.results
 print r;
