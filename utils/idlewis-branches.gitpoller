@@ -1,0 +1,16 @@
+# git account and repo being watched
+hostURL: "https://api.github.com"
+apiEndpoint: ""
+userID: dearmasm
+password: <api token here>
+account: "idlewis"
+repoBranches:
+    - # repo/branch 1
+      repo: "openmrs-core"
+      branch: "integration"
+    - # repo/branch 2
+      repo: "openmrs-module-webservices.rest"
+      branch: "integration"
+
+# execute this action when change is detected
+executeOnChange: /home/dearmasm/build/build.sh"
