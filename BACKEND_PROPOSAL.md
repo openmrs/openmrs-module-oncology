@@ -184,6 +184,29 @@ OT_UC1 - Authoring an oncology regimen templates for use in EMR solution
           Hello World!
           {'hello': {'go': True, 'world': 123, 'here': 'we'}}
 
+- Linux (Ubuntu or similar) instructions:
+    1. install python 2.7 or higher, test that you can run it from command-line (type ```exit()``` to quit python prompt)
+       
+    2. install python yaml and requests libraries 
+       ```
+          sudo apt install python-setuptools
+          sudo easy_install pip
+          sudo python -m easy_install pyyaml
+          sudo pip install requests
+          sudo pip install objdict
+          sudo pip install enum
+       
+    3. test python+yaml lib is working
+       ```
+          $ ls -l test.*
+          -rw-r--r--  1 dearmasm  staff  96 Jul 23 09:52 test.py
+          -rw-r--r--  1 dearmasm  staff  45 Jul 23 09:13 test.yaml
+          $ python test.py
+          Hello World!
+          {'hello': {'go': True, 'world': 123, 'here': 'we'}}
+
+
+
 - Sequence Diagram
 ![]()
 
