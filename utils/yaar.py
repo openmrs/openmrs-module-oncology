@@ -86,11 +86,15 @@ if (ACTION == "-purge"):
     # add an additional "purge=true" param to end of url
     uuidOrderSetParam.append("?purge=true")
 
+if (ACTION == "-retire") or (ACTION == "-purge"):
     # retire orderSet
     r = requests.delete(url = API_ENDPOINT + "/orderset" + uuidOrderSetParam,
                     auth = (USERID,PASSWORD),
                     headers = HEADERS,
                     verify = False)
+    # display results
+    print r;
+    exit()
 
 # if tool action is to add or update a regimen orderSet...
 if (ACTION == "-add") or (ACTION == "-update"):
@@ -141,7 +145,7 @@ for x in range(len(regimen["orderset"]["orders"])):
 
     #--------------------------------------------------------------------------
     # use orderType encoded value
-    order_type = urllib.quote(regimen["orderset"]["orders"][x]["type"])
+    order_type = "Drug Order" #urllib.quote(regimen["orderset"]["orders"][x]["type"])
 
     # fetch orderType UUID value
     r = requests.get(url = API_ENDPOINT + "/ordertype?v=full&q=" + order_type,
@@ -208,6 +212,7 @@ for x in range(len(regimen["orderset"]["orders"])):
 
     #--------------------------------------------------------------------------
     jsonOrderTemplate = ObjDict();
+    jsonOrderTemplate.type = regimen["orderset"]["orders"][x]["type"]
     jsonOrderTemplate.category = regimen["orderset"]["orders"][x]["category"]
     jsonOrderTemplate.drugConcept = regimen["orderset"]["orders"][x]["drugConcept"]
     jsonOrderTemplate.drugName = regimen["orderset"]["orders"][x]["drugName"]
@@ -227,7 +232,7 @@ for x in range(len(regimen["orderset"]["orders"])):
     # build orderSetMember JSON payload data set...
     orderSetMember = ObjDict()
     orderSetMember.orderType = ObjDict()
-    orderSetMember.orderType.uuid = uuidOrderType # usually UUID of "Drug Order" type
+    orderSetMember.orderType.uuid = uuidOrderType # usually UUID of Concept Drug
     orderSetMember.orderTemplate = jsonOrderTemplate.dumps()
     orderSetMember.concept = ObjDict()
     orderSetMember.concept.display = nameOrderTypeConcept

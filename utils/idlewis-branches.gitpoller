@@ -1,8 +1,8 @@
 # git account and repo being watched
 hostURL: "https://api.github.com"
 apiEndpoint: ""
-userID: dearmasm
-password: <api token here>
+userID: <github userid>
+password: <github apikey>
 account: "idlewis"
 repoBranches:
     - # repo/branch 1
@@ -13,4 +13,4 @@ repoBranches:
       branch: "integration"
 
 # execute this action when change is detected
-executeOnChange: /home/dearmasm/build/build.sh"
+executeOnChange: "/home/dearmasm/build/build.sh"

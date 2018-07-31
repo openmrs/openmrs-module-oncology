@@ -12,7 +12,7 @@ orderset:
  # ---------------- PREMED DRUGS ----------------
 
     - # order PREMED 1
-      type: "Drug Order"
+      type: "drugorder"
       relativeStartDay: 1,8,15
       category: "Premedication" # Premedication, Chemotherapy, Post medication
       drugConcept: "Dextrose"
@@ -25,7 +25,7 @@ orderset:
         dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
     - # order PREMED 2
-      type: "Drug Order"
+      type: "drugorder"
       relativeStartDay: 1,8,15
       category: "Premedication" # Premedication, Chemotherapy, Post medication
       drugConcept: "ondansetron"
@@ -41,7 +41,7 @@ orderset:
 # ---------------- CHEMO DRUGS ----------------
 
     - # order CHEMO 1
-      type: "Drug Order"
+      type: "drugorder"
       relativeStartDay: 1,8,15
       category: "Chemotherapy" # Premedication, Chemotherapy, Post medication
       drugConcept: "Leucovorin"
@@ -53,7 +53,7 @@ orderset:
         dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
     - # order CHEMO 2
-      type: "Drug Order"
+      type: "drugorder"
       relativeStartDay: 1,8,15
       category: "Chemotherapy" # Premedication, Chemotherapy, Post medication
       drugConcept: "Fluorouracil"

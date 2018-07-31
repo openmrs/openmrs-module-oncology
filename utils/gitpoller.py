@@ -17,6 +17,10 @@ import datetime
 # TODO: remove this warning disabling statement!
 requests.packages.urllib3.disable_warnings()
 
+
+# start tool implementation
+print "SIMPLE GIT POLLER UTILITY v1.0 (20180803)..."
+
 # open tool configuration file and load contents
 CONFIG_FILE = sys.argv[1]
 print "[INFO] CONFIG_FILE: " + CONFIG_FILE
@@ -82,12 +86,12 @@ while True:
 
     # check if we need to trigger a rebuild of repos...
     if (changeDetected == True):
+        print "[INFO] executing change process: " + CHANGE_ACTION
         # invoke subprocess (and wait -- block -- until it has completed)
-        #subprocess.call(CHANGE_ACTION)
-        hello = "world"
+        subprocess.call(CHANGE_ACTION)
 
     # wait a little bit before checking with git again (polling)
-    time.sleep(10) # seconds
+    time.sleep(1800) # in seconds (i.e. check for change every 30mins)
 
 
 # you will never reach here b/c of infinite while loop

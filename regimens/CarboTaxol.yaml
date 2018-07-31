@@ -12,7 +12,7 @@ orderset:
  # ---------------- PREMED DRUGS ----------------
 
     - # order PREMED 1
-      type: "Drug Order"
+      type: "drugorder"
       relativeStartDay: 1
       category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
       drugConcept: "0.9% Normal Saline"
@@ -25,7 +25,7 @@ orderset:
         dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
     - # order PREMED 2
-      type: "Drug Order"
+      type: "drugorder"
       relativeStartDay: 1
       category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
       drugConcept: "Dexamethasone"
@@ -38,7 +38,7 @@ orderset:
         dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
     - # order PREMED 3
-      type: "Drug Order"
+      type: "drugorder"
       relativeStartDay: 1
       category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
       drugConcept: "Cimetidine"
@@ -51,7 +51,7 @@ orderset:
         dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
     - # order PREMED 4
-      type: "Drug Order"
+      type: "drugorder"
       relativeStartDay: 1
       category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
       drugConcept: "Diphenhydramine"
@@ -64,7 +64,7 @@ orderset:
         dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
     - # order PREMED 5
-      type: "Drug Order"
+      type: "drugorder"
       relativeStartDay: 1
       category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
       drugConcept: "Ondansetron"
@@ -79,7 +79,7 @@ orderset:
 # ---------------- CHEMO DRUGS ----------------
 
     - # order CHEMO 1
-      type: "Drug Order"
+      type: "drugorder"
       relativeStartDay: 1
       category: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
       drugConcept: "Paclitaxel"
@@ -91,7 +91,7 @@ orderset:
         dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
     - # order CHEMO 2
-        type: "Drug Order"
+        type: "drugorder"
         relativeStartDay: 1
         category: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
         drugConcept: "Carboplatin"
