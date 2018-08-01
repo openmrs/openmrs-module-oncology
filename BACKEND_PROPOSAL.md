@@ -158,7 +158,7 @@ OT_UC1 - Authoring an oncology regimen templates for use in EMR solution
   3. Use Regimen Automation Management (YAAR) tool ([here](https://github.com/dearmasm/openmrs-module-oncology/edit/master/utils)) to validate and test your new chemotherapy regimen definition.
   4. Save new chemotherapy regimen into your OpenMRS module repo/project leverage YAAR tool for deploying regimens onto target system (note the just-in-time UUID lookup logic that the tool allows for supporting portable drug concepts)
 
-- Usage information for **Yet Another Automated Regimen (YAAR)** management tool:
+- Usage information for **`Yet Another Automated Regimen (YAAR)`** management tool:
   
   - First, you must create an YAAR tool *server configuration file* to provide the YAAR tool with the required OpenMRS server api endpoint connectivity parameters. 
   You can use the `*.conf` examples available in this project's [/util](https://github.com/dearmasm/openmrs-module-oncology/edit/master/utils) directory as starting templates.
@@ -284,8 +284,42 @@ OT_UC1 - Authoring an oncology regimen templates for use in EMR solution
 
 - Samples:  
   
-  
-  
+OT_UC2 - Editing an oncology regimen templates currently in use in an EMR solution
+------
+
+
+- Summary flow:
+  1. There is chemotherapy regimen currently in use in an OpenMRS instance and it needs to be updated (for example, add/remove drug treatment detail or cycle information).
+  2. Using YAAR tool (or other method), find the `UUID` for chemotherapy regimen `OrderSet` object instance you want to update.
+  3. Edit regimen input file associated with `OrderSet` template you want to target.
+  4. Apply changes to existing regimen using YAAR tool `UPDATE` capability (described in OT_UC1 section).
+  5. Using YAAR tool (or other method), review updates applied to chemotherapy regimen `OrderSet` `UUID` object instance you provided in prior step.  
+    
+    
+ - Usage Example:  
+   
+   - Fetch all regimens (i.e. all non-retired `OrderSet`s) in an OpenMRS system
+     ```bash session
+     $ ./yaar.sh -get localhost-server.conf > all-regimens.json
+     ```
+   - Search `all-regimens.json` for the chemotherapy regimen order set that needs to be updated (let's assume the UUID for that order set regimen is `131168f4-15f5-102d-96e4-000c29c2a5d7`).
+   - Fetch the specific `foo` regimen's metadata and save in file `regimen-foo.json` for reference.  
+    ```bash session
+     $ ./yaar.sh -get localhost-server.conf 131168f4-15f5-102d-96e4-000c29c2a5d7 > regimen-foo.json
+     ```
+   - Examine `regimen-foo.json` to confirm that this is the chemotherapy regimen order set that we want to update.
+   - Now let's udpate order set regimen with latest regimen template file metadata (let's assume it is called `foo.yaml`).
+   - ```bash session
+     $ ./yaar.sh -update localhost-server.conf foo.yaml 131168f4-15f5-102d-96e4-000c29c2a5d7 > updated-regimen-foo.json
+     ```     
+   - Fetch `foo` regimen's metadata again and save in a new file `updated-regimen-foo.json` for comparison in next step.  
+     ```bash session
+     $ ./yaar.sh -get localhost-server.conf 131168f4-15f5-102d-96e4-000c29c2a5d7 > regimen-foo.json
+     ```
+   - Finally, compare `updated-regimen-foo.json` with `regimen-foo.json` to confirm that all the updates to chemotherapy regimen `foo`'s metadata were applied.  
+     
+       
+       
 
 Proposal
 ========
