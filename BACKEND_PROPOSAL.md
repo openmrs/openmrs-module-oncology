@@ -202,7 +202,8 @@ OT_UC1 - Authoring an oncology regimen templates for use in EMR solution
   - Enabling Debugging  
      The tool allows for debugging mode to be enabled by appending `+d` to tool action name. So, for example, `-add` becomes `-add+d` to enable debugging for that command execution instance.  
      Here is table with quick look up for enabling debug mode for the different action parameters tool supports: 
-      No Debug | Debug Mode |
+     
+     No Debug | Debug Mode |
      --- | --- |
       `-add` | `-add+d`
       `-get` | `-get+d`
