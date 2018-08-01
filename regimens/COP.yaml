@@ -15,8 +15,8 @@ orderset:
       type: "drugorder"
       relativeStartDay: 1
       category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drugConcept: "0.9% Normal Saline"
-      drugName: "sodium chloride 0.9%, intravenous infusion, 1000ml"
+      drugConcept: "SODIUM CHLORIDE"
+      drugName: "Sodium chloride (normal saline) 0.9% , 1000mL bottle"
       dose: 1000
       doseUnits: "Milliliter"
       route: "Intravenous"
@@ -29,7 +29,7 @@ orderset:
       relativeStartDay: 1
       category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
       drugConcept: "Ondansetron"
-      drugName: "ondansetron, 8mg, tablet film coated tablet"
+      drugName: "ondansetron, 4mg, tablet film coated tablet"
       dose: 8
       doseUnits: "Milligram"
       route: "Oral"
@@ -45,7 +45,7 @@ orderset:
       relativeStartDay: 1
       category: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
       drugConcept: "Prednisone"
-      drugName: "predniSONE"
+      drugName: "predniSONE, 20mg tablet"
       dose: 100
       doseUnits: "Milligram"
       route: "Oral"
@@ -59,7 +59,9 @@ orderset:
       relativeStartDay: 1
       category: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
       drugConcept: "Vincristine"
-      drugName: "vinCRIStine 1.4 mg/m2"
+      drugName: "vinCRIStine sulfate, 1 mg/mL, 1mL vial"
+      dose: 1.4
+      doseUnits: "Milligram per square meter"
       route: "Intravenous"
       dosingInstructions:
         dilution: "No dilution needed"
@@ -71,9 +73,11 @@ orderset:
       relativeStartDay: 1
       category: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
       drugConcept: "Cyclophosphamide"
-      drugName: "cycloPHOSPHAMIDE 750 mg/m2"
+      drugName: "cycloPHOSPHAMIDE for injection, 1000mg vial"
+      dose: 750
+      doseUnits: "Milligram per square meter"
       route: "Intravenous"
       dosingInstructions:
-        dilution: "Dilute to 1g/50mL with sterile water for injection. Mix prescribed dose/volume with 500mL 0.9% NS."
+        dilution: "Dilute to 1g/50ml with sterile water for injection. Mix prescribed dose/volume with 500mL 0.9 NS"
         timing: "IV Push over 1-2 hours"
         dosingAdjustment: 0 # +/- percentage adjustment from regimen order
