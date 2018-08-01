@@ -221,9 +221,9 @@ for x in range(len(regimen["orderset"]["orders"])):
     jsonOrderTemplate.doseUnits = regimen["orderset"]["orders"][x].get("doseUnits")
     jsonOrderTemplate.relativeStartDay = regimen["orderset"]["orders"][x]["relativeStartDay"]
     jsonOrderTemplate.dosingInstructions = ObjDict()
-    jsonOrderTemplate.dosingInstructions.dosingTiming = regimen["orderset"]["orders"][x]["dosingInstructions"]["timing"]
-    jsonOrderTemplate.dosingInstructions.dosingDilution = regimen["orderset"]["orders"][x]["dosingInstructions"].get("dilution")
-    jsonOrderTemplate.dosingInstructions.dosingAdjustment = regimen["orderset"]["orders"][x]["dosingInstructions"]["dosingAdjustment"]
+    jsonOrderTemplate.dosingInstructions.dosingTimingInstructions = regimen["orderset"]["orders"][x]["dosingInstructions"]["timing"]
+    jsonOrderTemplate.dosingInstructions.dosingDilutionInstructions = regimen["orderset"]["orders"][x]["dosingInstructions"].get("dilution")
+    jsonOrderTemplate.dosingInstructions.dosingAdjustmentPercentage = regimen["orderset"]["orders"][x]["dosingInstructions"]["dosingAdjustment"]
     jsonOrderTemplate.orderTemplateType = None
 
     # DEBUG
@@ -280,6 +280,7 @@ if ACTION == "-update":
         displayArgsHelp()
         exit()
 
+# output request input file
 print order.dumps()
 
 # create or update an orderSet (Regimen) template

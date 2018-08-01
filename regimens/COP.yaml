@@ -64,7 +64,7 @@ orderset:
       doseUnits: "Milligram per square meter"
       route: "Intravenous"
       dosingInstructions:
-        dilution: "No dilution needed"
+        dilution: "No dilution needed. Give via IV push with free flowing 0.9% NS."
         timing: "IV Push over 1-2 minutes"
         dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 

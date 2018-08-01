@@ -15,8 +15,8 @@ orderset:
     type: "drugorder"
     relativeStartDay: 1
     category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-    drugConcept: "0.9% Normal Saline"
-    drugName: "sodium chloride 0.9%, intravenous infusion, 500ml"
+    drugConcept: "SODIUM CHLORIDE"
+    drugName: "Sodium chloride (normal saline) 0.9% , 500mL bottle"
     dose: 500
     doseUnits: "Milliliter"
     route: "Intravenous"
@@ -29,7 +29,7 @@ orderset:
     relativeStartDay: 1
     category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
     drugConcept: "Dexamethasone"
-    drugName: "dexamethasone 20mg PO"
+    drugName: "Dexamethasone, 8mg, tablet"
     dose: 20
     doseUnits: "Milligram"
     route: "Oral"
@@ -42,7 +42,7 @@ orderset:
     relativeStartDay: 1
     category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
     drugConcept: "Dexamethasone"
-    drugName: "dexamethasone 20mg PO"
+    drugName: "Dexamethasone, 8mg, tablet"
     dose: 20
     doseUnits: "Milligram"
     route: "Oral"
@@ -55,7 +55,7 @@ orderset:
     relativeStartDay: 1
     category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
     drugConcept: "Dexamethasone"
-    drugName: "dexamethasone 20mg PO"
+    drugName: "Dexamethasone, 8mg, tablet"
     dose: 20
     doseUnits: "Milligram"
     route: "Oral"
@@ -68,7 +68,7 @@ orderset:
     relativeStartDay: 1
     category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
     drugConcept: "Cimetidine"
-    drugName: "cimetidine 600mg PO"
+    drugName: "Cimetidine, 200 mg, tablet"
     dose: 600
     doseUnits: "Milligram"
     route: "Oral"
@@ -81,7 +81,7 @@ orderset:
     relativeStartDay: 1
     category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
     drugConcept: "Diphenhydramine"
-    drugName: "diphenhydramine 50mg PO"
+    drugName: "Diphenhydramine hydrochloride, 25mg tablet"
     dose: 50
     doseUnits: "Milligram"
     route: "Oral"
@@ -94,7 +94,7 @@ orderset:
     relativeStartDay: 1
     category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
     drugConcept: "Ondansetron"
-    drugName: "ondansetron, 8mg, tablet film coated tablet"
+    drugName: "ondansetron, 4mg, tablet film coated tablet"
     dose: 8
     doseUnits: "Milligram"
     route: "Oral"
@@ -109,7 +109,9 @@ orderset:
     relativeStartDay: 1
     category: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
     drugConcept: "Paclitaxel"
-    drugName: "PACLitaxel 175 mg/m2"
+    drugName: "PACLitaxel 6 mg/mL, 50mL vial"
+    dose: 175
+    doseUnits: "Milligram per square meter"
     route: "Intravenous"
     dosingInstructions:
       dilution: "Mix prescribed dose / volume with 500mL 0.9% NS."

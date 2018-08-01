@@ -62,7 +62,7 @@ orderset:
       drugConcept: "Doxorubicin"
       drugName: "DOXOrubicin 2 mg/mL, 25mL vial"
       dose: 50
-      doseUnits: "Milligram/Square meter"
+      doseUnits: "Milligram per square meter"
       route: "Intravenous"
       dosingInstructions:
         dilution: "Dilute to 2mg/mL with 0.9% NS. Give via IV push with free flowing 0.9% NS."

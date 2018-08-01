@@ -15,8 +15,8 @@ orderset:
       type: "drugorder"
       relativeStartDay: 1
       category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drugConcept: "0.9% Normal Saline"
-      drugName: "sodium chloride 0.9%, intravenous infusion, 500ml"
+      drugConcept: "SODIUM CHLORIDE"
+      drugName: "Sodium chloride (normal saline) 0.9% , 500mL bottle"
       dose: 500
       doseUnits: "Milliliter"
       route: "Intravenous"
@@ -29,7 +29,7 @@ orderset:
       relativeStartDay: 1
       category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
       drugConcept: "Dexamethasone"
-      drugName: "dexamethasone 16mg PO"
+      drugName: "Dexamethasone, 8mg, tablet"
       dose: 16
       doseUnits: "Milligram"
       route: "Oral"
@@ -42,7 +42,7 @@ orderset:
       relativeStartDay: 1
       category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
       drugConcept: "Ondansetron"
-      drugName: "ondansetron, 8mg, tablet film coated tablet"
+      drugName: "ondansetron, 4mg, tablet film coated tablet"
       dose: 8
       doseUnits: "Milligram"
       route: "Oral"
@@ -58,7 +58,9 @@ orderset:
       relativeStartDay: 1
       category: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
       drugConcept: "Doxorubicin"
-      drugName: "DOXOrubicin 20 mg/m2"
+      drugName: "DOXOrubicin 2 mg/mL, 25mL vial"
+      dose: 20
+      doseUnits: "Milligram per square meter"
       route: "Intravenous"
       dosingInstructions:
         dilution: "Dilute to 2mg/mL with 0.9% NS. Give via IV push with free flowing 0.9% NS."

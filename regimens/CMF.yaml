@@ -15,8 +15,8 @@ orderset:
       type: "drugorder"
       relativeStartDay: 1
       category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-      drugConcept: "0.9% Normal Saline"
-      drugName: "sodium chloride 0.9%, intravenous infusion, 1000ml"
+      drugConcept: "SODIUM CHLORIDE"
+      drugName: "Sodium chloride (normal saline) 0.9% , 1000mL bottle"
       dose: 1000
       doseUnits: "Milliliter"
       route: "Intravenous"
@@ -29,7 +29,7 @@ orderset:
       relativeStartDay: 1
       category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
       drugConcept: "Dexamethasone"
-      drugName: "dexamethasone 16mg PO"
+      drugName: "Dexamethasone, 8mg, tablet"
       dose: 16
       doseUnits: "Milligram"
       route: "Oral"
@@ -42,7 +42,7 @@ orderset:
         relativeStartDay: 1
         category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
         drugConcept: "Ondansetron"
-        drugName: "ondansetron, 8mg, tablet film coated tablet"
+        drugName: "ondansetron, 4mg, tablet film coated tablet"
         dose: 8
         doseUnits: "Milligram"
         route: "Oral"
@@ -57,7 +57,9 @@ orderset:
       relativeStartDay: 1
       category: "Chemotherapy" # Premedication, Chemotherapy, Post medication
       drugConcept: "Fluorouracil"
-      drugName: "fluorouracil 600 mg/m2 IV Push"
+      drugName: "fluorouracil 50 mg/mL, 10mL vial"
+      dose: 600
+      doseUnits: "Milligram per square meter"
       route: "Intravenous"
       dosingInstructions:
         dilution: "No dilution needed"
@@ -70,6 +72,8 @@ orderset:
       category: "Chemotherapy" # Premedication, Chemotherapy, Post medication
       drugConcept: "Methotrexate"
       drugName: "methotrexate 40 mg/m2"
+      dose: 40
+      doseUnits: "Milligram per square meter"
       route: "Intravenous"
       dosingInstructions:
         dilution: "No dilution needed"
@@ -81,9 +85,11 @@ orderset:
       relativeStartDay: 1
       category: "Chemotherapy" # Premedication, Chemotherapy, Post medication
       drugConcept: "Cyclophosphamide"
-      drugName: "cycloPHOSPHAMIDE 600 mg/m2"
+      drugName: "cycloPHOSPHAMIDE for injection, 1000mg vial"
+      dose: 600
+      doseUnits: "Milligram per square meter"
       route: "Intravenous"
       dosingInstructions:
-        dilution: "Mix prescribed dose/volume with 500mL 0.9% NS."
+        dilution: "Dilute to 1g/50ml with sterile water for injection. Mix prescribed dose/volume with 500mL 0.9 NS"
         timing: "Infuse over 1-2 hours."
         dosingAdjustment: 0 # +/- percentage adjustment from regimen order

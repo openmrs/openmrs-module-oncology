@@ -15,8 +15,8 @@ orderset:
       type: "drugorder"
       relativeStartDay: 1,8,15
       category: "Premedication" # Premedication, Chemotherapy, Post medication
-      drugConcept: "Dextrose"
-      drugName: "Dextrose 5 %, intravenous infusion, 250 mL bottle"
+      drugConcept: "Dextrose 5% in water"
+      drugName: "dextrose 5%, intravenous infusion, 250mL"
       dose: 250
       doseUnits: "Milliliter"
       route: "Intravenous"
@@ -28,8 +28,8 @@ orderset:
       type: "drugorder"
       relativeStartDay: 1,8,15
       category: "Premedication" # Premedication, Chemotherapy, Post medication
-      drugConcept: "ondansetron"
-      drugName: "ondansetron, 8mg, tablet film coated tablet"
+      drugConcept: "Ondansetron"
+      drugName: "ondansetron, 4mg, tablet film coated tablet"
       dose: 8
       doseUnits: "Milligram"
       route: "Oral"
@@ -45,7 +45,9 @@ orderset:
       relativeStartDay: 1,8,15
       category: "Chemotherapy" # Premedication, Chemotherapy, Post medication
       drugConcept: "Leucovorin"
-      drugName: "leucovorin calcium 500 mg/m2"
+      drugName: "leucovorin calcium, 10mg/ML, 5mL vial"
+      dose: 500
+      doseUnits: "Milligram per square meter"
       route: "Intravenous"
       dosingInstructions:
         dilution: "Mix with 500ml of D5W"
@@ -57,7 +59,9 @@ orderset:
       relativeStartDay: 1,8,15
       category: "Chemotherapy" # Premedication, Chemotherapy, Post medication
       drugConcept: "Fluorouracil"
-      drugName: "fluorouracil 500 mg/m2 IV Infusion"
+      drugName: "fluorouracil 50 mg/mL, 10mL vial"
+      dose: 500
+      doseUnits: "Milligram per square meter"
       route: "Intravenous"
       dosingInstructions:
         dilution: "IV Push no dilution needed"
