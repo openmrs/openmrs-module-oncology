@@ -10,10 +10,10 @@ OpenMRS 2.1.3 Mirebalais: Oncology Regimen Ordering & Dashboard Support
 - [Technical Flows](#technical-flows)
   * [DR_UC1 - Select chemotherapy regimen from list](#dr-uc1---select-chemotherapy-regimen-from-list)
   * [DR_UC2 - Submit an order for the selected chemotherapy regimen in DR_UC1 use case](#dr-uc2---submit-an-order-for-the-selected-chemotherapy-regimen-in-dr-uc1-use-case)
+  * [OT_UC1 - Authoring an oncology regimen templates for use in EMR solution](#ot-uc1---authoring-an-oncology-regimen-templates-for-use-in-emr-solution)
 - [Proposal](#proposal)
 - [Extended Content](#extended-content)
 - [Technical TODOs/Open Issues](#technical-todos-open-issues)
-
 
 Purpose
 -------
@@ -219,10 +219,14 @@ OT_UC1 - Authoring an oncology regimen templates for use in EMR solution
      ```
   
   
-- Implementation notes:
-    The tool is written in `Python 3` language. The key implementation file is [yaar.py](https://github.com/dearmasm/openmrs-module-oncology/edit/master/utils/yaar.py). There is a bash-friendly convenience wrapper included [yaar.sh](https://github.com/dearmasm/openmrs-module-oncology/edit/master/utils/yaar.sh) that can be used to launch YAAR tool without having to type `python yaar.py` every time.
-    The tool supports drug concepts UUID look ups and building the `OrderSet` HTTP body requests dynamically to match API/object structure (specifically it will encode order set list members properly and append new chemo order set attribute extensions added by IBM+PIH chemo treatment project).
-    The tool uses several specialized Python package libraries which will usually require installing manually (see next section on tool requisites).
+- Implementation notes:  
+
+    - The tool is written in `Python 3` language. The key implementation file is [yaar.py](https://github.com/dearmasm/openmrs-module-oncology/edit/master/utils/yaar.py). There is a bash-friendly convenience wrapper included [yaar.sh](https://github.com/dearmasm/openmrs-module-oncology/edit/master/utils/yaar.sh) that can be used to launch YAAR tool without having to type `python yaar.py` every time.  
+    
+    - The tool supports drug concepts UUID look ups and building the `OrderSet` HTTP body requests dynamically to match API/object structure (specifically it will encode order set list members properly and append new chemo order set attribute extensions added by IBM+PIH chemo treatment project).  
+    
+    - The tool uses several specialized Python package libraries which will usually require installing manually (see next section on tool requisites).  
+    
 
 
 - Requisites:
@@ -278,17 +282,10 @@ OT_UC1 - Authoring an oncology regimen templates for use in EMR solution
 - Sequence Diagram
 ![]()
 
-- Data Model References:
-[Class Diagram](#data-model)  
-[OrderSet object](https://docs.openmrs.org/doc/org/openmrs/OrderSet.html)  
-[OrderSet serialization](https://docs.openmrs.org/doc/serialized-form.html#org.openmrs.OrderSet)  
-
 - Samples:  
   
-request: 
-response: 
-
-
+  
+  
 
 Proposal
 ========
