@@ -153,13 +153,23 @@ OT_UC1 - Authoring an oncology regimen templates for use in EMR solution
 ------
 
 - Summary flow:
-  1. Download and rename one of the existing regimens available from this repo folder: ([here](https://github.com/dearmasm/openmrs-module-oncology/edit/master/regimens).
+  1. Download and rename one of the existing regimens available from this repo folder: ([here](https://github.com/dearmasm/openmrs-module-oncology/edit/master/regimens)).
   2. Edit newly created regimen definition file to contain the new chemotherapy treatment orders and dosages (premedications drugs, chemo drugs, post medication drugs).
-  3. Use Regimen Automation Management (YAAR) tool ([here](https://github.com/dearmasm/openmrs-module-oncology/edit/master/utils) to validate and test your new chemotherapy regimen definition.
+  3. Use Regimen Automation Management (YAAR) tool ([here](https://github.com/dearmasm/openmrs-module-oncology/edit/master/utils)) to validate and test your new chemotherapy regimen definition.
   4. Save new chemotherapy regimen into your OpenMRS module repo/project leverage YAAR tool for deploying regimens onto target system (note the just-in-time UUID lookup logic that the tool allows for supporting portable drug concepts)
 
 - Usage information:
-  - Add 
+  - ADD (create new instance) a new regimen `OrderSet` on a target OpenMRS solution instance
+     ```$ ./yaar.sh -add <openmrs-server.conf> <regimen-input-file>```
+
+  - GET all (existing) regimen `OrderSet` instances metadata from a target OpenMRS solution instance 
+     ```$ ./yaar.sh -get <openmrs-server.conf>```
+
+  - GET a specific (existing) regimen `OrderSet` instance metadata from a target OpenMRS solution instance 
+     ```$ ./yaar.sh -get <openmrs-server.conf> <regimen-uuid>```
+
+  - UPDATE an existing regimen `OrderSet` instance on a target OpenMRS solution instance 
+     ```$ ./yaar.sh -update <openmrs-server.conf> <regimen-input-file>```
 
 - Implementation notes: TBD
 
