@@ -182,7 +182,7 @@ OT_UC1 - Authoring an oncology regimen templates for use in EMR solution
      Edit new file and add your specific OpenMRS host connectivity details - which will be used later as a YAAR tool parameter file. 
      
      
-  - BASIC USAGE INFO 
+  - USAGE INFO 
      ```bash
      $ ./yaar.sh
      OPENMRS REGIMEN ORDERSET TOOL v1.0 (20180803)...
@@ -210,7 +210,8 @@ OT_UC1 - Authoring an oncology regimen templates for use in EMR solution
       `-update` | `-update+d`
       `-retire` | `-retire+d`  
   
-  
+    
+    
 
   - **`ADD`** (create new instance) a new regimen `OrderSet` on a target OpenMRS solution instance
      ```bash
