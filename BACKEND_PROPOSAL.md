@@ -158,9 +158,10 @@ OT_UC1 - Authoring an oncology regimen templates for use in EMR solution
   3. Use Regimen Automation Management (YAAR) tool ([here](https://github.com/dearmasm/openmrs-module-oncology/edit/master/utils)) to validate and test your new chemotherapy regimen definition.
   4. Save new chemotherapy regimen into your OpenMRS module repo/project leverage YAAR tool for deploying regimens onto target system (note the just-in-time UUID lookup logic that the tool allows for supporting portable drug concepts)
 
-- Usage information for *Yet Another Automated Regimen* (YAAR) management tool:
+- Usage information for **Yet Another Automated Regimen (YAAR)** management tool:
   
-  - First, you must create an OpenMRS server configuration file to provide the YAAR tool with server api endpoint connectivity parameters. Use `*.conf` examples available in this project's [/util](https://github.com/dearmasm/openmrs-module-oncology/edit/master/utils) directory as starting templates.
+  - First, you must create an YAAR tool *server configuration file* to provide the YAAR tool with the required OpenMRS server api endpoint connectivity parameters. 
+  You can use the `*.conf` examples available in this project's [/util](https://github.com/dearmasm/openmrs-module-oncology/edit/master/utils) directory as starting templates.
      ```yaml
      $ cat localhost-server.conf 
      # YAAR tool configuration file (YAML format)
@@ -178,10 +179,10 @@ OT_UC1 - Authoring an oncology regimen templates for use in EMR solution
      
      $vi myhost-server.conf
      ```
-     Edit new file and add your specific OpenMRS host connectivity details - which will be used by YAAR tool. 
+     Edit new file and add your specific OpenMRS host connectivity details - which will be used later as a YAAR tool parameter file. 
      
      
-  - USAGE INFO 
+  - BASIC USAGE INFO 
      ```bash
      $ ./yaar.sh
      OPENMRS REGIMEN ORDERSET TOOL v1.0 (20180803)...
@@ -192,33 +193,37 @@ OT_UC1 - Authoring an oncology regimen templates for use in EMR solution
      ```
 
 
-  - `ADD` (create new instance) a new regimen `OrderSet` on a target OpenMRS solution instance
+  - **`ADD`** (create new instance) a new regimen `OrderSet` on a target OpenMRS solution instance
      ```bash
      $ ./yaar.sh -add <openmrs-server.conf> <regimen-input-file>
      ```
 
-  - `GET all` (existing) regimen `OrderSet` instances metadata from a target OpenMRS solution instance 
+  - **`GET all`** (existing) regimen `OrderSet` instances metadata from a target OpenMRS solution instance 
      ```bash
      $ ./yaar.sh -get <openmrs-server.conf>
      ```
 
-  - `GET` a specific (existing) regimen `OrderSet` instance metadata from a target OpenMRS solution instance 
+  - **`GET`** a specific (existing) regimen `OrderSet` instance metadata from a target OpenMRS solution instance 
      ```bash
      $ ./yaar.sh -get <openmrs-server.conf> <regimen-uuid>
      ```
 
-  - `UPDATE` an existing regimen `OrderSet` instance on a target OpenMRS solution instance 
+  - **`UPDATE`** an existing regimen `OrderSet` instance on a target OpenMRS solution instance 
      ```bash session
      $ ./yaar.sh -update <openmrs-server.conf> <regimen-input-file> <regimen-uuid>
      ```
 
-  - `RETIRE` an existing regimen `OrderSet` instance from a target OpenMRS solution instance 
+  - **`RETIRE`** an existing regimen `OrderSet` instance from a target OpenMRS solution instance 
      ```bash session
      $ ./yaar.sh -retire <openmrs-server.conf> <regimen-uuid>
      ```
   
   
-- Implementation notes: TBD
+- Implementation notes:
+    The tool is written in `Python 3` language. The key implementation file is [yaar.py](https://github.com/dearmasm/openmrs-module-oncology/edit/master/utils/yaar.py). There is a bash-friendly convenience wrapper included [yaar.sh](https://github.com/dearmasm/openmrs-module-oncology/edit/master/utils/yaar.sh) that can be used to launch YAAR tool without having to type `python yaar.py` every time.
+    The tool supports drug concepts UUID look ups and building the `OrderSet` HTTP body requests dynamically to match API/object structure (specifically it will encode order set list members properly and append new chemo order set attribute extensions added by IBM+PIH chemo treatment project).
+    The tool uses several specialized Python package libraries which will usually require installing manually (see next section on tool requisites).
+
 
 - Requisites:
   - MacOS (Mavericks or higher) instructions:
