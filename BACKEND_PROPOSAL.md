@@ -102,7 +102,7 @@ DR_UC1 - Select chemotherapy regimen from list
 - Implementation notes: Data encoded in `OrderSetMember.orderTemplate` is a seralized escaped JSON string that must be decoded in presentation later to understand data. When creating `Order` objects in the next use case, the final JSON string must be serialized similarly containing the updated (if applicable) chemotherapy drugs being ordered by doctor in final initial order.
 
 - Sequence Diagram:  
-![](https://www.websequencediagrams.com/files/render?link=ULdAQkpjS3tFmqk8LmqX)
+![](images/sequence-DR_UC1.png)
 
 - Data Model References:  
  [Class Diagram](#data-model)  
@@ -135,7 +135,7 @@ DR_UC2 - Submit an order for the selected chemotherapy regimen in DR_UC1 use cas
 - Implementation notes: Response from the `POST /mirebalais/ws/rest/v1/encounter` request returns the same document submitted but with more of the fields completed, e.g. the UUID for the Encounter which has just been created. encounter role is a description of the type of person who is involved in the encounter (e.g. nurse) For existing drug orders, it looks like this is retreived with a query to `https://humci.pih-emr.org/mirebalais/ws/rest/v1/encounterrole?q=Ordering%20Provider`. Provider looks like a wrapper around person - not sure how to get this.
 
 - Sequence Diagram
-![](https://www.websequencediagrams.com/files/render?link=7g-em0gAuPSbCNUyClqT)
+![](images/sequence-DR_UC2.png)
 
 - Data Model References:
 [Class Diagram](#data-model)  
