@@ -160,8 +160,8 @@ OT_UC1 - Authoring an oncology regimen templates for use in EMR solution
 
 - Usage information for *Yet Another Automated Regimen* (YAAR) management tool:
   
-  - First, you must create an OpenMRS server configuration file to provide the YAAR tool with server api endpoint connectivity parameters. Use examples available in this project's /util directory as starting templates. Edit new file and add your specific OpenMRS host connectivity details - which will be used by YAAR tool. 
-     ```bash session
+  - First, you must create an OpenMRS server configuration file to provide the YAAR tool with server api endpoint connectivity parameters. Use `*.conf` examples available in this project's [/util](https://github.com/dearmasm/openmrs-module-oncology/edit/master/utils) directory as starting templates.
+     ```yaml
      $ cat localhost-server.conf 
      # YAAR tool configuration file (YAML format)
      # author: Mario De Armas
@@ -172,14 +172,17 @@ OT_UC1 - Authoring an oncology regimen templates for use in EMR solution
      apiEndpoint: "/ws/rest/v1"
      userID: "admin"
      password: "Admin123"
-     
+     ```
+     ```bash
      $cp localhost-server.conf myhost-server.conf
      
      $vi myhost-server.conf
      ```
+     Edit new file and add your specific OpenMRS host connectivity details - which will be used by YAAR tool. 
+     
      
   - USAGE INFO 
-     ```bash session
+     ```bash
      $ ./yaar.sh
      OPENMRS REGIMEN ORDERSET TOOL v1.0 (20180803)...
      [INFO] usage: yaar -add <config-file> <input-file>
@@ -190,17 +193,17 @@ OT_UC1 - Authoring an oncology regimen templates for use in EMR solution
 
 
   - `ADD` (create new instance) a new regimen `OrderSet` on a target OpenMRS solution instance
-     ```bash session
+     ```bash
      $ ./yaar.sh -add <openmrs-server.conf> <regimen-input-file>
      ```
 
   - `GET all` (existing) regimen `OrderSet` instances metadata from a target OpenMRS solution instance 
-     ```bash session
+     ```bash
      $ ./yaar.sh -get <openmrs-server.conf>
      ```
 
   - `GET` a specific (existing) regimen `OrderSet` instance metadata from a target OpenMRS solution instance 
-     ```bash session
+     ```bash
      $ ./yaar.sh -get <openmrs-server.conf> <regimen-uuid>
      ```
 
