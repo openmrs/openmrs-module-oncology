@@ -158,10 +158,29 @@ OT_UC1 - Authoring an oncology regimen templates for use in EMR solution
   3. Use Regimen Automation Management (YAAR) tool ([here](https://github.com/dearmasm/openmrs-module-oncology/edit/master/utils)) to validate and test your new chemotherapy regimen definition.
   4. Save new chemotherapy regimen into your OpenMRS module repo/project leverage YAAR tool for deploying regimens onto target system (note the just-in-time UUID lookup logic that the tool allows for supporting portable drug concepts)
 
-- Usage information:
-
+- Usage information for *Yet Another Automated Regimen* (YAAR) management tool:
+  
+  - First, you must create an OpenMRS server configuration file to provide the YAAR tool with server api endpoint connectivity parameters. Use examples available in this project's /util directory as starting templates. Edit new file and add your specific OpenMRS host connectivity details - which will be used by YAAR tool. 
+     ```bash session
+     $ cat localhost-server.conf 
+     # YAAR tool configuration file (YAML format)
+     # author: Mario De Armas
+     # date: 2018.08.03
+     #
+     # This file contains target OpenMRS server for use with YAAR utility:
+     hostURL: "http://localhost:8080/openmrs"
+     apiEndpoint: "/ws/rest/v1"
+     userID: "admin"
+     password: "Admin123"
+     
+     $cp localhost-server.conf myhost-server.conf
+     
+     $vi myhost-server.conf
+     ```
+     
   - USAGE INFO 
-     ```console $ ./yaar.sh
+     ```bash session
+     $ ./yaar.sh
      OPENMRS REGIMEN ORDERSET TOOL v1.0 (20180803)...
      [INFO] usage: yaar -add <config-file> <input-file>
                    yaar -get <config-file> [<uuid>]
@@ -170,20 +189,30 @@ OT_UC1 - Authoring an oncology regimen templates for use in EMR solution
      ```
 
 
-  - ADD (create new instance) a new regimen `OrderSet` on a target OpenMRS solution instance
-     ```console $ ./yaar.sh -add <openmrs-server.conf> <regimen-input-file>```
+  - `ADD` (create new instance) a new regimen `OrderSet` on a target OpenMRS solution instance
+     ```bash session
+     $ ./yaar.sh -add <openmrs-server.conf> <regimen-input-file>
+     ```
 
-  - GET all (existing) regimen `OrderSet` instances metadata from a target OpenMRS solution instance 
-     ```console $ ./yaar.sh -get <openmrs-server.conf>```
+  - `GET all` (existing) regimen `OrderSet` instances metadata from a target OpenMRS solution instance 
+     ```bash session
+     $ ./yaar.sh -get <openmrs-server.conf>
+     ```
 
-  - GET a specific (existing) regimen `OrderSet` instance metadata from a target OpenMRS solution instance 
-     ```console $ ./yaar.sh -get <openmrs-server.conf> <regimen-uuid>```
+  - `GET` a specific (existing) regimen `OrderSet` instance metadata from a target OpenMRS solution instance 
+     ```bash session
+     $ ./yaar.sh -get <openmrs-server.conf> <regimen-uuid>
+     ```
 
-  - UPDATE an existing regimen `OrderSet` instance on a target OpenMRS solution instance 
-     ```console $ ./yaar.sh -update <openmrs-server.conf> <regimen-input-file> <regimen-uuid>```
+  - `UPDATE` an existing regimen `OrderSet` instance on a target OpenMRS solution instance 
+     ```bash session
+     $ ./yaar.sh -update <openmrs-server.conf> <regimen-input-file> <regimen-uuid>
+     ```
 
-  - RETIRE an existing regimen `OrderSet` instance from a target OpenMRS solution instance 
-     ```console $ ./yaar.sh -retire <openmrs-server.conf> <regimen-uuid>```
+  - `RETIRE` an existing regimen `OrderSet` instance from a target OpenMRS solution instance 
+     ```bash session
+     $ ./yaar.sh -retire <openmrs-server.conf> <regimen-uuid>
+     ```
   
   
 - Implementation notes: TBD
