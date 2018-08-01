@@ -190,21 +190,32 @@ OT_UC1 - Authoring an oncology regimen templates for use in EMR solution
                    yaar -get <config-file> [<uuid>]
                    yaar -update <config-file> <input-file> <uuid>
                    yaar -retire <config-file> <uuid>
-     ```
-
+     ```  
+     
+      HTTP CODE | Notes |
+     --- | --- |
+      *`200`* | Regimen instance (`OrderSet`) was udpated or returned (depending on YAAR action command executed)
+      *`201`* | New regimen instance (`OrderSet`) was created (it will have a unique UUID)      
+      *`400`* | Problem with the new regimen metadata or POST request structure is invalid, enable YAAR debugging and review error detail
+      *`500`* | Problem with OpenMRS server processing request, check server instance logs for insight
+      
+  - Enabling Debugging  
+     The tool allows for debugging mode to be enabled by appending `+d` to tool action name. So, for example, `-add` becomes `-add+d` to enable debugging for that command execution instance.  
+     Here is table with quick look up for enabling debug mode for the different action parameters tool supports: 
+      No Debug | Debug Mode |
+     --- | --- |
+      `-add` | `-add+d`
+      `-get` | `-get+d`
+      `-update` | `-update+d`
+      `-retire` | `-retire+d`  
+  
+  
 
   - **`ADD`** (create new instance) a new regimen `OrderSet` on a target OpenMRS solution instance
      ```bash
      $ ./yaar.sh -add <openmrs-server.conf> <regimen-input-file>
      ```
-     HTTP CODE | Notes |
-     --- | --- |
-      *`201`* | New regimen instance (`OrderSet`) was created (it will have a unique UUID)
-      *`400`* | Problem with the new regimen metadata or POST request structure is invalid, enable YAAR debugging and review error detail
-      *`500`* | Problem with OpenMRS server processing request, check server instance logs for insight
-      
-
-
+ 
   - **`GET all`** (existing) regimen `OrderSet` instances metadata from a target OpenMRS solution instance 
      ```bash
      $ ./yaar.sh -get <openmrs-server.conf>
