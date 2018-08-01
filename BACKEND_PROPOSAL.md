@@ -197,6 +197,13 @@ OT_UC1 - Authoring an oncology regimen templates for use in EMR solution
      ```bash
      $ ./yaar.sh -add <openmrs-server.conf> <regimen-input-file>
      ```
+     HTTP CODE | Notes |
+     --- | --- |
+      *`201`* | New regimen instance (`OrderSet`) was created (it will have a unique UUID)
+      *`400`* | Problem with the new regimen metadata or POST request structure is invalid, enable YAAR debugging and review error detail
+      *`500`* | Problem with OpenMRS server processing request, check server instance logs for insight
+      
+
 
   - **`GET all`** (existing) regimen `OrderSet` instances metadata from a target OpenMRS solution instance 
      ```bash
