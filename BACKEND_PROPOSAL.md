@@ -153,8 +153,14 @@ OT_UC1 - Authoring an oncology regimen templates for use in EMR solution
 ------
 
 - Summary flow:
-  1. TBD
-  
+  1. Download and rename one of the existing regimens available from this repo folder: ([here](https://github.com/dearmasm/openmrs-module-oncology/edit/master/regimens).
+  2. Edit newly created regimen definition file to contain the new chemotherapy treatment orders and dosages (premedications drugs, chemo drugs, post medication drugs).
+  3. Use Regimen Automation Management (YAAR) tool ([here](https://github.com/dearmasm/openmrs-module-oncology/edit/master/utils) to validate and test your new chemotherapy regimen definition.
+  4. Save new chemotherapy regimen into your OpenMRS module repo/project leverage YAAR tool for deploying regimens onto target system (note the just-in-time UUID lookup logic that the tool allows for supporting portable drug concepts)
+
+- Usage information:
+  - Add 
+
 - Implementation notes: TBD
 
 - Requisites:
