@@ -21,7 +21,9 @@ requests.packages.urllib3.disable_warnings()
 def buildDict(seq, key):
     return dict((d[key], dict(d, index=index)) for (index, d) in enumerate(seq))
 
-def displayArgsHelp():
+def displayArgsHelp(errorMissingParam):
+    if (errorMissingParam == True):
+        print "[ERROR] Missing parameters"
     print "[INFO] usage: yaar -add <config-file> <input-file>"
     print "              yaar -get <config-file> [<uuid>]"
     print "              yaar -update <config-file> <input-file> <uuid>"
@@ -31,13 +33,20 @@ def displayArgsHelp():
 # start tool implementation
 print "OPENMRS REGIMEN ORDERSET TOOL v1.0 (20180803)..."
 
-# check if enough params were passed in...
+# check if being invoked to learn args syntax...
 if len(sys.argv) < 3:
-    displayArgsHelp()
+    # check if enough params were passed in to warrant an error "missing params" message...
+    displayArgsHelp(len(sys.argv) > 1)
     exit()
 
-# parse base tool parameters
-ACTION = sys.argv[1]
+
+# parse required tool parameters
+ACTION_PARAM_SPLIT = sys.argv[1].split("+") # action param can contain "+d" for enabling debug-mode
+ACTION = ACTION_PARAM_SPLIT[0]  # action
+if (len(ACTION_PARAM_SPLIT) > 1):
+    DEBUG_MODE = ACTION_PARAM_SPLIT[1]   # debug-mode flag (=="d")
+else:
+    DEBUG_MODE = None                    # non-debug mode (==null)
 CONFIG_FILE = sys.argv[2]
 print "[INFO] ACTION: " + ACTION
 print "[INFO] CONFIG_FILE: " + CONFIG_FILE
@@ -69,6 +78,8 @@ if ACTION == "-get":
 
     # display fetched orderSet metadata
     print json.dumps(json.loads(r.text), indent=4)
+    # print HTTP response code
+    print r;
     exit()
 
 # if tool action is to retire or purge an orderSet...
@@ -78,7 +89,7 @@ if (ACTION == "-retire") or (ACTION == "-purge"):
         uuidOrderSetParam = "/" + sys.argv[3]   # uuid url path
     else:
         # bad params list, exit
-        displayArgsHelp()
+        displayArgsHelp(True)
         exit()
 
 # if tool action is to purge an orderSet...
@@ -92,7 +103,10 @@ if (ACTION == "-retire") or (ACTION == "-purge"):
                     auth = (USERID,PASSWORD),
                     headers = HEADERS,
                     verify = False)
-    # display results
+    # display response body
+    if (DEBUG_MODE == "d"):
+        print json.dumps(json.loads(r.text))
+    # print HTTP response code
     print r;
     exit()
 
@@ -103,11 +117,11 @@ if (ACTION == "-add") or (ACTION == "-update"):
         INPUT_FILE = sys.argv[3] # use <input-file>
     else:
         # bad params list, exit
-        displayArgsHelp()
+        displayArgsHelp(True)
         exit()
 else:
     # bad params list, exit
-    displayArgsHelp()
+    displayArgsHelp(True)
     exit()
 
 # read orderSet Regimen template file (uses a YAML schema)
@@ -127,9 +141,6 @@ r = requests.get(url = API_ENDPOINT + "/conceptreferenceterm?v=full&codeOrName="
 # store fetched UUID
 uuidRegimenCategory = json.loads(r.text)["results"][0]["uuid"]
 
-#print json.dumps(regimen)
-#exit()
-
 # build new orderSet's orderSetMember list in a loop...
 for x in range(len(regimen["orderset"]["orders"])):
 
@@ -138,7 +149,9 @@ for x in range(len(regimen["orderset"]["orders"])):
     # build orderSetMember number [x]...
 
     # DEBUG
-    #print regimen["orderset"]["orders"][x]
+    if (DEBUG_MODE == "d"):
+        print "[DEBUG] order metadata:"
+        print regimen["orderset"]["orders"][x]
 
     # prepare to query UUIDs that will be required during OrderSet creation phase
     # fetch UUIDs using metadata coded into OrderSet Regimen definition YAML source
@@ -184,7 +197,8 @@ for x in range(len(regimen["orderset"]["orders"])):
 
     attribsByName = buildDict(orderSetAttributeTypes, key="display")
     attribsByName.get("cycleLength")["uuid"]
-    #print "[DEBUG] uuidOrderSetAttributes: " + json.dumps(attribsByName)
+    if (DEBUG_MODE == "d"):
+        print "[DEBUG] uuidOrderSetAttributes: " + json.dumps(attribsByName)
 
     #--------------------------------------------------------------------------
     # fetch Time Units UUID value for cycleLengthUnits
@@ -199,7 +213,8 @@ for x in range(len(regimen["orderset"]["orders"])):
 
     #attribsByName = buildDict(orderSetAttributeTypes, key="display")
     #attribsByName.get("cycleLength")["uuid"]
-    #print "[DEBUG] uuidOrderSetAttributes: " + json.dumps(attribsByName)
+    if (DEBUG_MODE == "d"):
+        print "[DEBUG] uuidOrderSetAttributes: " + json.dumps(attribsByName)
 
     # can't seem to find API that can cleanly fetch info needed, so hard-coding for now
     if (regimen["orderset"]["cycleLengthUnits"] == "Months"):
@@ -227,7 +242,8 @@ for x in range(len(regimen["orderset"]["orders"])):
     jsonOrderTemplate.orderTemplateType = None
 
     # DEBUG
-    #print "[jsonOrderTemplate]:\n"+jsonOrderTemplate.dumps()
+    if (DEBUG_MODE == "d"):
+        print "[DEBUG] jsonOrderTemplate:\n"+jsonOrderTemplate.dumps()
 
     # build orderSetMember JSON payload data set...
     orderSetMember = ObjDict()
@@ -264,9 +280,6 @@ for x in range(len(regimen["orderset"]["orders"])):
     # append new orderSetMember into array
     order.orderSetMembers.append(orderSetMember)
 
-#print "[DEBUG] CREATE ORDERSET PAYLOAD:"
-#print order.dumps()
-
 # reset extra url parameter (only used in "-update" use case)
 uuidOrderSetParam = ""
 
@@ -277,10 +290,10 @@ if ACTION == "-update":
         uuidOrderSetParam = "/" + sys.argv[4] # use <uuid> in url
     else:
         # bad params list, exit
-        displayArgsHelp()
+        displayArgsHelp(True)
         exit()
 
-# output request input file
+# output body of POST request before submitting
 print order.dumps()
 
 # create or update an orderSet (Regimen) template
@@ -289,6 +302,11 @@ r = requests.post(url = API_ENDPOINT + "/orderset" + uuidOrderSetParam,
                   headers = HEADERS,
                   data = order.dumps(),
                   verify = False)
+
+# DEBUG
+if (DEBUG_MODE == "d"):
+    print "[DEBUG] HTTP POST response:\n" + json.dumps(r.text)
+
 
 # display results
 print r;
