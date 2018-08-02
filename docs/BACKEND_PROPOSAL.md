@@ -11,6 +11,7 @@ OpenMRS 2.1.3 Mirebalais: Oncology Regimen Ordering & Dashboard Support
   * [DR_UC1 - Select chemotherapy regimen from list](#dr-uc1---select-chemotherapy-regimen-from-list)
   * [DR_UC2 - Submit an order for the selected chemotherapy regimen in DR_UC1 use case](#dr-uc2---submit-an-order-for-the-selected-chemotherapy-regimen-in-dr-uc1-use-case)
   * [OT_UC1 - Authoring an oncology regimen templates for use in EMR solution](#ot-uc1---authoring-an-oncology-regimen-templates-for-use-in-emr-solution)
+  * [OT_UC2 - Editing an oncology regimen templates currently in use in an EMR solution](#ot-uc2---editing-an-oncology-regimen-templates-currently-in-use-in-an-emr-solution)
 - [Proposal](#proposal)
 - [Extended Content](#extended-content)
 - [Technical TODOs/Open Issues](#technical-todos-open-issues)
