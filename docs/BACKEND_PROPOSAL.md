@@ -89,7 +89,7 @@ Technical Flows
 ===============
 
 - Data Model: 
-![](images/muraly-data-model.png)
+![](../images/muraly-data-model.png)
 
 DR_UC1 - Select chemotherapy regimen from list 
 ------
@@ -102,7 +102,7 @@ DR_UC1 - Select chemotherapy regimen from list
 - Implementation notes: Data encoded in `OrderSetMember.orderTemplate` is a seralized escaped JSON string that must be decoded in presentation later to understand data. When creating `Order` objects in the next use case, the final JSON string must be serialized similarly containing the updated (if applicable) chemotherapy drugs being ordered by doctor in final initial order.
 
 - Sequence Diagram:  
-![](images/sequence-DR_UC1.png)
+![](../images/sequence-DR_UC1.png)
 
 - Data Model References:  
  [Class Diagram](#data-model)  
@@ -135,7 +135,7 @@ DR_UC2 - Submit an order for the selected chemotherapy regimen in DR_UC1 use cas
 - Implementation notes: Response from the `POST /mirebalais/ws/rest/v1/encounter` request returns the same document submitted but with more of the fields completed, e.g. the UUID for the Encounter which has just been created. encounter role is a description of the type of person who is involved in the encounter (e.g. nurse) For existing drug orders, it looks like this is retreived with a query to `https://humci.pih-emr.org/mirebalais/ws/rest/v1/encounterrole?q=Ordering%20Provider`. Provider looks like a wrapper around person - not sure how to get this.
 
 - Sequence Diagram
-![](images/sequence-DR_UC2.png)
+![](../images/sequence-DR_UC2.png)
 
 - Data Model References:
 [Class Diagram](#data-model)  
@@ -364,15 +364,15 @@ Several objects in the data model are missing fields that are necessary for the 
 
 For Drug, maximum lifetime dose is a fundamental quality of the drug, therefore the Drug class should have the necessary fields added to the core data model. The fields added would be maximumLifetimeDose and doseLimitUnits to denote the units for the various max and min fields.
 
-<img src="images/DrugTable.png" width="500" height="383">
+<img src="../images/DrugTable.png" width="500" height="383">
 
 OrderGroup and OrderSet would be extended via attribute tables, which would involve changing the parent class of both java classes from Changeable to Customizable. An Attribute and AttributeType table would be created for both OrderGroup and OrderSet, and the AttributeTypes in each table would be the missing fields.
 
-<img src="images/OrderSetExt.png" width="600" height="514">
+<img src="../images/OrderSetExt.png" width="600" height="514">
 
 In order to add the necessary fields to DrugOrder, we propose extending the DrugOrder class in a new class called ChemoOrder.
 
-<img src="images/ChemoOrderExt.png" width="600" height="292">
+<img src="../images/ChemoOrderExt.png" width="600" height="292">
 
 
 Extended Content
