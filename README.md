@@ -1,8 +1,30 @@
 # openmrs-module-oncology
 Oncology module for OpenMRS
 
-Collaborative work with IBM, Partners In Health, Uganda Cancer Institute, University of North Carolina, and the OpenMRS Community.
+Collaborative work with IBM, Partners In Health, Hôpital Universitaire de Mirebalais (Haiti), Uganda Cancer Institute, University of North Carolina, and the OpenMRS Community.
 
-Inception on May 7-8, 2018 in Boston, MA USA
+July 15 - August 3, 2018, Boston MA
 
-Stay tuned for the work on this module which will start in June or July 2018.
+Deliverables:
+-------------
+
+- Design assets:
+  - Mockups
+  - Use Cases
+
+- Oncology Solution OpenMRS components w/ contributions for chemotherapy treatment:
+  - [OpenMRS Core](https://github.com/idlewis/openmrs-core)
+  - [OpenMRS Web Services REST module](https://github.com/idlewis/openmrs-module-webservices.rest)
+  - [OpenMRS PIH Mirebalais Metadata module](https://github.com/PIH/openmrs-module-mirebalaismetadata)
+  - [OpenMRS Oncology Regimens Templates](https://github.com/dearmasm/openmrs-module-oncology/edit/master/regimens) 
+  - dependencies:
+    - [OpenMRS PIH Mirebalais module](https://github.com/PIH/openmrs-module-mirebalais)
+    - [OpenMRS PIH Core module](https://github.com/PIH/openmrs-module-pihcore)
+
+- Project Utilities
+  - [YAAR - Regimen template tool](https://github.com/dearmasm/openmrs-module-oncology/edit/master/utils/YAAR_DOCS.md)
+  - [GITPOLLER - GitHub commit watcher](https://github.com/dearmasm/openmrs-module-oncology/edit/master/utils/YAAR_DOCS.md)
+
+Notes:
+------
+
