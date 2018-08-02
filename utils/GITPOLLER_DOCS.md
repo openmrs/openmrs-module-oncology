@@ -77,7 +77,10 @@ OpenJDK 64-Bit Server VM warning: ignoring option PermSize=512m; support was rem
 OpenJDK 64-Bit Server VM warning: ignoring option MaxPermSize=1024m; support was removed in 8.0
 . . .
 ```
->>>Note: in the above example, the gitpoller detects that there are new commits on each of the branches being watched (note that the SHA values are different) and then triggers the `executeOnChange` command as a subprocess (it stops any further polling to GitHub until subprocess completes). When subprocess completes (in this case it is a Maven build task that will take approx 15min), the poller script will then sleep for 30min and then attempt to poll GitHub resources again (loop), thus repeating this cycle every 30min or so (depending if a build was kicked off or not during the cycle).
+>>>Note: The value `gitReportedLastCommitSHA` represents GitHub's API HTTP GET reported "last commit" value.  
+The value `lastKnownCommitSHA` represents GITPOLLER's "last known" commit value - from last poll loop (value is kept in \*.gitwatch data files).
+
+>>>Note: in the above example, the gitpoller detects that there are new commits on each of the branches being watched (note that the SHA values are different `gitReportedLastCommitSHA` vs. `lastKnownCommitSHA`) and then triggers the `executeOnChange` command as a subprocess (it stops any further polling to GitHub until subprocess completes). When subprocess completes (in this case it is a Maven build task that will take approx 15min), the poller script will then sleep for 30min and then attempt to poll GitHub resources again (loop), thus repeating this cycle every 30min or so (depending if a build was kicked off or not during the cycle).
 
 - Implementation Notes:  
     - The tool is written in `Python 3` language. The key implementation file is [gitpoller.py](https://github.com/dearmasm/openmrs-module-oncology/edit/master/utils/gitpoller.py). There is a bash-friendly convenience wrapper included [gitpoller-idlewis.sh](https://github.com/dearmasm/openmrs-module-oncology/edit/master/utils/gitpoller-idlewis.sh) that can be used to launch GITPOLLER tool which redirects the stderr/stdout to a log file and console.  
