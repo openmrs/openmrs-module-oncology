@@ -3,7 +3,7 @@ Oncology module for OpenMRS
 
 Collaborative work with IBM, Partners In Health, Uganda Cancer Institute, University of North Carolina, and the OpenMRS Community.
 
-July 15 - August 3, 2018
+July 15 - August 3, 2018, Boston MA
 
 Deliverables:
 -------------
