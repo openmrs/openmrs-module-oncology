@@ -22,8 +22,8 @@ Deliverables:
     - [OpenMRS PIH Core module](https://github.com/PIH/openmrs-module-pihcore)
 
 - Project Utilities
-  - [YAAR - Regimen template tool](https://github.com/dearmasm/openmrs-module-oncology/master/utils/YAAR_DOCS.md)
-  - [GITPOLLER - GitHub commit watcher](https://github.com/dearmasm/openmrs-module-oncology/master/utils/YAAR_DOCS.md)
+  - [YAAR - Regimen template tool](https://github.com/dearmasm/openmrs-module-oncology/blob/master/utils/YAAR_DOCS.md)
+  - [GITPOLLER - GitHub commit watcher](https://github.com/dearmasm/openmrs-module-oncology/blob/master/utils/GITPOLLER_DOCS.md)
 
 Notes:
 ------
