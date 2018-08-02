@@ -97,7 +97,7 @@
 
 
 - Implementation Notes:  
-    - The tool is written in `Python 3` language. The key implementation file is [yaar.py](https://github.com/dearmasm/openmrs-module-oncology/edit/master/utils/yaar.py). There is a bash-friendly convenience wrapper included [yaar.sh](https://github.com/dearmasm/openmrs-module-oncology/blob/master/utils/yaar.sh) that can be used to launch YAAR tool without having to type `python yaar.py` every time.  
+    - The tool is written in `Python 3` language. The key implementation file is [yaar.py](https://github.com/dearmasm/openmrs-module-oncology/blob/master/utils/yaar.py). There is a bash-friendly convenience wrapper included [yaar.sh](https://github.com/dearmasm/openmrs-module-oncology/blob/master/utils/yaar.sh) that can be used to launch YAAR tool without having to type `python yaar.py` every time.  
 
     - The tool supports drug concepts UUID look ups and building the `OrderSet` HTTP body requests dynamically to match API/object structure (specifically it will encode order set list members properly and append new chemo order set attribute extensions added by IBM+PIH chemo treatment project).  
 
