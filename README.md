@@ -1,7 +1,7 @@
 # openmrs-module-oncology
 Oncology module for OpenMRS
 
-Collaborative work with IBM, Partners In Health, Uganda Cancer Institute, University of North Carolina, and the OpenMRS Community.
+Collaborative work with IBM, Partners In Health, Hôpital Universitaire de Mirebalais (Haiti), Uganda Cancer Institute, University of North Carolina, and the OpenMRS Community.
 
 July 15 - August 3, 2018, Boston MA
 
