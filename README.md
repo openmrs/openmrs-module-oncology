@@ -11,6 +11,8 @@ Deliverables:
 - Design assets:
   - Mockups
   - Use Cases
+  
+  - [Back-end proposal](https://github.com/dearmasm/openmrs-module-oncology/blob/master/docs/BACKEND_PROPOSAL.md)
 
 - Oncology Solution OpenMRS components w/ contributions for chemotherapy treatment:
   - [OpenMRS Core](https://github.com/idlewis/openmrs-core)
