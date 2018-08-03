@@ -9,7 +9,7 @@ Deliverables:
 -------------
 
 - Design assets:
-  - Mockups
+  -[Mockups](https://github.com/dearmasm/openmrs-module-oncology/blob/master/docs/Mockups.md)
   - Use Cases
   
   - [Back-end proposal](https://github.com/dearmasm/openmrs-module-oncology/blob/master/docs/BACKEND_PROPOSAL.md)
