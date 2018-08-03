@@ -214,26 +214,25 @@ Several objects in the data model are missing fields that are necessary for the 
     - Number of cycles in the regimen
     - Length of the cycles in the regimen
     - Previous Order Group
+    - Nesting of Order Groups
 - OrderSet
     - Indication (Chemotherapy/HIV)
     - Number of cycles typical in the regimen
     - Length of cycles typical in the regimen
 - DrugOrder
     - Dosing reduction
-    - Relative start day
-    - Chemo administration group (Indication - Premedication, Chemotherapy, Post Medication)
 
-For Drug, maximum lifetime dose is a fundamental quality of the drug, therefore the Drug class should have the necessary fields added to the core data model. The fields added would be maximumLifetimeDose and doseLimitUnits to denote the units for the various max and min fields.
+For OrderSet, the Category field will contain a reference to a Concept which describes what a particular OrderSet is typically used to treat. If an OrderSet is used for multiple situations, the Concept for the OrderSet would be a Concept of type Set, which has the multiple Concepts as members of the Set. OrderSet will also be extended via attributes to hold the attributes of number of cycles and length of the cycles.
 
-<img src="../images/DrugTable.png" width="500" height="383">
+OrderGroup will contain a field called "orderGroupReason" which will be a concept denoting the reason the orderGroup was "ordered" - in our case, this would always be "Chemotherapy", "Cancer Treatment", or a similar value. Physician notes will be contained in an Observation in the Encounter associated with the OrderGroup. The fields PreviousOrderGroup, ParentOrderGroup, and NestedOrderGroups will be added to the OrderGroup object to support linking OrderGroups as well as OrderGroup nesting. OrderGroup nesting will be used to group chemotherapy regimens into Premedications, Chemotherapy medications, and Post Medications. OrderGroup will also be extended via attributes to associate the fields of cycle number, the number of total cycles in the regimen at that point in time, and the length of the cycles in the regimen.
 
-OrderGroup and OrderSet would be extended via attribute tables, which would involve changing the parent class of both java classes from Changeable to Customizable. An Attribute and AttributeType table would be created for both OrderGroup and OrderSet, and the AttributeTypes in each table would be the missing fields.
+For dosing reduction, we will implement a new dosing type to capture the dosing adjustment. This will capture the percent of the adjustment, as well as have fields for timing and dilution instructions.
 
-<img src="../images/OrderSetExt.png" width="600" height="514">
+For maximum lifetime dose, it is typically associated with the drug concept or ingredient, and not a specific formulation. As such, we will associate the maximum lifetime dose to a drug Concept via ConceptAttributes.
 
-In order to add the necessary fields to DrugOrder, we propose extending the DrugOrder class in a new class called ChemoOrder.
+Drug currently has a maximumDailyDose field (which is a double), but no concept of the units associated with it. We are intending to add a doseLimitUnits field to the table which is the Concept referring to the particular units that the max and min daily dose fields use.
 
-<img src="../images/ChemoOrderExt.png" width="600" height="292">
+We would like to capture the concentration of a drug in a more concrete form than just in the name of the Drug, as we need to fetch that value for calculating the dosage in our application. We will store the concentration value and its units serialized in the strength field of the Drug.
 
 
 Extended Content
