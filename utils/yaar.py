@@ -71,7 +71,7 @@ if ACTION == "-get":
         uuidOrderSetParam = ""  # fetch ALL orderSets
 
     # fetch orderSet(s) metadata
-    r = requests.get(url = API_ENDPOINT + "/orderset" + uuidOrderSetParam + "?v=full",
+    r = requests.get(url = API_ENDPOINT + "/orderset" + uuidOrderSetParam, # user can add "?v=full" to end of UUID if FULL metadata needed,
                     auth = (USERID,PASSWORD),
                     headers = HEADERS,
                     verify = False)
