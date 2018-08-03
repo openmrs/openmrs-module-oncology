@@ -235,8 +235,9 @@ Drug currently has a maximumDailyDose field (which is a double), but no concept 
 We would like to capture the concentration of a drug in a more concrete form than just in the name of the Drug, as we need to fetch that value for calculating the dosage in our application. We will store the concentration value and its units serialized in the strength field of the Drug.
 
 
-Extended Content
-================
+Extended Content / Futures
+==========================
+![](../images/future-opportunities.png)
 
 
 
