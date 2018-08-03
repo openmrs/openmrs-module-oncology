@@ -13,6 +13,7 @@ Deliverables:
   - Use Cases
   
   - [Back-end proposal](https://github.com/dearmasm/openmrs-module-oncology/blob/master/docs/BACKEND_PROPOSAL.md)
+  - [Chemotherapy Ordering data design proposal and discussion](https://talk.openmrs.org/t/chemotherapy-ordering-data-design/19133)
 
 - Oncology Solution OpenMRS components w/ contributions for chemotherapy treatment:
   - [OpenMRS Core](https://github.com/idlewis/openmrs-core)
