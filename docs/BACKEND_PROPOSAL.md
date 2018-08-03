@@ -237,7 +237,7 @@ We would like to capture the concentration of a drug in a more concrete form tha
 
 Extended Content / Futures
 ==========================
-![](../images/future-opportunities.png)
+![](../docs/future-opportunities.png)
 
 
 
