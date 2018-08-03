@@ -85,6 +85,11 @@
      $ ./yaar.sh -get <openmrs-server.conf> <regimen-uuid>
      ```
 
+  - **`GET full`** a specific (existing) regimen `OrderSet` instance FULL metadata from a target OpenMRS solution instance
+     ```bash
+     $ ./yaar.sh -get <openmrs-server.conf> <regimen-uuid>?v=full
+     ```
+
   - **`UPDATE`** an existing regimen `OrderSet` instance on a target OpenMRS solution instance
      ```bash session
      $ ./yaar.sh -update <openmrs-server.conf> <regimen-input-file> <regimen-uuid>
