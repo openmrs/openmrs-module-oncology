@@ -17,7 +17,9 @@ Deliverables:
 
 - Oncology Solution OpenMRS components w/ contributions for chemotherapy treatment:
   - [OpenMRS Core](https://github.com/idlewis/openmrs-core)
+    Iain's fork of core. The branch used on the oncology test server is 'integration'. Other branches contain the same commits but split by functional areas
   - [OpenMRS Web Services REST module](https://github.com/idlewis/openmrs-module-webservices.rest)
+    Iain's fork of the webservices module. Same as above for branches
   - [OpenMRS PIH Mirebalais Metadata module](https://github.com/PIH/openmrs-module-mirebalaismetadata)
   - [OpenMRS Oncology Regimens Templates](https://github.com/dearmasm/openmrs-module-oncology/edit/master/regimens) 
   - dependencies:
