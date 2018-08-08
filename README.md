@@ -5,7 +5,11 @@ Oncology module for OpenMRS
 
 Collaborative work with IBM, Partners In Health, Hôpital Universitaire de Mirebalais (Haiti), Uganda Cancer Institute, University of North Carolina, and the OpenMRS Community.
 
-July 15 - August 3, 2018, Boston MA
+Project dates: July 15 - August 3, 2018, Boston MA
+
+Purpose:
+--------
+The goal of this project is to add chemotherapy regimen support to OpenMRS EMR system so that doctors can order and track a patient's chemo treatment from EMR system. Nurse's adminstration detail is also included in this new support in order to improve quality of care for cancer patients and tracking the chemo treatment effectiveness.  
 
 Deliverables:
 -------------
