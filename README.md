@@ -1,3 +1,5 @@
+<img src="https://cloud.githubusercontent.com/assets/668093/12567089/0ac42774-c372-11e5-97eb-00baf0fccc37.jpg" alt="OpenMRS"/>
+
 # openmrs-module-oncology
 Oncology module for OpenMRS
 
