@@ -1,0 +1,33 @@
+{
+  "results": [
+    {
+      "uuid": "c1c121bf-c660-4435-bdcf-04ac6e99c870",
+      "display": "CHOP",
+      "links": [
+        {
+          "rel": "self",
+          "uri": "https://humci.pih-emr.org:443/mirebalais/ws/rest/v1/orderset/c1c121bf-c660-4435-bdcf-04ac6e99c870"
+        }
+      ]
+    },
+    {
+      "uuid": "bfa83291-a1a3-4fcc-a329-bfa1078bbd0e",
+      "display": "Paclitaxel175",
+      "links": [
+        {
+          "rel": "self",
+          "uri": "https://humci.pih-emr.org:443/mirebalais/ws/rest/v1/orderset/bfa83291-a1a3-4fcc-a329-bfa1078bbd0e"
+        }
+      ]
+    },
+    {
+      "uuid": "ac5cea43-730b-43f9-a394-509ec12c25be",
+      "display": "CHOP",
+      "links": [
+        {
+          "rel": "self",
+          "uri": "https://humci.pih-emr.org:443/mirebalais/ws/rest/v1/orderset/ac5cea43-730b-43f9-a394-509ec12c25be"
+        }
+      ]
+    }
+  ]}

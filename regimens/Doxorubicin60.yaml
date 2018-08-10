@@ -1,0 +1,68 @@
+# chemotherapy regimen definition file
+# usage: this file is input to OpenMRS Regimen OrderSet Tool (OROT), see tool docs for details
+orderset:
+  dependency: https://github.com/PIH/openmrs-module-mirebalais
+  name: "Single-Agent Doxorubicin - Breast Cancer Regimen 60 mg/m2"
+  category: "CIEL:163073" # chemotherapy regimen
+  cycleCount: 4 # recommended number of cycles
+  cycleLength: 3 # cycle length unit defined below
+  cycleLengthUnits:  "Weeks"
+  orders:
+
+ # ---------------- PREMED DRUGS ----------------
+
+    - # order PREMED 1
+      type: "drugorder"
+      relativeStartDay: 1
+      category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drugConcept: "SODIUM CHLORIDE"
+      drugName: "Sodium chloride (normal saline) 0.9% , 500mL bottle"
+      dose: 500
+      doseUnits: "Milliliter"
+      route: "Intravenous"
+      dosingInstructions:
+        timing: "Once prior to chemotherapy"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
+
+    - # order PREMED 2
+      type: "drugorder"
+      relativeStartDay: 1
+      category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drugConcept: "Dexamethasone"
+      drugName: "Dexamethasone, 8mg, tablet"
+      dose: 16
+      doseUnits: "Milligram"
+      route: "Oral"
+      dosingInstructions:
+        timing: "Once 60 minutes prior to chemotherapy"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
+
+    - # order PREMED 3
+      type: "drugorder"
+      relativeStartDay: 1
+      category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drugConcept: "Ondansetron"
+      drugName: "ondansetron, 4mg, tablet film coated tablet"
+      dose: 8
+      doseUnits: "Milligram"
+      route: "Oral"
+      dosingInstructions:
+        timing: "Once 60 minutes prior to chemotherapy"   # another option: "Every hour" ?
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
+
+
+# ---------------- CHEMO DRUGS ----------------
+
+    - # order CHEMO 1
+      type: "drugorder"
+      relativeStartDay: 1
+      category: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drugConcept: "Doxorubicin"
+      drugName: "DOXOrubicin 2 mg/mL, 25mL vial"
+      dose: 60
+      doseUnits: "Milligram per square meter"
+      route: "Intravenous"
+      dosingInstructions:
+        dilution: "Dilute to 2mg/mL with 0.9% NS. Give via IV push with free flowing 0.9% NS."
+        timing: "IV Push over 15 minutes"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order

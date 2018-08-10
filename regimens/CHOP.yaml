@@ -1,0 +1,98 @@
+# chemotherapy regimen definition file
+# usage: this file is input to OpenMRS Regimen OrderSet Tool (OROT), see tool docs for details
+orderset:
+  dependency: https://github.com/PIH/openmrs-module-mirebalais
+  name: "CHOP: Protocol for Non Hodgkin Lymphoma"
+  category: "CIEL:163073" # chemotherapy regimen
+  cycleCount: 6 # recommended number of cycles
+  cycleLength: 3 # cycle length unit defined below
+  cycleLengthUnits:  "Weeks"
+  orders:
+
+ # ---------------- PREMED DRUGS ----------------
+
+    - # order PREMED 1
+      type: "drugorder"
+      relativeStartDay: 1
+      category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drugConcept: "SODIUM CHLORIDE"
+      drugName: "Sodium chloride (normal saline) 0.9% , 1000mL bottle"
+      dose: 1000
+      doseUnits: "Milliliter"
+      route: "Intravenous"
+      dosingInstructions:
+        timing: "Once prior to chemotherapy"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
+
+    - # order PREMED 2
+      type: "drugorder"
+      relativeStartDay: 1
+      category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drugConcept: "Ondansetron"
+      drugName: "ondansetron, 4mg, tablet film coated tablet"
+      dose: 8
+      doseUnits: "Milligram"
+      route: "Oral"
+      dosingInstructions:
+        timing: "Once 60 minutes prior to chemotherapy"   # another option: "Every hour" ?
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
+
+
+# ---------------- CHEMO DRUGS ----------------
+
+    - # order CHEMO 1
+      type: "drugorder"
+      relativeStartDay: 1
+      category: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drugConcept: "Prednisone"
+      drugName: "predniSONE, 20mg tablet"
+      dose: 100
+      doseUnits: "Milligram"
+      route: "Oral"
+      dosingInstructions:
+        dilution: "PO"
+        timing: "Daily x 5 days. 1st dose 60 minutes prio to chemotherapy"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
+
+
+    - # order CHEMO 2
+      type: "drugorder"
+      relativeStartDay: 1
+      category: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drugConcept: "Doxorubicin"
+      drugName: "DOXOrubicin 2 mg/mL, 25mL vial"
+      dose: 50
+      doseUnits: "Milligram per square meter"
+      route: "Intravenous"
+      dosingInstructions:
+        dilution: "Dilute to 2mg/mL with 0.9% NS. Give via IV push with free flowing 0.9% NS."
+        timing: "IV Push over 15 minutes"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
+
+    - # order CHEMO 3
+      type: "drugorder"
+      relativeStartDay: 1
+      category: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drugConcept: "Vincristine"
+      drugName: "vinCRIStine sulfate, 1 mg/mL, 1mL vial"
+      dose: 1.4
+      doseUnits: "Milligram per square meter"
+      route: "Intravenous"
+      dosingInstructions:
+        dilution: "No dilution needed. Give via IV push with free flowing 0.9% NS."
+        timing: "IV Push over 1-2 minutes"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
+
+    - # order CHEMO 4
+      type: "drugorder"
+      relativeStartDay: 1
+      category: "Chemotherapy" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drugConcept: "Cyclophosphamide"
+      drugName: "cycloPHOSPHAMIDE for injection, 1000mg vial"
+      dose: 750
+      doseUnits: "Milligram per square meter"
+      route: "Intravenous"
+      dosingInstructions:
+        dilution: "Dilute to 1g/50ml with sterile water for injection. Mix prescribed dose/volume with 500mL 0.9 NS"
+        timing: "IV Push over 1-2 hours"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order

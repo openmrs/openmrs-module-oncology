@@ -1,0 +1,69 @@
+# chemotherapy regimen definition file
+# usage: this file is input to OpenMRS Regimen OrderSet Tool (OROT), see tool docs for details
+orderset:
+  dependency: https://github.com/PIH/openmrs-module-mirebalais
+  name: "5-FU with Leucovorin. Roswell Park Regimen for Colorectal and Breast Cancer"
+  category: "CIEL:163073" # chemotherapy regimen
+  cycleCount: 6 # recommended number of cycles
+  cycleLength: 28 # cycle length unit defined below
+  cycleLengthUnits:  "Days"
+  orders:
+
+ # ---------------- PREMED DRUGS ----------------
+
+    - # order PREMED 1
+      type: "drugorder"
+      relativeStartDay: 1,8,15
+      category: "Premedication" # Premedication, Chemotherapy, Post medication
+      drugConcept: "Dextrose 5% in water"
+      drugName: "dextrose 5%, intravenous infusion, 250mL"
+      dose: 250
+      doseUnits: "Milliliter"
+      route: "Intravenous"
+      dosingInstructions:
+        timing: "Once prior to chemotherapy"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
+
+    - # order PREMED 2
+      type: "drugorder"
+      relativeStartDay: 1,8,15
+      category: "Premedication" # Premedication, Chemotherapy, Post medication
+      drugConcept: "Ondansetron"
+      drugName: "ondansetron, 4mg, tablet film coated tablet"
+      dose: 8
+      doseUnits: "Milligram"
+      route: "Oral"
+      dosingInstructions:
+        timing: "Once 60 minutes prior to chemotherapy"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
+
+
+# ---------------- CHEMO DRUGS ----------------
+
+    - # order CHEMO 1
+      type: "drugorder"
+      relativeStartDay: 1,8,15
+      category: "Chemotherapy" # Premedication, Chemotherapy, Post medication
+      drugConcept: "Leucovorin"
+      drugName: "leucovorin calcium, 10mg/ML, 5mL vial"
+      dose: 500
+      doseUnits: "Milligram per square meter"
+      route: "Intravenous"
+      dosingInstructions:
+        dilution: "Mix with 500ml of D5W"
+        timing: "Infuse over 2 hours"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
+
+    - # order CHEMO 2
+      type: "drugorder"
+      relativeStartDay: 1,8,15
+      category: "Chemotherapy" # Premedication, Chemotherapy, Post medication
+      drugConcept: "Fluorouracil"
+      drugName: "fluorouracil 50 mg/mL, 10mL vial"
+      dose: 500
+      doseUnits: "Milligram per square meter"
+      route: "Intravenous"
+      dosingInstructions:
+        dilution: "IV Push no dilution needed"
+        timing: "IV push over 2-4 minutes. Administer 1 hour into Leucovorin infusion with D5 flush before and after"
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order

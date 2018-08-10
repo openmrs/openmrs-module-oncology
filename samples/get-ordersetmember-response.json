@@ -1,0 +1,38 @@
+{
+    "uuid": "2ab90f6b-83c3-4278-8dcb-aa9480f07d01",
+    "display": null,
+    "retired": false,
+    "orderType": {
+        "uuid": "131168f4-15f5-102d-96e4-000c29c2a5d7",
+        "display": "Drug Order",
+        "links": [
+            {
+                "rel": "self",
+                "uri": "https://humci.pih-emr.org:443/mirebalais/ws/rest/v1/ordertype/131168f4-15f5-102d-96e4-000c29c2a5d7"
+            }
+        ]
+    },
+    "orderTemplate": "{\"administrationInstructions\":\"In the evening\",\"dosingInstructions\":{\"doseUnits\":\"Tablet(s)\",\"frequency\":\"Once a day\",\"route\":\"Oral\",\"dose\":1},\"durationUnits\":\"Day(s)\",\"duration\":1,\"drug\":{\"name\":\"Aspirin 75mg\",\"uuid\":\"49f0c5c2-4738-4382-9928-69fd330d4624\",\"form\":\"Tablet\"},\"additionalInstructions\":\"This is good\"}",
+    "orderTemplateType": null,
+    "concept": {
+        "uuid": "3cccd35a-26fe-102b-80cb-0017a47871b2",
+        "display": "Aspirine",
+        "links": [
+            {
+                "rel": "self",
+                "uri": "https://humci.pih-emr.org:443/mirebalais/ws/rest/v1/concept/3cccd35a-26fe-102b-80cb-0017a47871b2"
+            }
+        ]
+    },
+    "links": [
+        {
+            "rel": "self",
+            "uri": "https://humci.pih-emr.org:443/mirebalais/ws/rest/v1/orderset/c1c121bf-c660-4435-bdcf-04ac6e99c870/ordersetmember/2ab90f6b-83c3-4278-8dcb-aa9480f07d01"
+        },
+        {
+            "rel": "full",
+            "uri": "https://humci.pih-emr.org:443/mirebalais/ws/rest/v1/orderset/c1c121bf-c660-4435-bdcf-04ac6e99c870/ordersetmember/2ab90f6b-83c3-4278-8dcb-aa9480f07d01?v=full"
+        }
+    ],
+    "resourceVersion": "1.8"
+}
