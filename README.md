@@ -19,6 +19,7 @@ Deliverables:
   - Use Cases
   - [Back-end proposal](https://github.com/dearmasm/openmrs-module-oncology/blob/master/docs/BACKEND_PROPOSAL.md)
   - [Chemotherapy Ordering data design proposal and discussion](https://talk.openmrs.org/t/chemotherapy-ordering-data-design/19133)
+  - [Haiti's Mirebalais Hospital chemotherapy paper forms](https://github.com/dearmasm/openmrs-module-oncology/blob/master/haiti-chemo-forms)
 
 - Oncology Solution OpenMRS components w/ contributions for chemotherapy treatment:
   - [OpenMRS Oncology OWA module](https://github.com/openmrs/openmrs-owa-oncology) : Front-end (UI) implementation for Chemotherapy Ordering user experience (implements Doctor & Nurse use cases).
