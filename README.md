@@ -22,11 +22,11 @@ Deliverables:
   - [Haiti's Mirebalais Hospital chemotherapy paper forms](https://github.com/dearmasm/openmrs-module-oncology/tree/master/haiti-chemo-forms)
 
 - Oncology Solution OpenMRS components w/ contributions for chemotherapy treatment:
-  - [OpenMRS Oncology OWA module](https://github.com/openmrs/openmrs-owa-oncology) : Front-end (UI) implementation for Chemotherapy Ordering user experience (implements Doctor & Nurse use cases).
-  - [OpenMRS Core](https://github.com/idlewis/openmrs-core) : Back-end (Core) implementation. Iain's fork of core. The branch used on the oncology test server is 'integration'. Other branches contain the same commits but split by functional areas.
-  - [OpenMRS Web Services REST module](https://github.com/idlewis/openmrs-module-webservices.rest) : API (REST) implementation. Iain's fork of the webservices module. Same as above for branches.
-  - [OpenMRS PIH Mirebalais Metadata module](https://github.com/PIH/openmrs-module-mirebalaismetadata) : Updated metadata concepts for supporting chemotherapy regimens for Haiti use cases.
-  - [OpenMRS Oncology Regimens Templates](https://github.com/dearmasm/openmrs-module-oncology/tree/master/regimens) : Haiti chemotherapy regimens codified into YAML schema for ease of provisioning/updating using [YAAR tool](https://github.com/dearmasm/openmrs-module-oncology/blob/master/utils/YAAR_DOCS.md).
+  - [OpenMRS Oncology OWA module](https://github.com/openmrs/openmrs-owa-oncology) : **Front-end (UI)** implementation for Chemotherapy Ordering user experience (implements Doctor & Nurse use cases).
+  - [OpenMRS Core](https://github.com/idlewis/openmrs-core) : **Back-end (Core)** implementation. Iain's fork of core. The branch used on the oncology test server is 'integration'. Other branches contain the same commits but split by functional areas.
+  - [OpenMRS Web Services REST module](https://github.com/idlewis/openmrs-module-webservices.rest) : **API (REST)** implementation. Iain's fork of the webservices module. Same as above for branches.
+  - [OpenMRS PIH Mirebalais Metadata module](https://github.com/PIH/openmrs-module-mirebalaismetadata) : Updated **metadata concepts** for supporting chemotherapy regimens for Haiti use cases.
+  - [OpenMRS Oncology Regimens Templates](https://github.com/dearmasm/openmrs-module-oncology/tree/master/regimens) : Haiti **chemotherapy regimens** codified into YAML schema for ease of provisioning/updating using [YAAR tool](https://github.com/dearmasm/openmrs-module-oncology/blob/master/utils/YAAR_DOCS.md).
   - dependencies:
     - [OpenMRS PIH Mirebalais module](https://github.com/PIH/openmrs-module-mirebalais)
     - [OpenMRS PIH Core module](https://github.com/PIH/openmrs-module-pihcore)
