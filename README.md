@@ -39,6 +39,7 @@ Issues:
 -------
 
 - [Chemo Order Issues](https://issues.openmrs.org/browse/TRUNK-5414?jql=labels%20%3D%20chemo-order)
+- [Chemotherapy Orders Dashboard](https://issues.openmrs.org/secure/RapidBoard.jspa?rapidView=171&view=planning&selectedIssue=TRUNK-5413&projectKey=TRUNK)
   
   
 Notes:
