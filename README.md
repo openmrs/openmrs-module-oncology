@@ -22,6 +22,7 @@ Deliverables:
   - [Chemotherapy Ordering data design proposal and discussion](https://talk.openmrs.org/t/chemotherapy-ordering-data-design/19133)
 
 - Oncology Solution OpenMRS components w/ contributions for chemotherapy treatment:
+  - [OpenMRS Oncology OWA Module](https://github.com/openmrs/openmrs-owa-oncology) Front-end (UI) implementation for Chemotherapy Ordering user experience (implements Doctor & Nurse use cases) 
   - [OpenMRS Core](https://github.com/idlewis/openmrs-core)
     Iain's fork of core. The branch used on the oncology test server is 'integration'. Other branches contain the same commits but split by functional areas
   - [OpenMRS Web Services REST module](https://github.com/idlewis/openmrs-module-webservices.rest)
