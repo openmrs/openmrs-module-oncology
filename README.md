@@ -9,7 +9,7 @@ Project dates: July 15 - August 3, 2018, Boston MA
 
 Purpose:
 --------
-The goal of this project is to add chemotherapy regimen support to OpenMRS EMR system so that doctors can order and track a patient's chemo treatment from EMR system. Nurse's adminstration detail is also included in this new support in order to improve quality of care for cancer patients and tracking the chemo treatment effectiveness.  
+The goal of this project is to add **chemotherapy regimen support** to OpenMRS EMR system so that doctors can order and track a patient's chemo treatment from EMR system. Nurse's adminstration detail is also included in this new support in order to **improve quality of care for cancer patients** and tracking the chemo treatment effectiveness.  
 
 Deliverables:
 -------------
@@ -17,7 +17,6 @@ Deliverables:
 - Design assets:
   - [Mockups](https://github.com/dearmasm/openmrs-module-oncology/blob/master/docs/Mockups.md)
   - Use Cases
-  
   - [Back-end proposal](https://github.com/dearmasm/openmrs-module-oncology/blob/master/docs/BACKEND_PROPOSAL.md)
   - [Chemotherapy Ordering data design proposal and discussion](https://talk.openmrs.org/t/chemotherapy-ordering-data-design/19133)
 
@@ -35,6 +34,13 @@ Deliverables:
   - [YAAR - Regimen template tool](https://github.com/dearmasm/openmrs-module-oncology/blob/master/utils/YAAR_DOCS.md)
   - [GITPOLLER - GitHub commit watcher](https://github.com/dearmasm/openmrs-module-oncology/blob/master/utils/GITPOLLER_DOCS.md)
 
+
+Issues:
+-------
+
+- [Chemo Order Issues](https://issues.openmrs.org/browse/TRUNK-5414?jql=labels%20%3D%20chemo-order)
+  
+  
 Notes:
 ------
 
