@@ -13,7 +13,7 @@ Functionalities:
 2. In the “Current enrollment”-box see that the patient is enrolled to the oncology program. 
 3. Use the link “Order chemo” to get to the order chemo page. 
  
-![](../images/muraly-data-model.png)
+![](../images/page2.png)
 
 ---
 
