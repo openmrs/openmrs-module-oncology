@@ -20,8 +20,11 @@ Functionalities:
 **Page 2 – Order New Chemo** The patient can only have one active regimen at the time. If the patient already has an active regimen the user will receive a pop-up. 
 
 Functionalities:
+
 4. A pop-up appears, informing the user that a regimen for the patient already exists. 
+
 5. The option to cancel the existing regimen and order a new one for the patient. 
+
 6. Close the pop-up and come back to the chemo dashboard again. 
  
 
