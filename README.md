@@ -9,7 +9,15 @@ Project dates: July 15 - August 3, 2018, Boston MA
 
 Purpose:
 --------
-The goal of this project is to add **chemotherapy regimen support** to OpenMRS EMR system so that doctors can order and track a patient's chemo treatment from EMR system. Nurse's adminstration detail is also included in this new support in order to **improve quality of care for cancer patients** and tracking the chemo treatment effectiveness.  
+The goal of this project is to add **chemotherapy regimen support** to OpenMRS EMR system so that doctors can order and track a patient's chemo treatment from EMR system. Nurse's adminstration detail is also included in this new support in order to **improve quality of care for cancer patients** and tracking the chemo treatment effectiveness.
+
+Implementation Demonstration:
+-----------------------------
+<div align="center">
+    <iframe width="620" height="315"
+        src="https://www.youtube.com/embed/OhlVBpEnjig">
+    </iframe>
+</div>
 
 Deliverables:
 -------------
