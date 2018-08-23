@@ -11,8 +11,8 @@ Purpose:
 --------
 The goal of this project is to add **chemotherapy regimen support** to OpenMRS EMR system so that doctors can order and track a patient's chemo treatment from EMR system. Nurse's adminstration detail is also included in this new support in order to **improve quality of care for cancer patients** and tracking the chemo treatment effectiveness.
 
-Implementation Demonstration:
------------------------------
+Demo:
+-----
 [![OpenMRS Chemotherapy Regimen Ordering Demo](images/OpenMRS-Chemotherapy-Ordering-demo-video.png)](https://www.youtube.com/embed/acRL9razsss "OpenMRS Chemotherapy Regimen module demo - Click to Watch!")
 
 Deliverables:
