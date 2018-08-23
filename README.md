@@ -13,11 +13,7 @@ The goal of this project is to add **chemotherapy regimen support** to OpenMRS E
 
 Implementation Demonstration:
 -----------------------------
-<div align="center">
-    <iframe width="620" height="315"
-        src="https://www.youtube.com/embed/OhlVBpEnjig">
-    </iframe>
-</div>
+[![Little red ridning hood](http://i.imgur.com/7YTMFQp.png)](https://vimeo.com/3514904 "Little red riding hood - Click to Watch!")
 
 Deliverables:
 -------------
