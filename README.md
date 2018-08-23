@@ -13,7 +13,7 @@ The goal of this project is to add **chemotherapy regimen support** to OpenMRS E
 
 Implementation Demonstration:
 -----------------------------
-[![Little red ridning hood](http://i.imgur.com/7YTMFQp.png)](https://www.youtube.com/embed/acRL9razsss "OpenMRS Chemotherapy Regimen module demo - Click to Watch!")
+[![OpenMRS Chemotherapy Regimen Ordering Demo](images/OpenMRS-Chemotherapy-Ordering-demo-video.png)](https://www.youtube.com/embed/acRL9razsss "OpenMRS Chemotherapy Regimen module demo - Click to Watch!")
 
 Deliverables:
 -------------
