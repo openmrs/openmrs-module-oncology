@@ -21,6 +21,7 @@ orderset:
       doseUnits: "Milliliter"
       route: "Intravenous"
       dosingInstructions:
+        type: "ChemoAdminDosingInstructions"
         timing: "Once prior to chemotherapy"
         dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
@@ -34,6 +35,7 @@ orderset:
       doseUnits: "Milligram"
       route: "Oral"
       dosingInstructions:
+        type: "ChemoAdminDosingInstructions"
         timing: "Once 60 minutes prior to chemotherapy"   # another option: "Every hour" ?
         dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
@@ -50,6 +52,7 @@ orderset:
       doseUnits: "Milligram"
       route: "Oral"
       dosingInstructions:
+        type: "ChemoAdminDosingInstructions"
         dilution: "Oral"
         timing: "Daily x 5 days. 1st dose 60 minutes prio to chemotherapy."
         dosingAdjustment: 0 # +/- percentage adjustment from regimen order
@@ -64,6 +67,7 @@ orderset:
       doseUnits: "Milligram per square meter"
       route: "Intravenous"
       dosingInstructions:
+        type: "ChemoAdminDosingInstructions"
         dilution: "No dilution needed. Give via IV push with free flowing 0.9% NS."
         timing: "IV Push over 1-2 minutes"
         dosingAdjustment: 0 # +/- percentage adjustment from regimen order
@@ -78,6 +82,7 @@ orderset:
       doseUnits: "Milligram per square meter"
       route: "Intravenous"
       dosingInstructions:
+        type: "ChemoAdminDosingInstructions"
         dilution: "Dilute to 1g/50ml with sterile water for injection. Mix prescribed dose/volume with 500mL 0.9 NS"
         timing: "IV Push over 1-2 hours"
         dosingAdjustment: 0 # +/- percentage adjustment from regimen order

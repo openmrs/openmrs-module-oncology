@@ -21,6 +21,7 @@ orderset:
       doseUnits: "Milliliter"
       route: "Intravenous"
       dosingInstructions:
+        type: "ChemoAdminDosingInstructions"
         timing: "Once prior to chemotherapy"
         dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
@@ -34,21 +35,23 @@ orderset:
       doseUnits: "Milligram"
       route: "Oral"
       dosingInstructions:
+        type: "ChemoAdminDosingInstructions"
         timing: "Once 60 minutes prior to chemotherapy"
         dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
     - # order PREMED 3
-        type: "drugorder"
-        relativeStartDay: 1
-        category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
-        drugConcept: "Ondansetron"
-        drugName: "ondansetron, 4mg, tablet film coated tablet"
-        dose: 8
-        doseUnits: "Milligram"
-        route: "Oral"
-        dosingInstructions:
-          timing: "Once 60 minutes prior to chemotherapy"   # another option: "Every hour" ?
-          dosingAdjustment: 0 # +/- percentage adjustment from regimen order
+      type: "drugorder"
+      relativeStartDay: 1
+      category: "Premedication" # Concept - "indication" - Premedication, Post medication, Chemotherapy
+      drugConcept: "Ondansetron"
+      drugName: "ondansetron, 4mg, tablet film coated tablet"
+      dose: 8
+      doseUnits: "Milligram"
+      route: "Oral"
+      dosingInstructions:
+        type: "ChemoAdminDosingInstructions"
+        timing: "Once 60 minutes prior to chemotherapy"   # another option: "Every hour" ?
+        dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
 # ---------------- CHEMO DRUGS ----------------
 
@@ -62,6 +65,7 @@ orderset:
       doseUnits: "Milligram per square meter"
       route: "Intravenous"
       dosingInstructions:
+        type: "ChemoAdminDosingInstructions"
         dilution: "No dilution needed"
         timing: "IV push over 10 minutes."
         dosingAdjustment: 0 # +/- percentage adjustment from regimen order
@@ -76,6 +80,7 @@ orderset:
       doseUnits: "Milligram per square meter"
       route: "Intravenous"
       dosingInstructions:
+        type: "ChemoAdminDosingInstructions"
         dilution: "No dilution needed"
         timing: "IV push over 10 mg/min."
         dosingAdjustment: 0 # +/- percentage adjustment from regimen order
@@ -90,6 +95,7 @@ orderset:
       doseUnits: "Milligram per square meter"
       route: "Intravenous"
       dosingInstructions:
+        type: "ChemoAdminDosingInstructions"
         dilution: "Dilute to 1g/50ml with sterile water for injection. Mix prescribed dose/volume with 500mL 0.9 NS"
         timing: "Infuse over 1-2 hours."
         dosingAdjustment: 0 # +/- percentage adjustment from regimen order

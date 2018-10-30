@@ -21,6 +21,7 @@ orderset:
       doseUnits: "Milliliter"
       route: "Intravenous"
       dosingInstructions:
+        type: "ChemoAdminDosingInstructions"
         timing: "Once prior to chemotherapy"
         dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
@@ -34,6 +35,7 @@ orderset:
       doseUnits: "Milligram"
       route: "Oral"
       dosingInstructions:
+        type: "ChemoAdminDosingInstructions"
         timing: "Once 60 minutes prior to chemotherapy"
         dosingAdjustment: 0 # +/- percentage adjustment from regimen order
 
@@ -50,6 +52,7 @@ orderset:
       doseUnits: "Milligram per square meter"
       route: "Intravenous"
       dosingInstructions:
+        type: "ChemoAdminDosingInstructions"
         dilution: "Mix with 500ml of D5W"
         timing: "Infuse over 2 hours"
         dosingAdjustment: 0 # +/- percentage adjustment from regimen order
@@ -64,6 +67,7 @@ orderset:
       doseUnits: "Milligram per square meter"
       route: "Intravenous"
       dosingInstructions:
+        type: "ChemoAdminDosingInstructions"
         dilution: "IV Push no dilution needed"
         timing: "IV push over 2-4 minutes. Administer 1 hour into Leucovorin infusion with D5 flush before and after"
         dosingAdjustment: 0 # +/- percentage adjustment from regimen order
