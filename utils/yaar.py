@@ -2,8 +2,8 @@
 # OpenMRS OrderSet (Regimen) lifecycle automated tooling
 #   - query, create, update, retire OrderSets (Regimens)
 # author: Mario De Armas
-# date: 2018.08.03
-# version: 1.0
+# date: 2018.10.31
+# version: 1.1
 
 import sys
 import json
@@ -31,7 +31,7 @@ def displayArgsHelp(errorMissingParam):
     #print "              yaar -purge <config-file> <uuid>"  # <<< action currently not supported by OpenMRS
 
 # start tool implementation
-print "OPENMRS REGIMEN ORDERSET TOOL v1.0 (20180803)..."
+print "OPENMRS REGIMEN ORDERSET TOOL v1.1 (20181031)..."
 
 # check if being invoked to learn args syntax...
 if len(sys.argv) < 3:
@@ -236,6 +236,7 @@ for x in range(len(regimen["orderset"]["orders"])):
     jsonOrderTemplate.doseUnits = regimen["orderset"]["orders"][x].get("doseUnits")
     jsonOrderTemplate.relativeStartDay = regimen["orderset"]["orders"][x]["relativeStartDay"]
     jsonOrderTemplate.dosingInstructions = ObjDict()
+    jsonOrderTemplate.dosingInstructions.type = regimen["orderset"]["orders"][x]["dosingInstructions"]["type"]
     jsonOrderTemplate.dosingInstructions.dosingTimingInstructions = regimen["orderset"]["orders"][x]["dosingInstructions"]["timing"]
     jsonOrderTemplate.dosingInstructions.dosingDilutionInstructions = regimen["orderset"]["orders"][x]["dosingInstructions"].get("dilution")
     jsonOrderTemplate.dosingInstructions.dosingAdjustmentPercentage = regimen["orderset"]["orders"][x]["dosingInstructions"]["dosingAdjustment"]
